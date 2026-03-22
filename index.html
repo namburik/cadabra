@@ -3,32 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portal — AI Trends and Point of View</title>
-  <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height: 1.6; margin: 0; padding: 2rem; background:#f7f7fb; color:#111; }
-    header { max-width: 800px; margin: 0 auto 2rem; }
-    article { max-width: 800px; margin: 0 auto; background: white; padding: 1.6rem; border-radius: 8px; box-shadow: 0 6px 24px rgba(12,12,20,0.06);}
-    h1 { margin: 0 0 0.25rem; }
-    p.lead { color:#555; margin-top:0; }
-    footer { max-width: 800px; margin: 1.5rem auto 0; color:#666; font-size:0.9rem; }
-  </style>
+  <title>Portal — AI Blogs & Use Cases</title>
+  <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-  <header>
-    <h1>Portal</h1>
-    <p class="lead">Notes and analysis on AI trends — a personal point of view.</p>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Portal</a>
+      <nav class="nav">
+        <a href="/about.html">About</a>
+        <a href="/blogs.html">Blogs & Use Cases</a>
+      </nav>
+    </div>
   </header>
 
-  <article>
-    <h2>Welcome</h2>
-    <p>This is a minimal starter for your blog. Replace this with your posts or set up a site generator (Jekyll, Hugo, Eleventy) as you prefer.</p>
+  <main class="container">
+    <section class="hero">
+      <h1>AI Practicalities: Insights, Patterns, and Use Cases</h1>
+      <p class="lead">Personal tech blogs on AI — real-world solutions, design choices, and lessons from a decade solving IT problems.</p>
+      <p class="actions"><a class="btn" href="/about.html">About me</a> <a class="btn btn-outline" href="/blogs.html">Read blogs</a></p>
+    </section>
 
-    <h3>First post idea</h3>
-    <p>Share a short post about trends you’ll cover: model deployment, data governance, responsible AI, developer tools, etc.</p>
-  </article>
+    <section class="featured">
+      <h2>Featured posts</h2>
+      <div class="grid">
+        <article class="card">
+          <h3><a href="/posts/ai-usecase-1.html">Scaling ML inference in production</a></h3>
+          <p>Architecture patterns and pragmatic trade-offs for reliable model serving.</p>
+        </article>
+        <article class="card">
+          <h3><a href="/posts/ai-blog-1.html">Automation wins: Small steps, big ROI</a></h3>
+          <p>How to identify quick AI wins that reduce operational toil across teams.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 
-  <footer>
-    <p>Hosted on GitHub Pages • Custom domain: namburi.me</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 — Personal Tech Blog • Built with plain HTML/CSS</p>
+    </div>
   </footer>
 </body>
 </html>

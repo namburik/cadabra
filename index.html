@@ -4,7 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portal — AI Blogs & Use Cases</title>
+  <meta name="description" content="Personal tech blog: practical AI use cases, deployment patterns, and lessons from a decade solving IT problems.">
+  <meta property="og:title" content="Portal — AI Blogs & Use Cases">
+  <meta property="og:description" content="Practical AI use cases, patterns, and lessons from a decade solving IT problems.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
   <link rel="stylesheet" href="/assets/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="/assets/scripts.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -14,6 +23,10 @@
         <a href="/about.html">About</a>
         <a href="/blogs.html">Blogs & Use Cases</a>
       </nav>
+      <div class="nav-controls">
+        <input id="search-input" class="search-input" placeholder="Search posts…" aria-label="Search posts">
+        <button id="theme-toggle" class="theme-toggle">🌓</button>
+      </div>
     </div>
   </header>
 

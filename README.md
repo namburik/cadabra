@@ -12,7 +12,6 @@ How to use:
    - 185.199.111.153
 
 Local preview
--
 To preview the site locally run a simple static HTTP server from the project root. For example:
 
 ```bash
@@ -21,11 +20,14 @@ python3 -m http.server 8000
 ```
 
 Files added
--
-- [about.html](about.html)
-- [blogs.html](blogs.html)
-- [assets/style.css](assets/style.css)
-- [posts/ai-usecase-1.html](posts/ai-usecase-1.html)
-- [posts/ai-blog-1.html](posts/ai-blog-1.html)
+- [assets/scripts.js](assets/scripts.js)
+- [assets/search-index.json](assets/search-index.json)
+- [rss.xml](rss.xml)
 
+New features
+- Dark mode toggle and improved typography
+- Client-side search (header input) powered by a small JSON index
+- Syntax highlighting for code blocks via Prism.js
+- Basic SEO/meta and Open Graph tags on pages
+- RSS feed available at `/rss.xml`
 For a more advanced setup, I can help scaffold a Jekyll or Hugo site, add a blog template, or add a GitHub Actions deployment workflow.

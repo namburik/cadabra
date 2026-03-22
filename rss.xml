@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Portal — AI Blogs & Use Cases</title>
+    <link>https://namburi.me/</link>
+    <description>Personal tech blog on AI use cases and practical engineering.</description>
+    <item>
+      <title>Scaling ML inference in production</title>
+      <link>https://namburi.me/posts/ai-usecase-1.html</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Patterns for serving ML models reliably at scale, with monitoring, SLOs, and cost trade-offs.</description>
+    </item>
+    <item>
+      <title>Automation wins: Small steps, big ROI</title>
+      <link>https://namburi.me/posts/ai-blog-1.html</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <description>How to find small, high-impact automations that reduce toil and deliver ROI.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,4 +1,5 @@
 [
   { "title": "Scaling ML inference in production", "url": "/posts/ai-usecase-1.html", "excerpt": "Architecture patterns and pragmatic trade-offs for reliable model serving.", "date": "2026-03-22", "tags": "ml, deployment" },
   { "title": "Automation wins: Small steps, big ROI", "url": "/posts/ai-blog-1.html", "excerpt": "How to identify quick AI wins that reduce operational toil across teams.", "date": "2026-03-22", "tags": "automation, ops" }
+  , { "title": "Beyond the Bot: The 2026 Agentic Playbook", "url": "/posts/mltekai-agentic-playbook.html", "excerpt": "Agentic Playbook: orchestration, GraphRAG, MCP, and safety for production agents.", "date": "2026-03-22", "tags": "agents, architecture" }
 ]

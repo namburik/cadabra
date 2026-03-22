@@ -16,5 +16,11 @@
       <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
       <description>How to find small, high-impact automations that reduce toil and deliver ROI.</description>
     </item>
+    <item>
+      <title>Beyond the Bot: The 2026 Agentic Playbook</title>
+      <link>https://namburi.me/posts/mltekai-agentic-playbook.html</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Full article: architecture, orchestration, and safety patterns for production agentic systems.</description>
+    </item>
   </channel>
 </rss>

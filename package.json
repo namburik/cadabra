@@ -1,0 +1,14 @@
+{
+  "name": "portal-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./assets/style.base.css -o ./assets/style.css --minify",
+    "watch:css": "npx tailwindcss -i ./assets/style.base.css -o ./assets/style.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.4.4"
+  }
+}

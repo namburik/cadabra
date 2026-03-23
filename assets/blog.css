@@ -1,0 +1,146 @@
+/* Consolidated blog CSS (migrated from per-post inline styles) */
+.blog-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.blog-header {
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+}
+.series-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent2));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+}
+.blog-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.blog-meta {
+  display: flex;
+  gap: 1.25rem;
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.blog-meta span::before { content: "· "; }
+.blog-meta span:first-child::before { content: ""; }
+.blog-intro {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--clr-text);
+  border-left: 3px solid var(--clr-accent);
+  padding-left: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+.blog-content h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: var(--clr-text);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--clr-border);
+}
+.blog-content h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: var(--clr-accent);
+}
+.blog-content p {
+  margin-bottom: 1rem;
+  color: var(--clr-muted);
+  line-height: 1.75;
+  font-size: 1.03rem;
+}
+.blog-content a { color: var(--clr-accent); text-decoration: underline; text-underline-offset: 3px; }
+.blog-content a:hover { color: var(--clr-text); }
+.blog-content strong { color: var(--clr-text); }
+.blog-content em { color: var(--clr-accent2); font-style: italic; }
+.blog-content ul, .blog-content ol {
+  margin: 0.5rem 0 1.5rem 1.25rem;
+  color: var(--clr-muted);
+}
+.blog-content ul { list-style: disc; }
+.blog-content ol { list-style: decimal; }
+.blog-content li { margin-bottom: 0.6rem; line-height: 1.75; font-size: 1.05rem; }
+.blog-content li::marker { color: var(--clr-accent); }
+
+/* Pattern, tier, pillar, and utility components used in posts */
+.pattern-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
+.pattern-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 1.5rem; transition: border-color var(--transition), transform var(--transition); }
+.pattern-card:hover { border-color: var(--clr-accent); transform: translateY(-3px); }
+.pattern-card .icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+.pattern-card h4 { font-size: 1rem; font-weight: 700; color: var(--clr-text); margin-bottom: 0.35rem; }
+.pattern-card .core-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clr-accent); margin-bottom: 0.5rem; }
+.pattern-card p { font-size: 0.92rem; margin-bottom: 0; color: var(--clr-muted); line-height: 1.6; }
+.tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
+.tier-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 1.4rem; }
+.tier-card .tier-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem; }
+.pillar-list { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0 2.5rem; }
+.pillar-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 1.75rem; display: flex; gap: 1.5rem; transition: border-color var(--transition); }
+.pillar-card:hover { border-color: var(--clr-accent); }
+.pillar-number { flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent2)); color: #fff; font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.85rem; margin: 1rem 0 0.5rem; }
+.benefit-item { background: rgba(79,156,249,0.06); border: 1px solid rgba(79,156,249,0.15); border-radius: 8px; padding: 0.9rem; }
+.benefit-item h5 { font-size: 0.88rem; font-weight: 700; color: var(--clr-text); margin-bottom: 0.3rem; }
+.benefit-item p { font-size: 0.85rem; margin-bottom: 0; line-height: 1.55; }
+
+@media (max-width: 640px) {
+  .blog-container { padding: 2rem 1rem; }
+  .blog-meta { flex-direction: column; gap: .4rem; }
+}
+
+/* Form field styles (including contact page) */
+.blog-content input[type="text"], .blog-content input[type="email"], .blog-content input[type="search"],
+.blog-content textarea, form#contactForm input, form#contactForm textarea, .form-col input, .form-col textarea {
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.blog-content input::placeholder, .blog-content textarea::placeholder, form#contactForm input::placeholder, form#contactForm textarea::placeholder {
+  color: var(--clr-muted);
+}
+
+/* Ensure dark theme fields are muted and non-white */
+body.dark .blog-content input, body.dark form#contactForm input, body.dark .blog-content textarea, body.dark form#contactForm textarea {
+  background: var(--clr-card);
+  color: var(--clr-text);
+  border: 1px solid var(--clr-border);
+}
+
+/* Small post-specific dark-mode tweaks (migrated from posts) */
+body.dark .blog-content h2,
+body.dark .blog-content h3 {
+  color: var(--text-dark) !important;
+}
+
+/* Contact form box */
+.contact-form-box {
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+}
+.contact-form-box h3 { margin-top: 0; margin-bottom: 0.75rem; }
+.contact-form-box .form-group { margin-bottom: 0.9rem; }
+.contact-form-box label { display: block; font-weight: 600; margin-bottom: 0.35rem; color: var(--clr-text); }
+.contact-form-box button { margin-top: 0.5rem; }
+
+body.dark .contact-form-box { box-shadow: 0 8px 20px rgba(2,6,23,0.12); }

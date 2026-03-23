@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Desktop nav links — replaces the repeated 8-class string used on every nav <a> */
+  .nav-link {
+    @apply text-sm text-muted transition-colors duration-200 hover:text-ink
+           focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2;
+    --tw-ring-color: rgba(79, 156, 249, 0.7);
+  }
+
+  /* Mobile menu links (index.html) */
+  .mobile-nav-link {
+    @apply py-1 text-[0.95rem] text-muted transition-colors duration-200
+           hover:text-ink focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2;
+    --tw-ring-color: rgba(79, 156, 249, 0.7);
+  }
+}

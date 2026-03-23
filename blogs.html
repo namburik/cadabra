@@ -3,50 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Blogs & Use Cases — Portal</title>
-  <meta name="description" content="Collection of practical AI blogs and use cases covering deployment, automation, and operational advice.">
+  <title>Blogs & Use Cases — Agentic & Authentic</title>
+  <meta name="description" content="Agentic & Authentic: collection of practical AI blogs and use cases covering deployment, automation, and operational advice.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/scripts.js" defer></script>
 </head>
-<body>
+  <body class="antialiased font-sans text-gray-900 bg-white">
   <header class="site-header">
+    <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[110] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#0a0e1a]">Skip to content</a>
     <div class="container">
-      <a class="logo" href="/">Portal</a>
+      <a class="logo" href="/">My Take: Agentic & Authentic</a>
       <nav class="nav">
         <a href="/about.html">About</a>
         <a href="/blogs.html">Blogs & Use Cases</a>
+        <a href="/contact.html">Contact</a>
       </nav>
       <div class="nav-controls">
         <input id="search-input" class="search-input" placeholder="Search posts…" aria-label="Search posts">
-        <button id="theme-toggle" class="theme-toggle">🌓</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Blogs & Use Cases</h1>
-    <div class="list">
-      <article class="list-item">
-        <h2><a href="/posts/ai-usecase-1.html">Scaling ML inference in production</a></h2>
-        <p>Patterns for model serving, autoscaling, latency budgets, and cost trade-offs.</p>
+  <main id="content" tabindex="-1" class="container">
+    <h1 class="text-4xl font-extrabold leading-tight mb-2">Blogs & Use Cases</h1>
+    
+    <div class="list grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      
+
+      
+
+      <article id="agentic-playbook" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-2026-agentic-playbook.html" class="block p-6 h-full">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Beyond the Bot: The 2026 Agentic Playbook</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Architecture, orchestration, GraphRAG, MCP, and safety patterns for production agentic systems.</p>
+        </a>
       </article>
 
-      <article class="list-item">
-        <h2><a href="/posts/ai-blog-1.html">Automation wins: Small steps, big ROI</a></h2>
-        <p>Identify high-impact automation opportunities and deliver incremental value.</p>
+      <article id="agentic-workflows" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-agentic-ai-workflows.html" class="block p-6 h-full">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Agentic AI: Revolutionizing Data Workflows</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">How autonomous agents replace manual ETL and reporting with real-time, intent-driven workflows.</p>
+        </a>
       </article>
-      
-      <article class="list-item">
-        <h2><a href="/posts/mltekai-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a></h2>
-        <p>Full article: architecture, orchestration, GraphRAG, MCP, and safety patterns for production agentic systems.</p>
+
+      <article id="ai-first-data" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-ai-first-data-strategy.html" class="block p-6 h-full">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">AI First Series: Building the Data Framework</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Four core pillars for AI-ready data architecture: Knowledge Core, semantic mesh, HTAP, and governance fabric.</p>
+        </a>
+      </article>
+
+      <article id="graphrag" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-graphrag-knowledge-graph.html" class="block p-6 h-full">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">How GraphRAG Grounds AI in Your Knowledge Graph</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Eliminating hallucinations and enabling multi-hop reasoning using graph-backed retrieval.</p>
+        </a>
+      </article>
+
+      <article id="llm-routing" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-llm-routing.html" class="block p-6 h-full">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Maximizing ROI: Intelligent LLM Routing</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Route queries to the right model tier to balance performance, governance, and cost.</p>
+        </a>
+      </article>
+
+      <article id="operationalizing" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-operationalizing-enterprise-ai-agents.html" class="block p-6 h-full">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">From Prototype to Production: Operationalizing AI Agents</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Platform-agnostic blueprint for taking agents from demo to reliable production services.</p>
+        </a>
       </article>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 — Personal Tech Blog</p>
+      <p>© 2026 — Agentic & Authentic</p>
+      <p class="disclaimer">Disclaimer: This is a personal blog. The views expressed here are my own and do not reflect the views of my employer.</p>
     </div>
   </footer>
 </body>

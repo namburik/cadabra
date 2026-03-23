@@ -1,3 +1,50 @@
 [
-  { "title": "Beyond the Bot: The 2026 Agentic Playbook", "url": "/posts/blog-2026-agentic-playbook.html", "excerpt": "Agentic Playbook: orchestration, GraphRAG, MCP, and safety for production agents.", "date": "2026-03-22", "tags": "agents, architecture" }
+  {
+    "title": "Beyond the Bot: The 2026 Agentic Playbook",
+    "url": "/posts/blog-2026-agentic-playbook.html",
+    "excerpt": "Agentic AI in 2026: production blueprint—orchestration patterns, Knowledge Core, Guardian Agents, and FinOps separating real deployments from demos.",
+    "date": "2026-03-17",
+    "tags": "agentic AI, enterprise AI, architecture",
+    "image": "/assets/images/blog-2026-agentic-playbook-hero.svg"
+  },
+  {
+    "title": "Agentic AI: Revolutionizing Data Workflows",
+    "url": "/posts/blog-agentic-ai-workflows.html",
+    "excerpt": "Discover how autonomous AI agents are revolutionizing data analysis, automating complex workflows, and delivering real-time insights.",
+    "date": "2026-03-15",
+    "tags": "agentic AI, data workflows, autonomous agents",
+    "image": "/assets/images/blog-agentic-ai-workflows-hero.svg"
+  },
+  {
+    "title": "AI First Series: Building the Data Framework: 4 Core Pillars of AI-Ready Architecture",
+    "url": "/posts/blog-ai-first-data-strategy.html",
+    "excerpt": "AI-ready data architecture built on four pillars: Knowledge Core, semantic data mesh, HTAP convergence, and Active Governance Fabric.",
+    "date": "2026-03-15",
+    "tags": "data strategy, generative AI, AI architecture",
+    "image": "/assets/images/blog-ai-first-data-strategy-hero.svg"
+  },
+  {
+    "title": "From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Your Knowledge Graph",
+    "url": "/posts/blog-graphrag-knowledge-graph.html",
+    "excerpt": "GraphRAG with Neo4j and LangChain grounds LLM responses in your knowledge graph—eliminating hallucinations and enabling hyper-personalized, multi-hop reasoning at enterprise scale.",
+    "date": "2026-03-17",
+    "tags": "GraphRAG, knowledge graph, RAG",
+    "image": "/assets/images/blog-graphrag-knowledge-graph-hero.svg"
+  },
+  {
+    "title": "Maximizing ROI: The Strategic Shift to Intelligent LLM Routing",
+    "url": "/posts/blog-llm-routing.html",
+    "excerpt": "LLM routing cuts AI inference costs 60–80% by directing each query to the right model tier. How Hybrid LLM and BEST-Route strategies balance performance, governance, and spend.",
+    "date": "2026-03-17",
+    "tags": "LLM routing, cost optimization, model ensemble",
+    "image": "/assets/images/blog-llm-routing-hero.svg"
+  },
+  {
+    "title": "From Prototype to Production: Operationalizing AI Agents",
+    "url": "/posts/blog-operationalizing-enterprise-ai-agents.html",
+    "excerpt": "Operationalizing AI agents: a platform-agnostic production blueprint covering multi-agent architecture, scoped governance, AgentOps, and the engineering mindset shift required.",
+    "date": "2026-03-19",
+    "tags": "agentic AI, AgentOps, governance",
+    "image": "/assets/images/blog-operationalizing-enterprise-ai-agents-hero.svg"
+  }
 ]

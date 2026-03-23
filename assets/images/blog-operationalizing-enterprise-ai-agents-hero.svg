@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g6" x1="0" x2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#7b61ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g6)" />
+  <text x="60" y="220" fill="#fff" font-family="Inter, system-ui, sans-serif" font-size="40" font-weight="700">From Prototype to Production:</text>
+  <text x="60" y="280" fill="#fff" font-family="Inter, system-ui, sans-serif" font-size="30">Operationalizing AI Agents</text>
+  <text x="60" y="520" fill="#ffffff99" font-family="Inter, system-ui, sans-serif" font-size="16">AgentOps • Governance • Multi-Agent Systems</text>
+</svg>

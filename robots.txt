@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://namburi.me/sitemap.xml
+
+# If you need to block staging or specific paths, add rules here.

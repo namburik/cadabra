@@ -1,8 +1,9 @@
-// Theme toggle and simple client-side search
+// Theme toggle, year helper, and simple client-side search
 (function(){
   function applyTheme(theme){
     if(theme==='dark') document.body.classList.add('dark'); else document.body.classList.remove('dark');
   }
+
   // initialize theme from localStorage or system
   try{
     const saved = localStorage.getItem('theme');
@@ -10,11 +11,29 @@
     else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
   }catch(e){}
 
+  // Update theme toggle aria state
+  function updateThemeButtonState(){
+    const btn = document.getElementById('theme-toggle');
+    if(!btn) return;
+    const isDark = document.body.classList.contains('dark');
+    btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    if(!btn.getAttribute('aria-label')) btn.setAttribute('aria-label', 'Toggle theme');
+  }
+
+  // Populate year elements with current year
+  function populateYear(){
+    const els = document.querySelectorAll('#year');
+    if(!els || !els.length) return;
+    const y = new Date().getFullYear();
+    els.forEach(el => { if(!el.textContent.trim()) el.textContent = y; });
+  }
+
   // theme toggle button
   document.addEventListener('click', e => {
     if(e.target && e.target.id==='theme-toggle'){
       const isDark = document.body.classList.toggle('dark');
       try{ localStorage.setItem('theme', isDark? 'dark':'light') }catch(e){}
+      updateThemeButtonState();
     }
   });
 
@@ -44,12 +63,20 @@
   document.addEventListener('DOMContentLoaded', ()=>{
     fetchIndex();
     const input = document.getElementById('search-input');
-    if(!input) return;
+    if(!input) {
+      updateThemeButtonState();
+      populateYear();
+      return;
+    }
     // add results container
     const div = document.createElement('div'); div.id='search-results'; div.className='search-results'; div.style.display='none';
     input.parentNode && input.parentNode.appendChild(div);
     let t;
     input.addEventListener('input', e => { clearTimeout(t); t = setTimeout(()=> showResults(e.target.value), 150) });
     input.addEventListener('keydown', e => { if(e.key==='Escape') { input.value=''; showResults('') } });
+
+    // accessibility and helpers
+    updateThemeButtonState();
+    populateYear();
   });
 })();

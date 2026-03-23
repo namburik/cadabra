@@ -1,0 +1,12 @@
+/* Overrides to ensure page text color in light theme */
+body:not(.dark) .list-item,
+body:not(.dark) .list-item a,
+body:not(.dark) .list-item h2,
+body:not(.dark) .list-item p {
+  color: var(--text) !important;
+}
+
+body:not(.dark) p.text-sm.text-gray-600 { color: var(--text) !important; }
+
+/* Also ensure table cells that used white text show correctly in light mode */
+body:not(.dark) td[style*="rgba(255,255,255"] { color: var(--text) !important; }

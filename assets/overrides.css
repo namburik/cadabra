@@ -84,7 +84,7 @@ body.dark .system-menu-btn{ color: inherit }
   gap:12px;
   padding:18px;
   min-height:120px;
-  color:#fff;
+  color: var(--text) !important;
 }
 
 /* Ensure primary card infographic appears above the text */

@@ -6,6 +6,6 @@
     </linearGradient>
   </defs>
   <rect width='100%' height='100%' fill='url(#g)' />
-  <text x='50%' y='44%' fill='white' font-family='Inter, system-ui, sans-serif' font-size='40' font-weight='700' text-anchor='middle'>Agentic & Authentic</text>
+  <text x='50%' y='44%' fill='white' font-family='Inter, system-ui, sans-serif' font-size='40' font-weight='700' text-anchor='middle'>agentic and authentic</text>
   <text x='50%' y='58%' fill='white' font-family='Inter, system-ui, sans-serif' font-size='20' text-anchor='middle'>Practical AI use cases, deployment patterns, and lessons</text>
 </svg>

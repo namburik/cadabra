@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Agentic & Authentic — AI Blogs & Use Cases</title>
+    <title>agentic and authentic — AI Blogs & Use Cases</title>
     <link>https://namburi.me/</link>
-    <description>Agentic & Authentic — AI use cases and practical engineering.</description>
+    <description>agentic and authentic — AI use cases and practical engineering.</description>
     
     <item>
       <title>From Prototype to Production: Operationalizing AI Agents</title>

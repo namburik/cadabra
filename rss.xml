@@ -6,10 +6,45 @@
     <description>Agentic & Authentic — AI use cases and practical engineering.</description>
     
     <item>
+      <title>From Prototype to Production: Operationalizing AI Agents</title>
+      <link>https://namburi.me/posts/blog-operationalizing-enterprise-ai-agents.html</link>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <description>A platform-agnostic blueprint for taking AI agents from prototype to production—covering strategy, architecture, governance, AgentOps, and the engineering mindset shift.</description>
+    </item>
+
+    <item>
       <title>Beyond the Bot: The 2026 Agentic Playbook</title>
       <link>https://namburi.me/posts/blog-2026-agentic-playbook.html</link>
-      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
-      <description>Full article: architecture, orchestration, and safety patterns for production agentic systems.</description>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <description>The 'Chat with your PDF' era is over. Discover 2026 blueprint for building production-grade autonomous enterprise AI ecosystems.</description>
+    </item>
+
+    <item>
+      <title>From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Your Knowledge Graph</title>
+      <link>https://namburi.me/posts/blog-graphrag-knowledge-graph.html</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Discover how GraphRAG with Neo4j, LangChain, LangGraph, and LlamaIndex eliminates hallucinations and enables multi-hop reasoning for hyper-personalized AI.</description>
+    </item>
+
+    <item>
+      <title>Maximizing ROI: The Strategic Shift to Intelligent LLM Routing</title>
+      <link>https://namburi.me/posts/blog-llm-routing.html</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Stop defaulting every query to frontier models. Discover how intelligent LLM routing dynamically balances cost and performance across a model ensemble.</description>
+    </item>
+
+    <item>
+      <title>Agentic AI: Revolutionizing Data Workflows</title>
+      <link>https://namburi.me/posts/blog-agentic-ai-workflows.html</link>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Discover how autonomous AI agents are revolutionizing data analysis, automating complex workflows, and delivering real-time insights.</description>
+    </item>
+
+    <item>
+      <title>Building the Data Framework: 4 Core Pillars of AI-Ready Architecture</title>
+      <link>https://namburi.me/posts/blog-ai-first-data-strategy.html</link>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <description>AI-ready data architecture built on four pillars: Knowledge Core, semantic data mesh, HTAP convergence, and Active Governance Fabric.</description>
     </item>
   </channel>
 </rss>

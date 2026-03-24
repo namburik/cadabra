@@ -24,6 +24,22 @@ body:not(.dark) .nav {
   border: 0 !important;
 }
 
+/* Keep header background consistent in light mode (match About/Index/Contact)
+   Consolidated for `.site-header` and `header.fixed` to avoid duplicate blocks. */
+body:not(.dark) .site-header,
+body:not(.dark) header.fixed {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(16,24,40,.04) !important;
+  position: relative !important;
+  z-index: 60 !important;
+  color: var(--text) !important;
+}
+
+/* Make sure nav links remain visible on overridden header */
+body:not(.dark) header a, body:not(.dark) header .nav a {
+  color: var(--text) !important;
+}
+
 /* System menu dropdown styles */
 .system-menu-btn{ background:transparent;border:0;color:inherit;cursor:pointer }
 .system-menu-dropdown a:hover{ background: rgba(0,0,0,0.04); border-radius:4px }

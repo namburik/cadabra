@@ -28,6 +28,106 @@
     els.forEach(el => { if(!el.textContent.trim()) el.textContent = y; });
   }
 
+  // Replace traditional nav links with a system-style path (agentic theme)
+  function replaceNavWithSystemPath(){
+    try{
+      const nav = document.querySelector('.nav');
+      if(!nav) return;
+      const raw = window.location.pathname || '/';
+      // Normalize and remove index.html
+      let path = raw.replace(/index\.html$/i, '');
+      path = path.replace(/\.html$/i, '');
+      const parts = path.split('/').filter(Boolean);
+      const display = parts.length ? '/' + parts.join('/') : '/';
+      // Build system path element
+      const wrapper = document.createElement('div');
+      wrapper.className = 'system-path';
+      wrapper.setAttribute('aria-label', 'System path');
+      wrapper.style.fontFamily = "ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace";
+      wrapper.style.fontSize = '14px';
+      wrapper.style.color = 'inherit';
+      // Build clickable system path: agentic://posts/<post-slug>
+      const prefix = document.createElement('span');
+      prefix.textContent = 'agentic://';
+      wrapper.appendChild(prefix);
+
+      if(parts.length===0){
+        const root = document.createElement('span'); root.textContent = '/'; wrapper.appendChild(root);
+      } else {
+        parts.forEach((p, i) => {
+          if(i>0){
+            const sep = document.createElement('span'); sep.textContent = '/'; sep.style.padding = '0 4px'; wrapper.appendChild(sep);
+          }
+          // clickable behavior for posts
+          const a = document.createElement('a');
+          a.textContent = p;
+          a.style.color = 'inherit';
+          a.style.textDecoration = 'none';
+          a.style.fontWeight = '500';
+          if (p.toLowerCase() === 'about') {
+            a.href = '/about.html';
+          } else if (p.toLowerCase() === 'contact') {
+            a.href = '/contact.html';
+          } else if (p.toLowerCase() === 'blogs') {
+            a.href = '/blogs.html';
+          } else if(i===0 && p.toLowerCase()==='posts'){
+            a.href = '/blogs.html';
+          } else if(parts[0] && parts[0].toLowerCase()==='posts'){
+            // link to post page under /posts/<slug>.html
+            a.href = '/posts/' + encodeURIComponent(p) + '.html';
+          } else {
+            // default cumulative link
+            const cum = '/' + parts.slice(0, i+1).join('/') + '/';
+            a.href = cum;
+          }
+          wrapper.appendChild(a);
+        });
+      }
+
+      // Create inline text links (About / Blogs / Contact)
+      const navLinks = document.createElement('span');
+      navLinks.className = 'system-inline-links';
+      navLinks.style.marginLeft = '12px';
+      navLinks.style.display = 'inline-flex';
+      navLinks.style.gap = '10px';
+      navLinks.style.alignItems = 'center';
+
+      const makeLink = (href, text) => {
+        const a = document.createElement('a');
+        a.href = href;
+        a.textContent = text;
+        a.style.color = 'inherit';
+        a.style.textDecoration = 'none';
+        a.style.padding = '6px 8px';
+        a.setAttribute('role', 'link');
+        a.tabIndex = 0;
+        return a;
+      };
+
+      navLinks.appendChild(makeLink('/about.html', 'About'));
+      navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
+      navLinks.appendChild(makeLink('/contact.html', 'Contact'));
+
+      // Clear original nav for accessibility but render the visible wrapper inside the nav-controls
+      nav.innerHTML = '';
+      const navControls = document.querySelector('.nav-controls');
+      // Append quick links into the wrapper
+      wrapper.appendChild(navLinks);
+      if(navControls) {
+        navControls.appendChild(wrapper);
+      } else {
+        // fallback: append into header container to ensure visibility
+        const headerContainer = document.querySelector('.site-header .container');
+        if(headerContainer) headerContainer.appendChild(wrapper);
+        else nav.appendChild(wrapper);
+      }
+
+      // Ensure wrapper is visible and aligned
+      wrapper.style.display = wrapper.style.display || 'inline-flex';
+      wrapper.style.alignItems = 'center';
+    }catch(e){ /* no-op on failure */ }
+  }
+
   // theme toggle button
   document.addEventListener('click', e => {
     if(e.target && e.target.id==='theme-toggle'){
@@ -37,46 +137,13 @@
     }
   });
 
-  // Simple search implementation
-  let index = [];
-  async function fetchIndex(){
-    try{
-      const r = await fetch('/assets/search-index.json');
-      index = await r.json();
-    }catch(e){ index = [] }
-  }
-  function showResults(q){
-    const list = document.getElementById('search-results');
-    if(!list) return;
-    list.innerHTML = '';
-    if(!q){ list.style.display='none'; return }
-    const ql = q.toLowerCase();
-    const results = index.filter(p => (p.title + ' ' + p.excerpt + ' ' + (p.tags||'')).toLowerCase().includes(ql)).slice(0,10);
-    for(const r of results){
-      const a = document.createElement('a'); a.href = r.url; a.className='search-result';
-      a.textContent = r.title + ' — ' + r.date;
-      list.appendChild(a);
-    }
-    list.style.display = results.length ? 'block':'none';
-  }
+  // Search removed: feature intentionally disabled.
 
   document.addEventListener('DOMContentLoaded', ()=>{
-    fetchIndex();
     const input = document.getElementById('search-input');
-    if(!input) {
-      updateThemeButtonState();
-      populateYear();
-      return;
-    }
-    // add results container
-    const div = document.createElement('div'); div.id='search-results'; div.className='search-results'; div.style.display='none';
-    input.parentNode && input.parentNode.appendChild(div);
-    let t;
-    input.addEventListener('input', e => { clearTimeout(t); t = setTimeout(()=> showResults(e.target.value), 150) });
-    input.addEventListener('keydown', e => { if(e.key==='Escape') { input.value=''; showResults('') } });
-
-    // accessibility and helpers
+    // Search removed: no input listeners are attached. Continue with other init helpers.
     updateThemeButtonState();
     populateYear();
+    replaceNavWithSystemPath();
   });
 })();

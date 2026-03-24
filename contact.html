@@ -16,7 +16,9 @@
   <meta name="twitter:description" content="Contact Agentic & Authentic — book advisory, ask about agentic AI use cases, or reach out for collaboration.">
   <meta name="twitter:image" content="/og-image.png">
   <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/typography.css">
   <link rel="stylesheet" href="/assets/blog.css">
+  <link rel="stylesheet" href="/assets/overrides.css">
   <script src="/assets/scripts.js" defer></script>
 </head>
 <body>
@@ -30,7 +32,6 @@
         <a href="/contact.html">Contact</a>
       </nav>
       <div class="nav-controls">
-        <input id="search-input" class="search-input" placeholder="Search posts…" aria-label="Search posts">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">🌓</button>
       </div>
     </div>
@@ -39,37 +40,79 @@
   <main id="content" tabindex="-1" class="container blog-container">
     <article class="blog-header">
       <h1>Contact</h1>
-      <div class="blog-meta"><span>Get in touch</span></div>
     </article>
 
     <div class="blog-content">
       <div class="two-col">
         <div>
-          <h2>Let's start a conversation</h2>
-          <p>If you'd like to discuss agentic AI, use cases, or collaboration, send a message below or email me directly at <a href="mailto:hello@namburi.me">hello@namburi.me</a>.</p>
-          <ul class="contact-list">
-            <li><strong>Email</strong>: <a href="mailto:hello@namburi.me">hello@namburi.me</a></li>
-          </ul>
+          <h3>Request Router</h3>
+          <p class="text-gray-700">Logic: Intent-Based Routing &gt; General Inbox</p>
+
+          <div class="request-router" style="margin-top:12px;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button type="button" class="btn btn-outline" data-intent="collaborate" aria-pressed="false" style="min-width:160px;text-align:left;">
+                <strong>Collaborate</strong>
+                <div style="font-size:13px;color:#6b7280;margin-top:6px">Logic: Strategy + Engineering = Shared Outcome</div>
+                <div style="font-size:13px;color:#6b7280">Action: “Let’s build something agentic. Describe your stack and the problem.”</div>
+              </button>
+
+              <button type="button" class="btn btn-outline" data-intent="consult" aria-pressed="false" style="min-width:160px;text-align:left;">
+                <strong>Consult</strong>
+                <div style="font-size:13px;color:#6b7280;margin-top:6px">Logic: Expertise / Complexity = Roadmap</div>
+                <div style="font-size:13px;color:#6b7280">Action: “Need a pragmatic AI framework? I provide strategy for enterprise AI governance.”</div>
+              </button>
+
+              <button type="button" class="btn btn-outline" data-intent="coffee" aria-pressed="false" style="min-width:160px;text-align:left;">
+                <strong>Coffee/Chat</strong>
+                <div style="font-size:13px;color:#6b7280;margin-top:6px">Logic: Community + Curiosity = Authenticity</div>
+                <div style="font-size:13px;color:#6b7280">Action: “For builders, researchers, and old-school engineers. No pitches, just high-signal talk.”</div>
+              </button>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label for="agenticInput" class="sr-only">Agentic Input</label>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <span style="font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;color:#374151">&gt;</span>
+                <input id="agenticInput" type="text" placeholder="Input Request Metadata..." style="flex:1;padding:8px;border:1px solid #e5e7eb;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;" />
+                <button id="sendRequest" class="btn">Send Request</button>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <div>
-            <form id="contactForm" class="contact-form-box" action="https://formspree.io/f/xzdjaayn" method="POST">
-            <h3>Send a message</h3>
-            <label for="name">Full name</label>
-            <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+          <div class="contact-form-box" id="requestPanel">
+            <h3>Request Panel</h3>
+            <p class="text-gray-700">Selected intent: <span id="selectedIntent">None</span></p>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="jane@company.com" autocomplete="email" required />
+            <div class="compact-row">
+              <div class="field">
+                <label for="r_name">Full name</label>
+                <input type="text" id="r_name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+              </div>
 
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Acme Corp" autocomplete="organization" />
+              <div class="field">
+                <label for="r_email">Email</label>
+                <input type="email" id="r_email" name="email" placeholder="jane@company.com" autocomplete="email" required />
+              </div>
 
-            <label for="message">How can I help?</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+              <div class="field">
+                <label for="r_company">Company</label>
+                <input type="text" id="r_company" name="company" placeholder="Acme Corp" autocomplete="organization" />
+              </div>
+            </div>
 
-            <button type="submit" class="btn">Send Message</button>
-            <p class="form-success" style="display:none">Thanks — I'll reply soon.</p>
-          </form>
+            <!-- CLI input is in the left router column (id="agenticInput"). -->
+
+            <input type="text" id="r_hp" name="_gotcha" value="" style="position:absolute;left:-9999px;top:auto;" aria-hidden="true" />
+
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
+              <div id="requestStatus" style="color:#374151;font-size:14px;margin-left:8px"></div>
+            </div>
+
+            <p style="margin-top:12px">Or email <a href="mailto:hello@namburi.me">hello@namburi.me</a></p>
+          </div>
         </div>
       </div>
     </div>
@@ -80,5 +123,78 @@
       <p>© 2026 Kishore Namburi. All rights reserved.</p>
     </div>
   </footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const intentButtons = document.querySelectorAll('[data-intent]');
+    const selectedEl = document.getElementById('selectedIntent');
+    const agenticInput = document.getElementById('agenticInput');
+    const nameInput = document.getElementById('r_name');
+    const emailInput = document.getElementById('r_email');
+    const companyInput = document.getElementById('r_company');
+    const honeypot = document.getElementById('r_hp');
+    const sendBtn = document.getElementById('sendRequest');
+    const statusEl = document.getElementById('requestStatus');
+    let selectedIntent = null;
+
+    intentButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        intentButtons.forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        selectedIntent = btn.dataset.intent || null;
+        selectedEl.textContent = selectedIntent ? selectedIntent.charAt(0).toUpperCase() + selectedIntent.slice(1) : 'None';
+      });
+    });
+
+    // Left-column `Send Request` is the single CTA now.
+
+    function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+    sendBtn.addEventListener('click', async function () {
+      statusEl.textContent = '';
+      if (!nameInput.value.trim()) { statusEl.textContent = 'Please enter your name.'; return; }
+      if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) { statusEl.textContent = 'Please enter a valid email.'; return; }
+      if (honeypot && honeypot.value) { statusEl.textContent = 'Spam detected.'; return; }
+
+      sendBtn.disabled = true;
+      const originalText = sendBtn.textContent;
+      sendBtn.textContent = 'Sending…';
+
+      const formData = new FormData();
+      formData.append('name', nameInput.value.trim());
+      formData.append('email', emailInput.value.trim());
+      formData.append('company', companyInput.value.trim());
+      formData.append('intent', selectedIntent || 'unspecified');
+      formData.append('message', agenticInput.value.trim());
+      formData.append('metadata', JSON.stringify({ agenticInput: agenticInput.value.trim(), intent: selectedIntent }));
+      formData.append('_gotcha', honeypot.value || '');
+
+      try {
+        const res = await fetch('https://formspree.io/f/xzdjaayn', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          statusEl.style.color = '#10b981';
+          statusEl.textContent = "Thanks — I'll reply soon.";
+          nameInput.value = ''; emailInput.value = ''; companyInput.value = ''; agenticInput.value = '';
+          intentButtons.forEach(b => b.setAttribute('aria-pressed','false'));
+          selectedIntent = null;
+          selectedEl.textContent = 'None';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          statusEl.style.color = '#ef4444';
+          statusEl.textContent = data.error || 'Submission failed. Try again later.';
+        }
+      } catch (err) {
+        statusEl.style.color = '#ef4444';
+        statusEl.textContent = 'Network error. Try again later.';
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = originalText;
+      }
+    });
+  });
+  </script>
 </body>
 </html>

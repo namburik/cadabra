@@ -15,11 +15,14 @@
   <meta name="twitter:description" content="Practical AI use cases, patterns, and lessons from two decades solving IT problems.">
   <meta name="twitter:image" content="/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
   <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/typography.css">
+  <link rel="stylesheet" href="/assets/overrides.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
   <script src="/assets/scripts.js" defer></script>
+  <script src="/assets/typography.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -32,32 +35,76 @@
         <a href="/contact.html">Contact</a>
       </nav>
       <div class="nav-controls">
-        <input id="search-input" class="search-input" placeholder="Search posts…" aria-label="Search posts">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">🌓</button>
       </div>
     </div>
   </header>
 
   <main id="content" tabindex="-1" class="container">
-    <section class="hero">
-      <h1>Agentic & Authentic </h1>
-      <p class="lead">This blog covers — real-world solutions, design choices, and lessons solving IT problems.</p>
-      <p class="actions"><a class="btn" href="/about.html">About me</a> <a class="btn btn-outline" href="/blogs.html">Read blogs</a></p>
+    <section class="hero hero-bento">
+      <div class="bento-grid">
+        <a class="bento-card bento-primary" href="/posts/blog-2026-agentic-playbook.html" aria-label="Beyond the Bot: The 2026 Agentic Playbook">
+          <div class="bento-primary-content">
+            <h4 class="vis-title">Beyond the Bot: The 2026 Agentic Playbook</h4>
+          </div>
+          <figure class="visual-figure">
+            <img class="infographic-img bento-hero-img" src="/posts/c1y3u8c1y3u8c1y3.png" alt="Agentic Playbook overview diagram" loading="lazy">
+            <figcaption class="vis-caption">Agentic Playbook overview — architecture, orchestration, and safety layers.</figcaption>
+          </figure>
+        </a>
+
+        <!-- Prominent playbook card inserted for visibility -->
+        <div class="bento-card playbook-card" role="region" aria-label="Agentic Playbook summary">
+          <h3 class="sr-only">Agentic Playbook summary</h3>
+          <div class="playbook-header">
+            <h3>Playbook — Key Moves</h3>
+            <div class="playbook-controls">
+              <button id="playbook-pause" class="btn btn-outline" aria-pressed="false" aria-label="Pause playbook">
+                <svg class="icon icon-pause" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="2" y="2" width="4" height="12" rx="1" fill="currentColor" />
+                  <rect x="10" y="2" width="4" height="12" rx="1" fill="currentColor" />
+                </svg>
+                <span class="btn-label">Pause</span>
+              </button>
+              <button id="playbook-next" class="btn" aria-label="Next playbook">
+                <svg class="icon icon-next" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M8 5v14l11-7L8 5z" fill="currentColor" />
+                </svg>
+                <span class="btn-label">Next</span>
+              </button>
+            </div>
+          </div>
+          <ul class="playbook-list" aria-live="polite">
+            <li>Design agents around capability + observability, not just prompts.</li>
+            <li>Use GraphRAG for structured retrieval and provenance.</li>
+            <li>Separate orchestration, policy, and execution layers.</li>
+            <li>Test safety via staged environments and canary agents.</li>
+            <li>Measure cost per outcome; tune routing for latency/cost tradeoffs.</li>
+          </ul>
+        </div>
+
+        
+
+
+
+        <!-- Visual Tile: Architecture snippet -->
+        <a class="bento-card bento-primary" href="/posts/blog-ai-first-data-strategy.html" aria-label="AI First Series — architecture snippet">
+          <div class="bento-primary-content">
+            <h4 class="vis-title">AI-Ready Data Architecture</h4>
+          </div>
+          <figure class="visual-figure">
+            <img class="infographic-img bento-hero-img" src="/posts/c1y3u8c1y3u8c1y3.png" alt="Agentic Playbook overview diagram" loading="lazy">
+            <figcaption class="vis-caption">Orchestration, GraphRAG, MCP, and safety for production agents.</figcaption>
+          </figure>
+        </a>
+
+        <!-- Human Tile removed per request -->
+      </div>
+      <!-- Put the playbook scroller below the primary row so the visual cards form a clean row -->
+      
     </section>
 
-    <section class="featured">
-      <h2>Featured posts</h2>
-      <div class="grid">
-        <article class="card">
-          <h3><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a></h3>
-          <p>Agentic Playbook: orchestration, GraphRAG, MCP, and safety for production agents.</p>
-        </article>
-        <article class="card">
-          <h3><a href="/posts/blog-ai-first-data-strategy.html">AI First Series: Building the Data Framework</a></h3>
-          <p>Four pillars of AI-ready architecture, the Knowledge Core, and governance fabric.</p>
-        </article>
-      </div>
-    </section>
+    <!-- Featured section removed per request -->
   </main>
 
   <footer class="site-footer">

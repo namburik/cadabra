@@ -284,3 +284,12 @@ body.dark .system-menu-btn{ color: inherit }
 @media(max-width:640px){
   .hero .bento-card.playbook-card{ min-height:44px !important; padding:6px !important }
 }
+
+/* Soften legal disclaimer: slightly smaller and lower opacity for muted presentation */
+.disclaimer{
+  font-size:0.85rem !important;
+  color:var(--muted) !important;
+  opacity:0.72 !important;
+  line-height:1.25 !important;
+}
+body.dark .disclaimer{ opacity:0.84 !important; color:var(--muted-dark) !important }

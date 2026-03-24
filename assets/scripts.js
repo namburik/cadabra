@@ -22,10 +22,10 @@
 
   // Populate year elements with current year
   function populateYear(){
-    const els = document.querySelectorAll('#year');
+    const els = document.querySelectorAll('#year, .site-year');
     if(!els || !els.length) return;
     const y = new Date().getFullYear();
-    els.forEach(el => { if(!el.textContent.trim()) el.textContent = y; });
+    els.forEach(el => { el.textContent = y; });
   }
 
   // Replace traditional nav links with a system-style path (agentic theme)

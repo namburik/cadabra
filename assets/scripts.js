@@ -138,9 +138,65 @@
 
   // Search removed: feature intentionally disabled.
 
+  // Playbook scroller: cycle through list items with pause/next controls
+  function initPlaybook(){
+    const list = document.querySelector('.playbook-list');
+    if(!list) return;
+    const items = Array.from(list.querySelectorAll('li'));
+    if(!items.length) return;
+    let current = 0;
+    let paused = false;
+    let timer = null;
+
+    function showItem(idx){
+      items.forEach((li, i) => li.classList.toggle('active', i === idx));
+    }
+
+    function advance(){
+      current = (current + 1) % items.length;
+      showItem(current);
+    }
+
+    function startTimer(){
+      clearInterval(timer);
+      timer = setInterval(advance, 3200);
+    }
+
+    showItem(0);
+    startTimer();
+
+    const pauseBtn = document.getElementById('playbook-pause');
+    const nextBtn  = document.getElementById('playbook-next');
+
+    if(pauseBtn){
+      pauseBtn.addEventListener('click', ()=>{
+        paused = !paused;
+        pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        const label = pauseBtn.querySelector('.btn-label');
+        if(label) label.textContent = paused ? 'Resume' : 'Pause';
+        // swap pause/play icon
+        const icon = pauseBtn.querySelector('svg');
+        if(icon){
+          icon.innerHTML = paused
+            ? '<path d="M8 5v14l11-7L8 5z" fill="currentColor"/>'  // play icon
+            : '<rect x="2" y="2" width="4" height="12" rx="1" fill="currentColor"/><rect x="10" y="2" width="4" height="12" rx="1" fill="currentColor"/>'; // pause icon
+        }
+        if(paused) clearInterval(timer); else startTimer();
+      });
+    }
+
+    if(nextBtn){
+      nextBtn.addEventListener('click', ()=>{
+        advance();
+        if(!paused) startTimer(); // reset interval so next auto-advance is a full 3.2 s away
+      });
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', ()=>{
     updateThemeButtonState();
     populateYear();
     replaceNavWithSystemPath();
+    initPlaybook();
   });
 })();

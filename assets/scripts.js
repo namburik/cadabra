@@ -108,18 +108,19 @@
       navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
 
-      // Clear original nav for accessibility but render the visible wrapper inside the nav-controls
-      nav.innerHTML = '';
+      // Hide original nav links visually but keep them in the DOM for crawlers/accessibility
+      nav.style.display = 'none';
+      nav.setAttribute('aria-hidden', 'true');
       const navControls = document.querySelector('.nav-controls');
       // Append quick links into the wrapper
       wrapper.appendChild(navLinks);
       if(navControls) {
-        navControls.appendChild(wrapper);
+        navControls.insertBefore(wrapper, navControls.firstChild);
       } else {
         // fallback: append into header container to ensure visibility
         const headerContainer = document.querySelector('.site-header .container');
         if(headerContainer) headerContainer.appendChild(wrapper);
-        else nav.appendChild(wrapper);
+        else nav.parentNode.insertBefore(wrapper, nav.nextSibling);
       }
 
       // Ensure wrapper is visible and aligned

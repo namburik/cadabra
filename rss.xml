@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>agentic and authentic — AI Blogs & Use Cases</title>
+    <title>Kishore Namburi — agentic and authentic · AI Blogs & Use Cases</title>
     <link>https://namburi.me/</link>
-    <description>agentic and authentic — AI use cases and practical engineering.</description>
+    <description>Practical AI use cases, deployment patterns, and lessons from two decades solving IT problems — by Kishore Namburi.</description>
+    <language>en-us</language>
+    <managingEditor>kishore@namburi.me (Kishore Namburi)</managingEditor>
+    <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>From Prototype to Production: Operationalizing AI Agents</title>
       <link>https://namburi.me/posts/blog-operationalizing-enterprise-ai-agents.html</link>
       <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
       <description>A platform-agnostic blueprint for taking AI agents from prototype to production—covering strategy, architecture, governance, AgentOps, and the engineering mindset shift.</description>
     </item>
 
@@ -16,6 +20,7 @@
       <title>Beyond the Bot: The 2026 Agentic Playbook</title>
       <link>https://namburi.me/posts/blog-2026-agentic-playbook.html</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
       <description>The 'Chat with your PDF' era is over. Discover 2026 blueprint for building production-grade autonomous enterprise AI ecosystems.</description>
     </item>
 
@@ -23,6 +28,7 @@
       <title>From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Your Knowledge Graph</title>
       <link>https://namburi.me/posts/blog-graphrag-knowledge-graph.html</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
       <description>Discover how GraphRAG with Neo4j, LangChain, LangGraph, and LlamaIndex eliminates hallucinations and enables multi-hop reasoning for hyper-personalized AI.</description>
     </item>
 
@@ -30,6 +36,7 @@
       <title>Maximizing ROI: The Strategic Shift to Intelligent LLM Routing</title>
       <link>https://namburi.me/posts/blog-llm-routing.html</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
       <description>Stop defaulting every query to frontier models. Discover how intelligent LLM routing dynamically balances cost and performance across a model ensemble.</description>
     </item>
 
@@ -37,6 +44,7 @@
       <title>Agentic AI: Revolutionizing Data Workflows</title>
       <link>https://namburi.me/posts/blog-agentic-ai-workflows.html</link>
       <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
       <description>Discover how autonomous AI agents are revolutionizing data analysis, automating complex workflows, and delivering real-time insights.</description>
     </item>
 
@@ -44,6 +52,7 @@
       <title>Building the Data Framework: 4 Core Pillars of AI-Ready Architecture</title>
       <link>https://namburi.me/posts/blog-ai-first-data-strategy.html</link>
       <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
       <description>AI-ready data architecture built on four pillars: Knowledge Core, semantic data mesh, HTAP convergence, and Active Governance Fabric.</description>
     </item>
   </channel>

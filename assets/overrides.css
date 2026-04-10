@@ -36,12 +36,12 @@ body:not(.dark) header.fixed {
 }
 
 /* Make sure nav links remain visible on overridden header */
-body:not(.dark) header a, body:not(.dark) header .nav a {
+body:not(.dark) header a {
   color: var(--text) !important;
 }
 
 /* System menu dropdown styles */
-.system-menu-btn{ background:transparent;border:0;color:inherit;cursor:pointer }
+.system-menu-btn{ background:transparent;border:0;color:var(--agentic-menu-color,inherit);cursor:pointer }
 .system-menu-dropdown a:hover{ background: rgba(0,0,0,0.04); border-radius:4px }
 
 @media (max-width:640px){
@@ -51,7 +51,6 @@ body:not(.dark) header a, body:not(.dark) header .nav a {
 
 /* Ensure the hamburger/menu icon has consistent color in light and dark themes */
 .system-menu-wrap, .system-path { color: inherit; }
-.system-menu-btn { color: var(--agentic-menu-color, inherit); }
 body.dark .system-menu-btn { color: #e6edf3 !important; }
 body:not(.dark) .system-menu-btn { color: #0a0e1a !important; }
 
@@ -67,7 +66,6 @@ body.dark .system-menu-dropdown a{
 body.dark .system-menu-dropdown a:hover{
   background: rgba(255,255,255,0.03) !important;
 }
-body.dark .system-menu-btn{ color: inherit }
 
 /* Accessibility focus styles */
 .system-menu-btn:focus{ outline: 2px solid rgba(59,130,246,0.35); outline-offset:2px }
@@ -97,13 +95,6 @@ body.dark .system-menu-btn{ color: inherit }
   pointer-events:none;
   z-index:1; /* overlay below image and below text */
 }
-.bento-card.bento-primary h2,
-.bento-card.bento-primary p{
-  position:relative; /* sit above overlay */
-  z-index:3;
-}
-
-/* Ensure the headline+excerpt stay together in the text column */
 .bento-card.bento-primary .bento-primary-content{
   display:flex;
   flex-direction:column;
@@ -140,20 +131,15 @@ body.dark .system-menu-btn{ color: inherit }
   .bento-card.bento-primary{ min-height:84px; padding:10px; grid-template-columns: 1fr; }
   .bento-card.bento-primary h2{ font-size:1.125rem }
   .bento-card.bento-primary .bento-primary-content{ grid-column:auto }
-}
-@media(max-width:640px){
   .bento-card.bento-primary .bento-hero-img{ display:none }
   .bento-card.visual-card .visual-figure img{ display:none }
 }
 
 /* Make primary card typography match visual card baseline */
-.bento-card.bento-primary h2,
+.bento-card.bento-primary h2{ position:relative; z-index:3 }
 .bento-card.bento-primary p{
-  position:relative; /* sit above overlay */
+  position:relative;
   z-index:3;
-}
-}
-.bento-card.bento-primary p{
   font-size:.95rem;
   line-height:1.25;
   color:var(--muted);
@@ -229,6 +215,8 @@ body.dark .system-menu-btn{ color: inherit }
 .playbook-row{ margin-top: 12px }
 @media (min-width: 900px){
   .playbook-row .playbook-card{ grid-column: 1 / -1; max-width: 1100px; margin: 0 auto; }
+  /* If playbook is inside the main grid, make it span two columns for emphasis */
+  .bento-grid > .playbook-card{ grid-column: span 2; }
 }
 .bento-card .playbook-list li{ margin-bottom:4px }
 .bento-card .vis-title{ margin-bottom:4px }
@@ -243,11 +231,6 @@ body.dark .system-menu-btn{ color: inherit }
 
 .bento-card.playbook-card .playbook-header h3{ font-size:1.35rem; margin:0 0 12px }
 .bento-card.playbook-card .playbook-list li{ font-size:1.05rem; margin-bottom:10px }
-
-@media (min-width:900px){
-  /* If playbook is inside the main grid, make it span two columns for emphasis */
-  .bento-grid > .playbook-card{ grid-column: span 2; }
-}
 
 /* Playbook controls: softer, pill-shaped buttons with hover/focus */
 .playbook-header{ display:flex; align-items:center; gap:12px; width:100% }

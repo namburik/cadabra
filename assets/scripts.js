@@ -38,7 +38,6 @@
       let path = raw.replace(/index\.html$/i, '');
       path = path.replace(/\.html$/i, '');
       const parts = path.split('/').filter(Boolean);
-      const display = parts.length ? '/' + parts.join('/') : '/';
       // Build system path element
       const wrapper = document.createElement('div');
       wrapper.className = 'system-path';
@@ -99,7 +98,6 @@
         a.style.color = 'inherit';
         a.style.textDecoration = 'none';
         a.style.padding = '6px 8px';
-        a.setAttribute('role', 'link');
         a.tabIndex = 0;
         return a;
       };
@@ -141,8 +139,6 @@
   // Search removed: feature intentionally disabled.
 
   document.addEventListener('DOMContentLoaded', ()=>{
-    const input = document.getElementById('search-input');
-    // Search removed: no input listeners are attached. Continue with other init helpers.
     updateThemeButtonState();
     populateYear();
     replaceNavWithSystemPath();

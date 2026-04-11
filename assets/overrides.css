@@ -276,3 +276,19 @@ body.dark .system-menu-dropdown a:hover{
   line-height:1.25 !important;
 }
 body.dark .disclaimer{ opacity:0.84 !important; color:var(--muted-dark) !important }
+
+/* ── Blog listing card tags ──────────────────────────────── */
+.card-tags{display:flex;gap:0.45rem;flex-wrap:wrap;margin-bottom:0.6rem}
+.card-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.18rem 0.55rem;border-radius:50px;line-height:1.4}
+.card-tag--blog{background:rgba(79,156,249,0.12);color:#4f9cf9;border:1px solid rgba(79,156,249,0.28)}
+.card-tag--orchestration{background:rgba(123,97,255,0.1);color:#7b61ff;border:1px solid rgba(123,97,255,0.22)}
+.card-tag--data{background:rgba(6,182,212,0.1);color:#06b6d4;border:1px solid rgba(6,182,212,0.22)}
+.card-tag--data-architecture{background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.22)}
+.card-tag--cost-optimization{background:rgba(245,158,11,0.1);color:#d97706;border:1px solid rgba(245,158,11,0.28)}
+.card-tag--operations{background:rgba(249,115,22,0.1);color:#ea6c11;border:1px solid rgba(249,115,22,0.25)}
+body.dark .card-tag--blog{background:rgba(79,156,249,0.15);color:#74b4fb}
+body.dark .card-tag--orchestration{background:rgba(123,97,255,0.15);color:#a48bff}
+body.dark .card-tag--data{background:rgba(6,182,212,0.13);color:#22d3ee}
+body.dark .card-tag--data-architecture{background:rgba(16,185,129,0.13);color:#34d399}
+body.dark .card-tag--cost-optimization{background:rgba(245,158,11,0.13);color:#fbbf24}
+body.dark .card-tag--operations{background:rgba(249,115,22,0.13);color:#fb923c}

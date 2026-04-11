@@ -21,7 +21,7 @@
   <link rel="canonical" href="https://namburi.me/posts/blog-llm-routing.html" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234f9cf9'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white'>M</text></svg>" />
   <link rel="stylesheet" href="/assets/style.css" />
-  <link rel=\"stylesheet\" href="/assets/typography.css">
+  <link rel="stylesheet" href="/assets/typography.css">
   <script src="/assets/scripts.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,12 +30,6 @@
   <noscript><link rel="stylesheet" href="/assets/blog.css"></noscript>
   <link rel="preload" href="/assets/overrides.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"></noscript>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" as="script">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
-  
-  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -79,7 +73,6 @@
       <a href="/" class="logo">mytake: agentic and authentic</a>
       <nav class="nav">
         <a href="/about.html">About</a>
-        <a href="/blogs.html">Blogs & Use Cases</a>
         <a href="/contact.html">Contact</a>
       </nav>
       <div class="nav-controls ml-auto">
@@ -102,6 +95,29 @@
     <div class="blog-content">
       <p class="blog-intro">In the current AI landscape, many enterprises are inadvertently over-provisioning their compute resources. Defaulting every query to flagship models like GPT-4 or Claude 3.5 is the digital equivalent of using a sledgehammer to crack a nut—effective, but unnecessarily expensive. Emerging research from ICLR 2024 (Hybrid LLM) and ICML 2025 (BEST-Route) points to a more sophisticated approach: <strong>Intelligent LLM Routing</strong>. This strategy optimises the trade-off between high-tier reasoning and operational cost by dynamically directing traffic across a model ensemble.</p>
 
+      <div class="phase-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="phase-card accent">
+          <div class="phase-label">1 · Core Pattern</div>
+          <h4>Predictive Selection</h4>
+          <ul><li>Triage every query in real-time</li><li>Difficulty signals drive model choice</li></ul>
+        </div>
+        <div class="phase-card purple">
+          <div class="phase-label">2 · Strategy</div>
+          <h4>Hybrid LLM</h4>
+          <ul><li>Binary SLM-or-frontier routing</li><li>Up to 60–80% cost reduction</li></ul>
+        </div>
+        <div class="phase-card cyan">
+          <div class="phase-label">3 · Strategy</div>
+          <h4>BEST-Route</h4>
+          <ul><li>Best-of-N sampling from SLM</li><li>Near-frontier accuracy at SLM cost</li></ul>
+        </div>
+        <div class="phase-card accent">
+          <div class="phase-label">4 · Rollout</div>
+          <h4>4-Step Architecture</h4>
+          <ul><li>Profile → Tier → Train → Monitor</li><li>Shadow routing before full commit</li></ul>
+        </div>
+      </div>
+
       <h2>The Core Pattern: Predictive Selection</h2>
       <p>An LLM Router functions as an intelligent traffic controller. Positioned between the user and the inference engine, it analyses prompt complexity in real-time. By predicting the "hardness" of a task, it ensures that only high-complexity queries consume premium tokens, while simpler tasks are offloaded to efficient, small language models (SLMs).</p>
 
@@ -109,32 +125,51 @@
 
       <h2>Two Validated Routing Strategies</h2>
 
-      <h3>Hybrid LLM — Cost-Efficiency Routing</h3>
-      <p>Utilises binary routing to decide between a "Small" or "Large" model. If a prompt—such as a basic classification or summarisation task—can be handled by a model like Phi-3 or Llama 3, the router bypasses the expensive frontier model entirely. The result: dramatic cost reduction with negligible accuracy loss for the majority of production workloads.</p>
-      <ul>
-        <li><strong>Signal:</strong> Classifier predicts task difficulty from prompt features</li>
-        <li><strong>Decision:</strong> Binary — route to SLM or frontier LLM</li>
-        <li><strong>Outcome:</strong> Up to 60–80% token cost savings on mixed-complexity workloads</li>
-      </ul>
-
-      <h3>BEST-Route — Test-Time Compute Optimisation</h3>
-      <p>Instead of a single pass, this strategy employs "Best-of-N" sampling. By generating multiple responses from a smaller model and using a reward model to select the optimal output, teams can achieve frontier-level performance at a fraction of the cost.</p>
-      <ul>
-        <li><strong>Signal:</strong> Reward model scores N candidate outputs from an SLM</li>
-        <li><strong>Decision:</strong> Accept best SLM output, or escalate to frontier if confidence is low</li>
-        <li><strong>Outcome:</strong> Near-GPT-4 accuracy at SLM pricing for a wide task distribution</li>
-      </ul>
+      <div class="phase-grid">
+        <div class="phase-card purple">
+          <div class="phase-label">Hybrid LLM — Cost-Efficiency Routing</div>
+          <h4>Binary Model Selection</h4>
+          <p style="font-size:0.92rem;color:var(--clr-muted);margin-bottom:0.75rem;">Utilises binary routing to decide between a "Small" or "Large" model. If a prompt can be handled by a model like Phi-3 or Llama 3, the router bypasses the expensive frontier model entirely.</p>
+          <ul>
+            <li><strong>Signal:</strong> Classifier predicts task difficulty from prompt features</li>
+            <li><strong>Decision:</strong> Binary — route to SLM or frontier LLM</li>
+            <li><strong>Outcome:</strong> Up to 60–80% token cost savings</li>
+          </ul>
+        </div>
+        <div class="phase-card cyan">
+          <div class="phase-label">BEST-Route — Test-Time Compute Optimisation</div>
+          <h4>Best-of-N Sampling</h4>
+          <p style="font-size:0.92rem;color:var(--clr-muted);margin-bottom:0.75rem;">Generates multiple responses from a smaller model, then uses a reward model to select the optimal output—achieving frontier-level performance at a fraction of the cost.</p>
+          <ul>
+            <li><strong>Signal:</strong> Reward model scores N candidate outputs from an SLM</li>
+            <li><strong>Decision:</strong> Accept best SLM output, or escalate if confidence is low</li>
+            <li><strong>Outcome:</strong> Near-GPT-4 accuracy at SLM pricing</li>
+          </ul>
+        </div>
+      </div>
 
       <h2>High-Impact Use Cases</h2>
 
-      <h3>Tiered Customer Support</h3>
-      <p>Automatically resolve standard FAQs via local instances (Ollama/vLLM) while escalating nuanced technical queries to high-reasoning frontier models. First-contact resolution improves, and operating cost per ticket drops sharply—without any degradation in customer experience for complex issues.</p>
-
-      <h3>Contextual Personalisation</h3>
-      <p>Leveraging GNN-based routers to adapt model selection based on historical user preferences and specific domain requirements. A returning power user with a specialised vocabulary receives a different routing profile than a first-time visitor asking a generic question—automatically, at inference time.</p>
-
-      <h3>Multimodal Orchestration</h3>
-      <p>Seamlessly shift workloads between specialised vision, audio, and text models based on input modality. A mixed-media request is decomposed by the router, dispatched to the appropriate specialist model per modality, and the results are synthesised—all transparently to the end user.</p>
+      <div class="pattern-grid">
+        <div class="pattern-card">
+          <div class="icon">🎯</div>
+          <div class="core-label">Customer Support</div>
+          <h4>Tiered Resolution</h4>
+          <p>FAQs handled by local SLMs (Ollama/vLLM); nuanced technical queries escalate to frontier models. Lower cost per ticket with no drop in quality for complex issues.</p>
+        </div>
+        <div class="pattern-card">
+          <div class="icon">👤</div>
+          <div class="core-label">Personalisation</div>
+          <h4>Contextual Routing</h4>
+          <p>GNN-based routers adapt model selection to historical user preferences and domain vocabulary—a power user gets a different routing profile than a first-time visitor, automatically.</p>
+        </div>
+        <div class="pattern-card">
+          <div class="icon">🎨</div>
+          <div class="core-label">Multimodal</div>
+          <h4>Modal Orchestration</h4>
+          <p>Mixed-media requests decomposed by the router, dispatched to specialist vision, audio, or text models, and synthesised transparently—no client-side changes required.</p>
+        </div>
+      </div>
 
       <h2>Implementation with the LLMRouter Framework</h2>
       <p>For engineering teams looking to operationalise these strategies, the <strong>LLMRouter</strong> open-source library provides a production-ready toolkit:</p>
@@ -148,13 +183,36 @@
       <h2>Building a Routing-Aware Architecture</h2>
       <p>Adopting intelligent routing is not simply a model swap—it requires a deliberate architectural shift:</p>
 
-      <p><strong>Step 1 — Profile Your Workload:</strong> Analyse your query distribution. What percentage of requests are genuinely complex? In most enterprise deployments, fewer than 20–30% of queries require frontier-model reasoning. Establishing this baseline shapes your routing thresholds.</p>
-
-      <p><strong>Step 2 — Define Model Tiers:</strong> Select your SLM (e.g., Phi-3 Mini, Llama 3 8B) and your frontier model. Consider latency, privacy requirements, and data residency when choosing between hosted APIs and on-premise inference with vLLM or Ollama.</p>
-
-      <p><strong>Step 3 — Train or Fine-Tune the Router:</strong> Use labelled difficulty annotations or proxy signals (user satisfaction, re-query rate) to train your routing classifier. The LLMRouter CLI simplifies this step considerably.</p>
-
-      <p><strong>Step 4 — Monitor and Iterate:</strong> Deploy with shadow routing first—log router decisions alongside a baseline (all-frontier) deployment and compare outcomes. Refine difficulty thresholds based on real production data before fully committing.</p>
+      <div class="pillar-list">
+        <div class="pillar-card">
+          <div class="pillar-number">1</div>
+          <div>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Profile Your Workload</h4>
+            <p style="margin:0;">Analyse your query distribution. In most enterprise deployments, fewer than 20–30% of queries require frontier-model reasoning. Establishing this baseline shapes your routing thresholds.</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-number">2</div>
+          <div>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Define Model Tiers</h4>
+            <p style="margin:0;">Select your SLM (e.g., Phi-3 Mini, Llama 3 8B) and frontier model. Consider latency, privacy requirements, and data residency when choosing between hosted APIs and on-premise inference with vLLM or Ollama.</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-number">3</div>
+          <div>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Train or Fine-Tune the Router</h4>
+            <p style="margin:0;">Use labelled difficulty annotations or proxy signals (user satisfaction, re-query rate) to train your routing classifier. The LLMRouter CLI simplifies this step considerably.</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-number">4</div>
+          <div>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Monitor and Iterate</h4>
+            <p style="margin:0;">Deploy with shadow routing first—log router decisions alongside a baseline (all-frontier) deployment and compare outcomes. Refine difficulty thresholds based on real production data before fully committing.</p>
+          </div>
+        </div>
+      </div>
 
       <h2>Routing Within the Governed Agentic Stack</h2>
       <p>Intelligent routing doesn't operate in isolation. In a production agentic architecture, the models being routed are answering questions grounded in your <strong>Knowledge Core</strong>—the verified, relationship-rich data layer that makes agent responses accurate at the individual and operational level. Routing policy should therefore account for more than task complexity: data sensitivity tier, regulatory constraints on which model may process which data classification, and the agent's own permission boundary are all governance signals that belong in the routing decision.</p>
@@ -163,8 +221,6 @@
       <h2>The Bottom Line</h2>
       <p>The most competitive AI stacks will not rely on a single "God Model." Success lies in an orchestrated ensemble of specialised models, managed by an intelligent routing layer that prioritises both precision and fiscal responsibility. Enterprises that embrace this pattern today are not just cutting costs—they are building a more resilient, scalable, and explainable AI infrastructure for the long term.</p>
 
-      
-      <hr>
       <div class="related-articles">
         <h3>Related Articles</h3>
         <ul>

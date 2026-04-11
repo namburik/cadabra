@@ -103,7 +103,6 @@
       };
 
       navLinks.appendChild(makeLink('/about.html', 'About'));
-      navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
 
       // Hide original nav links visually but keep them in the DOM for crawlers/accessibility

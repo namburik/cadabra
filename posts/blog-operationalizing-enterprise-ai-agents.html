@@ -74,7 +74,6 @@
       <a href="/" class="logo">mytake: agentic and authentic</a>
       <nav class="nav">
         <a href="/about.html">About</a>
-        <a href="/blogs.html">Blogs & Use Cases</a>
         <a href="/contact.html">Contact</a>
       </nav>
       <div class="nav-controls ml-auto">
@@ -96,72 +95,84 @@
 
     <div class="blog-content">
 
-      <p class="blog-intro">Most enterprise AI journeys follow the same arc: a compelling demo, a funded pilot—and then a quiet stall before anything reaches production. The gap isn't a technology problem. It's an operationalization problem.</p>
+      <p class="blog-intro">Most enterprise AI journeys follow the same arc: a compelling demo, a funded pilot—and then a quiet stall before anything reaches production. The gap isn't a technology problem. It's an operationalization problem. The moment an agent can take actions—not just generate text—you need governance, architecture, and operations that treat it as a digital teammate, not a glorified chatbot.</p>
 
-      <p>The moment you deploy an agent that can take actions—not just generate text—the rules change. You need governance, architecture, and operational practices that treat agents as digital teammates, not glorified chatbots.</p>
-
-      <p>What follows is a platform-agnostic blueprint across five dimensions: strategy, architecture, governance, operations, and engineering culture.</p>
+      <div class="phase-grid">
+        <div class="phase-card accent">
+          <div class="phase-label">1 · Strategy</div>
+          <h4>Role, Not Technology</h4>
+          <ul><li>Define agents by job title</li><li>Follow the Observer → Assistant → Orchestrator path</li></ul>
+        </div>
+        <div class="phase-card purple">
+          <div class="phase-label">2 · Architecture</div>
+          <h4>Departments, Not Monoliths</h4>
+          <ul><li>Arbiter + specialist agents</li><li>Knowledge · Decision · Execution taxonomy</li></ul>
+        </div>
+        <div class="phase-card cyan">
+          <div class="phase-label">3 · Governance</div>
+          <h4>Identity Is the Perimeter</h4>
+          <ul><li>Scoped permissions per agent</li><li>HITL triggers + full traceability</li></ul>
+        </div>
+        <div class="phase-card accent">
+          <div class="phase-label">4 · AgentOps</div>
+          <h4>A New Ops Discipline</h4>
+          <ul><li>Behavioral testing over unit tests</li><li>Cost per outcome as a metric</li></ul>
+        </div>
+        <div class="phase-card purple">
+          <div class="phase-label">5 · Culture</div>
+          <h4>Outcomes Over Instructions</h4>
+          <ul><li>Define intent, not steps</li><li>Architecture as guardrails</li></ul>
+        </div>
+      </div>
 
       <h2>1. Strategy: Define Agents by Role, Not Technology</h2>
 
-      <p>The most common mistake engineers make is building agents around what a model <em>can</em> do rather than what the business <em>needs</em>. This produces impressive demos and underwhelming outcomes.</p>
+      <p><strong>Think in job titles, not capabilities.</strong> Don't build a "PDF Summarizer"—build a "Compliance Auditor" that happens to read PDFs. Framing agents around functional roles keeps them solving real business bottlenecks rather than performing generic tasks in search of a use case.</p>
 
-      <p><strong>Think in job titles, not capabilities.</strong> Don't build a "PDF Summarizer"—build a "Compliance Auditor" that happens to read PDFs as part of its job. Framing agents around functional roles ensures they're solving specific, measurable business bottlenecks rather than performing generic tasks in search of a use case.</p>
-
-      <p><strong>Follow a maturity path.</strong> Enterprises that try to deploy fully autonomous agents on day one almost always fail. A more durable path is:</p>
+      <p><strong>Follow a maturity path.</strong> Skipping stages is how you end up with an autonomous agent that confidently sends the wrong email to 10,000 customers:</p>
       <ol>
-        <li><strong>Observer agents</strong> — monitoring data streams and surfaces, flagging anomalies without taking action</li>
-        <li><strong>Assistant agents</strong> — suggesting actions, drafting responses, and supporting human decisions</li>
-        <li><strong>Orchestrator agents</strong> — autonomously managing workflows and coordinating other agents to achieve multi-step outcomes</li>
+        <li><strong>Observer agents</strong> — monitor and flag anomalies without taking action</li>
+        <li><strong>Assistant agents</strong> — suggest actions and support human decisions</li>
+        <li><strong>Orchestrator agents</strong> — autonomously manage workflows and coordinate other agents</li>
       </ol>
-
-      <p>Each level builds organizational trust, reveals edge cases, and informs the design of the next. Skipping stages is how you end up with an autonomous agent that confidently sends the wrong email to 10,000 customers.</p>
 
       <h2>2. Architecture: Think Departments, Not Monoliths</h2>
 
-      <p>A single agent that tries to do everything—research, decide, execute, and report—will be brittle, expensive, and nearly impossible to debug. The better model is a <strong>Multi-Agent System (MAS)</strong> with a bounded domain context, where domain agents collaborate like departments in a well-run company.</p>
+      <p>A single agent that does everything—research, decide, execute, report—is brittle and impossible to debug. Use a <strong>Multi-Agent System</strong> where an Arbiter delegates to specialists, each communicating through standardised protocols like MCP rather than custom glue.</p>
 
-      <p><strong>The Arbiter Model.</strong> At the center sits an "Arbiter" agent responsible for understanding the goal, delegating sub-tasks to domain specialist agents based on policy, and assembling the final output. Specialists don't need to know about each other—they just need to do their job well and communicate through defined interfaces.</p>
-
-      <p><strong>Standardized protocols over custom glue.</strong> Open communication standards—such as the Model Context Protocol (MCP)—give agents a shared language for exchanging context, tools, and results, eliminating the costly custom integration work that comes with connecting agents from different teams or vendors.</p>
-
-      <p><strong>A useful functional taxonomy.</strong> Organize agents into three broad categories:</p>
+      <p><strong>A functional taxonomy keeps failures locatable:</strong></p>
       <ul>
-        <li><strong>Knowledge agents</strong> — retrieve, synthesize, and maintain context (your research team)</li>
-        <li><strong>Decision agents</strong> — evaluate options against policy and risk thresholds (your compliance and strategy team)</li>
-        <li><strong>Execution agents</strong> — take action in external systems (your operations team)</li>
+        <li><strong>Knowledge agents</strong> — retrieve, synthesise, and maintain context</li>
+        <li><strong>Decision agents</strong> — evaluate options against policy and risk thresholds</li>
+        <li><strong>Execution agents</strong> — take action in external systems</li>
       </ul>
-      <p>This separation makes it much easier to reason about where a failure occurred and who (or what) is responsible for fixing it. In practice, Knowledge agents are only as reliable as the data layer beneath them—a well-structured <strong>AI-ready data foundation</strong> with a unified <a href="/posts/blog-ai-first-data-strategy.html">Knowledge Core</a> spanning your operational and analytical layers is what gives Knowledge agents accurate, source-attributed context to reason from.</p>
+      <p>Knowledge agents are only as reliable as the data beneath them. A unified <a href="/posts/blog-ai-first-data-strategy.html">Knowledge Core</a> spanning operational and analytical layers is what gives them accurate, source-attributed context.</p>
 
       <h2>3. Governance: Identity Is the New Perimeter</h2>
 
-      <p>In an agentic world, the biggest risk isn't an external attacker—it's an agent with too much power and too little oversight. Every agent that can take real-world actions needs to be governed like a privileged employee.</p>
+      <p>The biggest risk in an agentic system isn't an external attacker—it's an agent with too much power and too little oversight. Governance has three non-negotiables:</p>
 
-      <p><strong>Agent identity and scoped permissions.</strong> Every agent needs its own verifiable identity and a least-privilege permission set. If it reads documents, it shouldn't be able to delete them. Scoped permissions limit the blast radius when something goes wrong.</p>
+      <p><strong>Scoped permissions.</strong> Every agent needs its own verifiable identity and a least-privilege permission set. If it reads documents, it can't delete them. Scoped permissions limit the blast radius when something goes wrong.</p>
 
-      <p><strong>Guardrails and human-in-the-loop triggers.</strong> Autonomy is a dial, not a switch. When an agent's confidence on a high-stakes decision drops below a set threshold, it should automatically pause and escalate to a human—not guess and proceed.</p>
+      <p><strong>HITL triggers.</strong> Autonomy is a dial, not a switch. When confidence on a high-stakes decision drops below threshold, the agent pauses and escalates—it doesn't guess and proceed.</p>
 
-      <p><strong>Traceability.</strong> Every reasoning step, tool call, and action must be logged in a way that's auditable and legible to non-engineers. When someone asks "why did the agent do that?"—you need an answer.</p>
-
-      <p>Taken together—scoped identity, bounded autonomy, and full traceability—these governance controls are the runtime implementation of what an AI-first data strategy calls the <strong>Active Governance Fabric</strong>: governance that is continuous, embedded in the agent infrastructure itself, and enforced at every decision point rather than reviewed after the fact.</p>
+      <p><strong>Traceability.</strong> Every reasoning step, tool call, and action must be logged and legible to non-engineers. When someone asks "why did the agent do that?"—you need an answer ready.</p>
 
       <h2>4. AgentOps: A New Operational Discipline</h2>
 
-      <p>Agents are non-deterministic—behavior varies based on context, model state, and available tools. Traditional DevOps isn't built for that. <strong>AgentOps</strong> is.</p>
+      <p>Agents are non-deterministic—behaviour varies with context, model state, and available tools. Traditional DevOps isn't designed for that. Three practices close the gap:</p>
 
-      <p><strong>Behavioral testing over unit tests.</strong> Validate <em>intent</em>, not just output. Does the agent stay within policy bounds across varied inputs? Testing must cover adversarial scenarios and realistic failure conditions, not just the happy path.</p>
-
-      <p><strong>Continuous tuning.</strong> Use logs and traces to find where agents get confused or wasteful, then refine prompts, tool descriptions, or retire underperformers.</p>
-
-      <p><strong>Cost as a metric.</strong> An agent that takes 50 steps to do what a human does in two is not production-ready. Track token cost and steps-per-outcome alongside accuracy.</p>
+      <ul>
+        <li><strong>Behavioural testing.</strong> Validate <em>intent</em>, not just output. Cover adversarial scenarios and failure conditions, not just the happy path.</li>
+        <li><strong>Continuous tuning.</strong> Use traces to find where agents get confused or wasteful, then refine prompts or retire underperformers.</li>
+        <li><strong>Cost as a metric.</strong> An agent that takes 50 steps to do what a human does in two isn't production-ready. Track token cost and steps-per-outcome alongside accuracy.</li>
+      </ul>
 
       <h2>5. Engineering Culture: Outcomes Over Instructions</h2>
 
-      <p>Operationalizing agents requires a mindset shift: stop writing steps, start defining outcomes.</p>
+      <p><strong>Stop writing steps. Start defining outcomes.</strong> Specify what the agent must achieve, the boundaries it must stay within, and when to escalate—then let it determine the how. Engineers become managers briefing a capable employee, not programmers writing a script.</p>
 
-      <p><strong>Zones of Intent.</strong> Define what the agent must achieve, the boundaries it must stay within, and when to escalate—then let it determine the how. Engineers become more like managers briefing a capable employee than programmers writing a script.</p>
-
-      <p><strong>Architecture as scaffolding.</strong> Architecture no longer dictates every step—it provides guardrails, fallbacks, and retry logic that keep autonomous reasoning safe within defined boundaries.</p>
+      <p>Architecture shifts accordingly: instead of dictating every step, it provides guardrails, fallbacks, and retry logic that keep autonomous reasoning safe within defined boundaries.</p>
 
       <h2>The Bottom Line</h2>
 

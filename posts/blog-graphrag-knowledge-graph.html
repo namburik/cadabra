@@ -73,7 +73,6 @@
       <a href="/" class="logo">mytake: agentic and authentic</a>
       <nav class="nav">
         <a href="/about.html">About</a>
-        <a href="/blogs.html">Blogs & Use Cases</a>
         <a href="/contact.html">Contact</a>
       </nav>
       <div class="nav-controls ml-auto">
@@ -94,39 +93,45 @@
       </header>
 
     <div class="blog-content">
-      <p class="blog-intro">You deploy an LLM assistant, the demo goes well, and then a real customer asks: "What device is Sarah using, and what should we offer her?" The model answers confidently. And wrong—because it has no idea who Sarah is.</p>
-
-      <p>That's not a model problem. It's a data access problem. And standard RAG only gets you halfway—it can fetch relevant documents, but it can't follow relationships between them. That's where <strong>GraphRAG</strong> comes in: pairing a Knowledge Graph with an LLM so the AI reasons over your actual connected data, not a pile of text chunks.</p>
-
-      <p>Our stack for this: <strong>Neo4j</strong> for the graph, <strong>LangChain</strong> and <strong>LangGraph</strong> for orchestration, and <strong>LlamaIndex</strong> to translate plain English into graph queries.</p>
+      <p class="blog-intro">You deploy an LLM assistant, the demo goes well, then a real customer asks: <em>"What device is Sarah using, and what should we offer her?"</em> The model answers confidently—and wrong. That's not a model problem. It's a data access problem. Standard RAG fetches relevant documents but can't follow relationships between them. <strong>GraphRAG</strong> pairs a Knowledge Graph with an LLM so the AI reasons over your actual connected data. Stack: <strong>Neo4j</strong> for the graph, <strong>LangChain</strong> and <strong>LangGraph</strong> for orchestration, <strong>LlamaIndex</strong> for natural language to graph queries.</p>
 
       <h2>The Four Problems It Solves</h2>
 
-      <h3>1. Hallucinations</h3>
-      <p>LLMs fill gaps with plausible-sounding guesses. GraphRAG stops that by retrieving verified facts first—device model, purchase date, support history—and grounding the prompt in real data before the model writes a single word.</p>
-
-      <h3>2. Disconnected Data</h3>
-      <p>Vector search finds similar text. It can't answer "which customers in Region D, with Device B, contacted support this month"—that requires traversing relationships. Neo4j's Cypher language follows edges across your graph in a single query, making multi-hop reasoning straightforward.</p>
-
-      <h3>3. Generic Responses</h3>
-      <p>Two customers, one AI, completely different needs:</p>
-      <ul>
-        <li><strong>Priya</strong> — three high-end devices, frequent traveller, early adopter. Her sub-graph surfaces the flagship recommendation with enthusiast-level detail.</li>
-        <li><strong>Marcus</strong> — one mid-range device, home user, two battery complaints. His sub-graph points to a practical upgrade pitched around longevity.</li>
-      </ul>
-      <p>Same LLM, same prompt template, different retrieved context — different, accurate responses.</p>
-
-      <h3>4. Needing a Database Expert to Ask a Question</h3>
-      <p>LlamaIndex's NL2GraphQuery layer translates "What should we recommend to Priya?" into a Cypher query automatically. LangChain wraps the results into the LLM prompt. LangGraph handles the cases where answering requires chaining multiple lookups. Business users just type; the stack handles the rest.</p>
+      <div class="pattern-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="pattern-card">
+          <div class="icon">🚧</div>
+          <div class="core-label">Problem 1</div>
+          <h4>Hallucinations</h4>
+          <p>LLMs fill gaps with plausible guesses. GraphRAG retrieves verified facts first—device model, purchase date, support history—and grounds the prompt before the model writes a word.</p>
+        </div>
+        <div class="pattern-card">
+          <div class="icon">🔗</div>
+          <div class="core-label">Problem 2</div>
+          <h4>Disconnected Data</h4>
+          <p>Vector search finds similar text but can't answer multi-hop questions. Neo4j's Cypher traverses relationships across your graph in a single query.</p>
+        </div>
+        <div class="pattern-card">
+          <div class="icon">🎯</div>
+          <div class="core-label">Problem 3</div>
+          <h4>Generic Responses</h4>
+          <p>Same LLM, same template—different sub-graph per user. Priya's frequent-traveller history surfaces a flagship pitch. Marcus's battery complaints surface a durability pitch. Same model, accurate results.</p>
+        </div>
+        <div class="pattern-card">
+          <div class="icon">💬</div>
+          <div class="core-label">Problem 4</div>
+          <h4>Needing a DB Expert</h4>
+          <p>LlamaIndex's NL2GraphQuery translates plain English into Cypher automatically. Business users type; the stack handles the query.</p>
+        </div>
+      </div>
 
       <h2>How the Stack Fits Together</h2>
       <ul>
-        <li><strong>Neo4j</strong> — stores entities (users, devices, locations) and their relationships as a native property graph, queried via Cypher. Available self-hosted or on AuraDB.</li>
+        <li><strong>Neo4j</strong> — stores entities and relationships as a native property graph, queried via Cypher. Available self-hosted or AuraDB.</li>
         <li><strong>LangChain</strong> — manages prompt templates and LLM calls. Model-agnostic: OpenAI, Anthropic, Mistral, or local models all plug in the same way.</li>
-        <li><strong>LangGraph</strong> — orchestrates multi-step reasoning as a stateful workflow, so complex questions don't get crammed into one overloaded prompt.</li>
-        <li><strong>LlamaIndex</strong> — handles NL-to-Cypher translation via <code>KnowledgeGraphIndex</code> and <code>Neo4jGraphStore</code>, bridging natural language and the graph.</li>
+        <li><strong>LangGraph</strong> — orchestrates multi-step reasoning as a stateful workflow. Complex questions don't get crammed into one overloaded prompt.</li>
+        <li><strong>LlamaIndex</strong> — handles NL-to-Cypher via <code>KnowledgeGraphIndex</code> and <code>Neo4jGraphStore</code>, bridging natural language and the graph.</li>
       </ul>
-      <p>Query flow: question in → Cypher query out → Neo4j sub-graph returned → LangGraph loops if needed → LangChain generates the grounded response.</p>
+      <p>Query flow: question in → Cypher out → Neo4j sub-graph returned → LangGraph loops if needed → LangChain generates the grounded response.</p>
 
       <h2>Standard RAG vs. GraphRAG</h2>
 
@@ -170,27 +175,25 @@
       </div>
 
       <h2>Where It Works</h2>
-      <p>Any domain with relational data and a need for accurate, individual-level responses is a good fit:</p>
       <ul>
-        <li><strong>Retail:</strong> Customer 360 graphs power recommendations that reflect actual purchase history and preferences, not just category averages.</li>
-        <li><strong>Telecom:</strong> Network and subscriber graphs let support tools instantly surface the facts relevant to one specific customer's issue.</li>
-        <li><strong>Financial Services:</strong> Fraud detection and compliance queries require traversing entity relationships—vector search can't do this reliably.</li>
-        <li><strong>Healthcare:</strong> Patient graphs (diagnoses, medications, allergies, labs) give clinical tools the precise, interconnected context where accuracy is non-negotiable.</li>
+        <li><strong>Retail</strong> — Customer 360 graphs drive recommendations built on actual purchase history, not category averages.</li>
+        <li><strong>Telecom</strong> — Network and subscriber graphs surface the exact facts relevant to one customer's issue, instantly.</li>
+        <li><strong>Financial Services</strong> — Fraud and compliance queries require entity relationship traversal—vector search can't do this reliably.</li>
+        <li><strong>Healthcare</strong> — Patient graphs (diagnoses, medications, allergies, labs) give clinical tools precise, interconnected context where accuracy is non-negotiable.</li>
       </ul>
 
       <h2>Getting Started</h2>
-      <p>The tooling is mature. The harder work is the design upfront:</p>
+      <p>The tooling is mature. The harder work is upfront design:</p>
       <ol>
-        <li><strong>Sketch your ontology.</strong> Define your entity types, relationships, and key properties before writing any code. A clear schema makes everything downstream easier.</li>
-        <li><strong>Run Neo4j.</strong> AuraDB Free is enough for a proof of concept. Scale to Enterprise or self-hosted when you need it.</li>
-        <li><strong>Connect an LLM via LangChain.</strong> Start with whatever fits your cost and latency targets. You can swap models later without touching the graph pipeline.</li>
-        <li><strong>Add LlamaIndex.</strong> The <code>Neo4jGraphStore</code> and <code>KnowledgeGraphIndex</code> integrations wire up NL2GraphQuery in minimal configuration.</li>
-        <li><strong>Use LangGraph for multi-step queries.</strong> Not every question needs it, but once you're chaining lookups, you want explicit state management rather than prompt hacks.</li>
+        <li><strong>Sketch your ontology</strong> — define entity types, relationships, and key properties before writing any code.</li>
+        <li><strong>Run Neo4j</strong> — AuraDB Free is enough for a proof of concept; scale to Enterprise when ready.</li>
+        <li><strong>Connect an LLM via LangChain</strong> — start with whatever fits your cost and latency targets; swap models later without touching the graph pipeline.</li>
+        <li><strong>Add LlamaIndex</strong> — <code>Neo4jGraphStore</code> and <code>KnowledgeGraphIndex</code> wire up NL2GraphQuery in minimal configuration.</li>
+        <li><strong>Use LangGraph for multi-step queries</strong> — once you're chaining lookups, explicit state management beats prompt hacks.</li>
       </ol>
 
       <h2>Worth Building?</h2>
-      <p>If your AI keeps getting the specifics wrong, or your recommendations feel generic, the issue is almost always retrieval—not the model. GraphRAG is a practical fix: open-source tools, no cloud lock-in, and an architecture that scales from a small pilot to production without a rewrite.</p>
-      <p>In the context of an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this knowledge graph is the physical implementation of the <strong>Knowledge Core</strong>—the verified, relationship-rich repository that gives every agent in your ecosystem grounded, accurate context. Building it with Neo4j and LlamaIndex is the implementation decision; governing it—controlling which agents and roles can query it, auditing traversal patterns, and maintaining schema integrity as your domain evolves—is the <strong>Active Governance Fabric</strong> that makes it enterprise-ready rather than just technically functional.</p>
+      <p>If your AI keeps getting specifics wrong or recommendations feel generic, the issue is almost always retrieval—not the model. GraphRAG is the practical fix: open-source tools, no cloud lock-in, and an architecture that scales from pilot to production without a rewrite. In an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this graph is the <strong>Knowledge Core</strong>—the verified, relationship-rich foundation every agent in your ecosystem reasons from.</p>
 
       <div class="related-articles">
         <h3>Related Articles</h3>

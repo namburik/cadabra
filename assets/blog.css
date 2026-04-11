@@ -28,7 +28,7 @@
   margin-bottom: 1.25rem;
 }
 .storage-grid,
-.gov-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
+.gov-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin: 1.5rem 0 2.5rem; }
 .storage-card,
 .gov-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
 .storage-card .storage-icon { font-size: 1.35rem; }
@@ -36,6 +36,7 @@
 .tech-tag { display: inline-block; background: rgba(79,156,249,0.06); border: 1px solid rgba(79,156,249,0.12); padding: 0.25rem 0.6rem; border-radius: 8px; font-size: 0.88rem; color: var(--clr-text); }
 @media (max-width: 640px) {
   .storage-card, .gov-card { padding: 1rem; }
+  .storage-grid, .gov-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .blog-meta {
   display: flex;

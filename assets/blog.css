@@ -154,3 +154,36 @@ body.dark .blog-content h3 {
 .contact-form-box button { margin-top: 0.5rem; }
 
 body.dark .contact-form-box { box-shadow: 0 8px 20px rgba(2,6,23,0.12); }
+
+/* ── Blog comparison / data tables ─────────────────────── */
+.blog-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+.blog-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+.blog-table thead tr { border-bottom: 2px solid rgba(79,156,249,0.25); }
+.blog-table th { padding: 0.75rem 1rem; text-align: left; font-weight: 700; color: var(--clr-accent); background: rgba(79,156,249,0.08); }
+.blog-table td { padding: 0.75rem 1rem; color: var(--clr-muted); border-bottom: 1px solid var(--clr-border); }
+.blog-table td:first-child { font-weight: 600; color: var(--clr-text); }
+.blog-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+/* ── Phase roadmap cards ────────────────────────────────── */
+.phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin: 1.5rem 0 2rem; }
+.phase-card { background: var(--clr-card); border: 1px solid var(--clr-border); border-top: 3px solid var(--clr-accent); border-radius: var(--radius); padding: 1.5rem; }
+.phase-card.accent { border-top-color: #4f9cf9; }
+.phase-card.purple { border-top-color: #7b61ff; }
+.phase-card.cyan   { border-top-color: #06b6d4; }
+.phase-card .phase-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.phase-card.accent .phase-label { color: #4f9cf9; }
+.phase-card.purple .phase-label { color: #7b61ff; }
+.phase-card.cyan   .phase-label { color: #06b6d4; }
+.phase-card h4 { font-size: 1rem; font-weight: 700; color: var(--clr-text); margin-bottom: 0.75rem; }
+.phase-card ul { margin: 0 0 0 1rem; padding: 0; color: var(--clr-muted); font-size: 0.92rem; line-height: 1.7; }
+
+/* ── Related articles section ───────────────────────────── */
+.related-articles { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--clr-border); }
+.related-articles h3 { font-size: 1.1rem; color: var(--clr-accent); margin-bottom: 0.75rem; }
+.related-articles ul { margin-left: 1.25rem; }
+.related-articles li { margin-bottom: 0.5rem; font-size: 0.97rem; }
+
+/* ── Blog hero figure ───────────────────────────────────── */
+.blog-figure { margin: 2.5rem 0; border: 1px solid var(--clr-border); border-radius: var(--radius); overflow: hidden; background: var(--clr-card); }
+.blog-figure img { width: 100%; display: block; }
+.blog-figure figcaption { padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--clr-muted); text-align: center; border-top: 1px solid var(--clr-border); }

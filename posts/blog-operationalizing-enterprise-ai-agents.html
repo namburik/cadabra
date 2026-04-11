@@ -83,20 +83,20 @@
     </div>
   </header>
 
-  <div id="content" class="blog-container" tabindex="-1">
-
-    <article class="blog-header">
-      <h1>From Prototype to Production: Operationalizing AI Agents</h1>
-      <div class="blog-meta">
-        <span>March 2026</span>
-        <span>6 min read</span>
-        <span>By Kishore Namburi</span>
-      </div>
-    </article>
+  <main id="content" class="blog-container" tabindex="-1">
+    <article>
+      <header class="blog-header">
+        <h1>From Prototype to Production: Operationalizing AI Agents</h1>
+        <div class="blog-meta">
+          <time datetime="2026-03-19">March 2026</time>
+          <span>6 min read</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
 
     <div class="blog-content">
 
-      <p>Most enterprise AI journeys follow the same arc: a compelling demo, a funded pilot—and then a quiet stall before anything reaches production. The gap isn't a technology problem. It's an operationalization problem.</p>
+      <p class="blog-intro">Most enterprise AI journeys follow the same arc: a compelling demo, a funded pilot—and then a quiet stall before anything reaches production. The gap isn't a technology problem. It's an operationalization problem.</p>
 
       <p>The moment you deploy an agent that can take actions—not just generate text—the rules change. You need governance, architecture, and operational practices that treat agents as digital teammates, not glorified chatbots.</p>
 
@@ -131,7 +131,7 @@
         <li><strong>Decision agents</strong> — evaluate options against policy and risk thresholds (your compliance and strategy team)</li>
         <li><strong>Execution agents</strong> — take action in external systems (your operations team)</li>
       </ul>
-      <p>This separation makes it much easier to reason about where a failure occurred and who (or what) is responsible for fixing it. In practice, Knowledge agents are only as reliable as the data layer beneath them—a well-structured <strong>AI-ready data foundation</strong> with a unified <a href="blog-ai-first-data-strategy.html" style="color: var(--clr-accent); text-decoration: underline;">Knowledge Core</a> spanning your operational and analytical layers is what gives Knowledge agents accurate, source-attributed context to reason from.</p>
+      <p>This separation makes it much easier to reason about where a failure occurred and who (or what) is responsible for fixing it. In practice, Knowledge agents are only as reliable as the data layer beneath them—a well-structured <strong>AI-ready data foundation</strong> with a unified <a href="/posts/blog-ai-first-data-strategy.html">Knowledge Core</a> spanning your operational and analytical layers is what gives Knowledge agents accurate, source-attributed context to reason from.</p>
 
       <h2>3. Governance: Identity Is the New Perimeter</h2>
 
@@ -167,10 +167,18 @@
 
       <p>Operationalizing AI agents is not simply a technical upgrade. It's a new way of designing, deploying, and managing software—one that requires new mental models at every level of the organization, from engineering to legal to executive leadership.</p>
 
-      
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a> — Architecture patterns for production-grade agentic AI.</li>
+          <li><a href="/posts/blog-ai-first-data-strategy.html">4 Core Pillars of AI-Ready Data Architecture</a> — The Knowledge Core foundation that powers reliable Knowledge agents.</li>
+          <li><a href="/posts/blog-llm-routing.html">Maximizing ROI: Intelligent LLM Routing</a> — Cost-aware model dispatch as a governance control point.</li>
+        </ul>
+      </div>
 
     </div>
-  </div>
+  </article>
+</main>
 
   
 

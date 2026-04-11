@@ -88,19 +88,19 @@
     </div>
   </header>
 
-  <div id="content" class="blog-container" tabindex="-1">
-
-    <article class="blog-header">
-      <h1>Maximizing ROI: The Strategic Shift to Intelligent LLM Routing</h1>
-      <div class="blog-meta">
-        <span>March 2026</span>
-        <span>7 min read</span>
-        <span>By Kishore Namburi</span>
-      </div>
-    </article>
+  <main id="content" class="blog-container" tabindex="-1">
+    <article>
+      <header class="blog-header">
+        <h1>Maximizing ROI: The Strategic Shift to Intelligent LLM Routing</h1>
+        <div class="blog-meta">
+          <time datetime="2026-03-17">March 2026</time>
+          <span>7 min read</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
 
     <div class="blog-content">
-      <p>In the current AI landscape, many enterprises are inadvertently over-provisioning their compute resources. Defaulting every query to flagship models like GPT-4 or Claude 3.5 is the digital equivalent of using a sledgehammer to crack a nut—effective, but unnecessarily expensive. Emerging research from ICLR 2024 (Hybrid LLM) and ICML 2025 (BEST-Route) points to a more sophisticated approach: <strong>Intelligent LLM Routing</strong>. This strategy optimises the trade-off between high-tier reasoning and operational cost by dynamically directing traffic across a model ensemble.</p>
+      <p class="blog-intro">In the current AI landscape, many enterprises are inadvertently over-provisioning their compute resources. Defaulting every query to flagship models like GPT-4 or Claude 3.5 is the digital equivalent of using a sledgehammer to crack a nut—effective, but unnecessarily expensive. Emerging research from ICLR 2024 (Hybrid LLM) and ICML 2025 (BEST-Route) points to a more sophisticated approach: <strong>Intelligent LLM Routing</strong>. This strategy optimises the trade-off between high-tier reasoning and operational cost by dynamically directing traffic across a model ensemble.</p>
 
       <h2>The Core Pattern: Predictive Selection</h2>
       <p>An LLM Router functions as an intelligent traffic controller. Positioned between the user and the inference engine, it analyses prompt complexity in real-time. By predicting the "hardness" of a task, it ensures that only high-complexity queries consume premium tokens, while simpler tasks are offloaded to efficient, small language models (SLMs).</p>
@@ -158,23 +158,24 @@
 
       <h2>Routing Within the Governed Agentic Stack</h2>
       <p>Intelligent routing doesn't operate in isolation. In a production agentic architecture, the models being routed are answering questions grounded in your <strong>Knowledge Core</strong>—the verified, relationship-rich data layer that makes agent responses accurate at the individual and operational level. Routing policy should therefore account for more than task complexity: data sensitivity tier, regulatory constraints on which model may process which data classification, and the agent's own permission boundary are all governance signals that belong in the routing decision.</p>
-      <p>In an architecture shaped by an <a href="blog-ai-first-data-strategy.html" style="color: var(--clr-accent); text-decoration: underline;">AI-first data strategy</a>, the router becomes a governance control point—a place where compliance requirements, cost discipline, and performance targets are enforced simultaneously rather than managed as separate concerns across different teams.</p>
+      <p>In an architecture shaped by an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, the router becomes a governance control point—a place where compliance requirements, cost discipline, and performance targets are enforced simultaneously rather than managed as separate concerns across different teams.</p>
 
       <h2>The Bottom Line</h2>
       <p>The most competitive AI stacks will not rely on a single "God Model." Success lies in an orchestrated ensemble of specialised models, managed by an intelligent routing layer that prioritises both precision and fiscal responsibility. Enterprises that embrace this pattern today are not just cutting costs—they are building a more resilient, scalable, and explainable AI infrastructure for the long term.</p>
 
       
-      <hr style="margin:2rem 0;">
-      <div class="related-blogs">
-        <h3 style="font-size:1.1rem;color:#4f9cf9;margin-bottom:0.5rem;">Related Articles</h3>
-        <ul style="margin-left:1rem;">
-          <li><a href="blog-2026-agentic-playbook.html" style="color:var(--clr-accent);text-decoration:underline;">Beyond the Bot: The 2026 Agentic Playbook</a> — Architecture patterns for agentic AI, orchestration, and safety layers.</li>
-          <li><a href="blog-graphrag-knowledge-graph.html" style="color:var(--clr-accent);text-decoration:underline;">From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI</a> — Knowledge graphs, multi-hop reasoning, and grounded responses.</li>
-          <li><a href="blog-ai-first-data-strategy.html" style="color:var(--clr-accent);text-decoration:underline;">Building the Data Framework: 4 Core Pillars of AI-Ready Architecture</a> — Four pillars of AI-ready architecture, Knowledge Core, and governance fabric.</li>
+      <hr>
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a> — Architecture patterns for agentic AI, orchestration, and safety layers.</li>
+          <li><a href="/posts/blog-graphrag-knowledge-graph.html">From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI</a> — Knowledge graphs, multi-hop reasoning, and grounded responses.</li>
+          <li><a href="/posts/blog-ai-first-data-strategy.html">Building the Data Framework: 4 Core Pillars of AI-Ready Architecture</a> — Four pillars of AI-ready architecture, Knowledge Core, and governance fabric.</li>
         </ul>
       </div>
     </div>
-  </div>
+  </article>
+</main>
 
   
 

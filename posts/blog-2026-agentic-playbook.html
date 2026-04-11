@@ -82,23 +82,23 @@
     </div>
   </header>
 
-  <div id="content" class="blog-container" tabindex="-1">
-
-    <article class="blog-header">
-      <h1>Beyond the Bot: The 2026 Agentic Playbook</h1>
-      <div class="blog-meta">
-        <span>March 2026</span>
-        <span>12 min read</span>
-        <span>By Kishore Namburi</span>
-      </div>
-    </article>
+  <main id="content" class="blog-container" tabindex="-1">
+    <article>
+      <header class="blog-header">
+        <h1>Beyond the Bot: The 2026 Agentic Playbook</h1>
+        <div class="blog-meta">
+          <time datetime="2026-03-17">March 2026</time>
+          <span>12 min read</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
 
     <div class="blog-content">
-      <p>The <em>"Chat with your PDF"</em> era is dead. In 2026, I am witnessing a decisive shift from experimental toys to <strong>Autonomous Enterprise Ecosystems</strong>—where AI agents don't just answer questions, they run operations. What follows is the blueprint for production-grade agentic AI: the architecture decisions, collaboration patterns, and safety layers that separate real deployments from demos.</p>
+      <p class="blog-intro">The <em>"Chat with your PDF"</em> era is dead. In 2026, I am witnessing a decisive shift from experimental toys to <strong>Autonomous Enterprise Ecosystems</strong>—where AI agents don't just answer questions, they run operations. What follows is the blueprint for production-grade agentic AI: the architecture decisions, collaboration patterns, and safety layers that separate real deployments from demos.</p>
 
-      <figure style="margin: 2.5rem 0; border: 1px solid var(--clr-border); border-radius: var(--radius); overflow: hidden; background: var(--clr-card);">
-        <img src="c1y3u8c1y3u8c1y3.png" alt="Agentic Playbook overview diagram" style="width: 100%; display: block;" loading="eager" />
-        <figcaption style="padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--clr-muted); text-align: center; border-top: 1px solid var(--clr-border);">Agentic Playbook overview — architecture, orchestration, and safety layers.</figcaption>
+      <figure class="blog-figure">
+        <img src="c1y3u8c1y3u8c1y3.png" alt="Agentic Playbook overview diagram" loading="eager" />
+        <figcaption>Agentic Playbook overview — architecture, orchestration, and safety layers.</figcaption>
       </figure>
 
       <h2>1. The Intelligence Backbone: Lean &amp; Fast</h2>
@@ -129,7 +129,7 @@
       <h3>Context Graphs &amp; Decision Traces</h3>
       <p>Beyond retrieval, Context Graphs provide a <strong>"Why" layer</strong>—a persistent record of every decision an agent made, the evidence it relied on, and the outcome that followed. Agents that learn from their own decision history stop making the same mistakes twice. This is the foundation of continually improving autonomous systems, not just stateless query-answerers.</p>
 
-      <p>In the <a href="blog-ai-first-data-strategy.html" style="color: var(--clr-accent); text-decoration: underline;">AI-first data strategy</a>, this relational layer has a name: the <strong>Knowledge Core</strong>—the unified repository of verified entities, relationships, and business logic that grounds every agent response. Knowledge Graphs, Context Graphs, and Decision Traces are all implementations of the same architectural principle: agents that reason over a structured, governed truth store outperform agents that pattern-match across unstructured text.</p>
+      <p>In the <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this relational layer has a name: the <strong>Knowledge Core</strong>—the unified repository of verified entities, relationships, and business logic that grounds every agent response. Knowledge Graphs, Context Graphs, and Decision Traces are all implementations of the same architectural principle: agents that reason over a structured, governed truth store outperform agents that pattern-match across unstructured text.</p>
 
       <h2>3. Orchestration: The Central Agent</h2>
 
@@ -214,9 +214,18 @@
       <h2>The Bottom Line</h2>
       <p>2026 isn't about which organization has access to the smartest model—frontier models are commoditizing fast. The decisive advantage belongs to organizations that build the most <strong>interconnected, cost-aware, and governed</strong> agentic architectures. Intelligence is abundant. Architecture is the moat.</p>
 
-      
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="/posts/blog-graphrag-knowledge-graph.html">GraphRAG: From Hallucinations to Hyper-Personalization</a> — Multi-hop reasoning and grounded AI responses.</li>
+          <li><a href="/posts/blog-llm-routing.html">Maximizing ROI: Intelligent LLM Routing</a> — Cut inference costs 60–80% while preserving output quality.</li>
+          <li><a href="/posts/blog-operationalizing-enterprise-ai-agents.html">Operationalizing AI Agents</a> — Platform-agnostic blueprint for production agent deployment.</li>
+          <li><a href="/posts/blog-ai-first-data-strategy.html">4 Core Pillars of AI-Ready Data Architecture</a> — The data foundation every agentic system demands.</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </article>
+</main>
 
   
 

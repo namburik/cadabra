@@ -82,19 +82,19 @@
     </div>
   </header>
 
-  <div id="content" class="blog-container" tabindex="-1">
-
-    <article class="blog-header">
-      <h1>From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Your Knowledge Graph</h1>
-      <div class="blog-meta">
-        <span>March 2026</span>
-        <span>6 min read</span>
-        <span>By Kishore Namburi</span>
-      </div>
-    </article>
+  <main id="content" class="blog-container" tabindex="-1">
+    <article>
+      <header class="blog-header">
+        <h1>From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Your Knowledge Graph</h1>
+        <div class="blog-meta">
+          <time datetime="2026-03-17">March 2026</time>
+          <span>6 min read</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
 
     <div class="blog-content">
-      <p>You deploy an LLM assistant, the demo goes well, and then a real customer asks: "What device is Sarah using, and what should we offer her?" The model answers confidently. And wrong—because it has no idea who Sarah is.</p>
+      <p class="blog-intro">You deploy an LLM assistant, the demo goes well, and then a real customer asks: "What device is Sarah using, and what should we offer her?" The model answers confidently. And wrong—because it has no idea who Sarah is.</p>
 
       <p>That's not a model problem. It's a data access problem. And standard RAG only gets you halfway—it can fetch relevant documents, but it can't follow relationships between them. That's where <strong>GraphRAG</strong> comes in: pairing a Knowledge Graph with an LLM so the AI reasons over your actual connected data, not a pile of text chunks.</p>
 
@@ -130,40 +130,40 @@
 
       <h2>Standard RAG vs. GraphRAG</h2>
 
-      <div style="overflow-x: auto; margin: 2rem 0;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+      <div class="blog-table-wrap">
+        <table class="blog-table">
           <thead>
-            <tr style="background: rgba(79,156,249,0.12); border-bottom: 2px solid rgba(79,156,249,0.3);">
-              <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 700; color: var(--clr-accent);">Feature</th>
-              <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 700; color: var(--clr-accent);">Standard RAG (Vector)</th>
-              <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 700; color: var(--clr-accent);">GraphRAG (Neo4j)</th>
+            <tr>
+              <th>Feature</th>
+              <th>Standard RAG (Vector)</th>
+              <th>GraphRAG (Neo4j)</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
-              <td style="padding: 0.8rem 1rem; font-weight: 600;">Data Structure</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Unstructured text chunks</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Structured entities &amp; relationships</td>
+            <tr>
+              <td>Data Structure</td>
+              <td>Unstructured text chunks</td>
+              <td>Structured entities &amp; relationships</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02);">
-              <td style="padding: 0.8rem 1rem; font-weight: 600;">Search Method</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Semantic similarity</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Relationship traversal (multi-hop)</td>
+            <tr>
+              <td>Search Method</td>
+              <td>Semantic similarity</td>
+              <td>Relationship traversal (multi-hop)</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
-              <td style="padding: 0.8rem 1rem; font-weight: 600;">Best For</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Finding a relevant document</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Finding connections between data points</td>
+            <tr>
+              <td>Best For</td>
+              <td>Finding a relevant document</td>
+              <td>Finding connections between data points</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02);">
-              <td style="padding: 0.8rem 1rem; font-weight: 600;">Personalization</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Segment-level at best</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Individual sub-graph per user</td>
+            <tr>
+              <td>Personalization</td>
+              <td>Segment-level at best</td>
+              <td>Individual sub-graph per user</td>
             </tr>
-            <tr style="background: rgba(255,255,255,0.02);">
-              <td style="padding: 0.8rem 1rem; font-weight: 600;">Accuracy on Specific Facts</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Drops as questions get specific</td>
-              <td style="padding: 0.8rem 1rem; opacity: 0.8;">Grounded in verified graph data</td>
+            <tr>
+              <td>Accuracy on Specific Facts</td>
+              <td>Drops as questions get specific</td>
+              <td>Grounded in verified graph data</td>
             </tr>
           </tbody>
         </table>
@@ -190,9 +190,19 @@
 
       <h2>Worth Building?</h2>
       <p>If your AI keeps getting the specifics wrong, or your recommendations feel generic, the issue is almost always retrieval—not the model. GraphRAG is a practical fix: open-source tools, no cloud lock-in, and an architecture that scales from a small pilot to production without a rewrite.</p>
-      <p>In the context of an <a href="blog-ai-first-data-strategy.html" style="color: var(--clr-accent); text-decoration: underline;">AI-first data strategy</a>, this knowledge graph is the physical implementation of the <strong>Knowledge Core</strong>—the verified, relationship-rich repository that gives every agent in your ecosystem grounded, accurate context. Building it with Neo4j and LlamaIndex is the implementation decision; governing it—controlling which agents and roles can query it, auditing traversal patterns, and maintaining schema integrity as your domain evolves—is the <strong>Active Governance Fabric</strong> that makes it enterprise-ready rather than just technically functional.</p>
+      <p>In the context of an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this knowledge graph is the physical implementation of the <strong>Knowledge Core</strong>—the verified, relationship-rich repository that gives every agent in your ecosystem grounded, accurate context. Building it with Neo4j and LlamaIndex is the implementation decision; governing it—controlling which agents and roles can query it, auditing traversal patterns, and maintaining schema integrity as your domain evolves—is the <strong>Active Governance Fabric</strong> that makes it enterprise-ready rather than just technically functional.</p>
+
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="/posts/blog-ai-first-data-strategy.html">4 Core Pillars of AI-Ready Data Architecture</a> — Building the semantic data mesh and Knowledge Core that powers GraphRAG.</li>
+          <li><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a> — GraphRAG in context: orchestration, safety layers, and production architecture.</li>
+          <li><a href="/posts/blog-agentic-ai-workflows.html">Agentic AI: Revolutionizing Data Workflows</a> — How autonomous agents use the Knowledge Core groundwork GraphRAG provides.</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </article>
+</main>
 
   
 

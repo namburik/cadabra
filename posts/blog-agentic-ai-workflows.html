@@ -82,51 +82,51 @@
     </div>
   </header>
 
-  <div id="content" class="blog-container" tabindex="-1">
-    
-    <article class="blog-header">
-      <h1>Agentic AI: Revolutionizing Data Workflows</h1>
-      <div class="blog-meta">
-        <span>March 2026</span>
-        <span>6 min read</span>
-        <span>By Kishore Namburi</span>
-      </div>
-    </article>
+  <main id="content" class="blog-container" tabindex="-1">
+    <article>
+      <header class="blog-header">
+        <h1>Agentic AI: Revolutionizing Data Workflows</h1>
+        <div class="blog-meta">
+          <time datetime="2026-03-15">March 2026</time>
+          <span>6 min read</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
 
     <div class="blog-content">
-      <p>Traditional data workflows are labor-intensive, error-prone, and slow. Teams spend countless hours cleaning data, running queries, and generating reports manually. But with the right data infrastructure, you can transform those workflows into agents that think, decide, and act autonomously.</p>
+      <p class="blog-intro">Traditional data workflows are labor-intensive, error-prone, and slow. Teams spend countless hours cleaning data, running queries, and generating reports manually. But with the right data infrastructure, you can transform those workflows into agents that think, decide, and act autonomously.</p>
 
       <h2>Traditional vs. Agentic: The Core Difference</h2>
 
-      <div style="overflow-x:auto; margin: 1.5rem 0;">
-        <table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+      <div class="blog-table-wrap">
+        <table class="blog-table">
           <thead>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.15);">
-              <th style="text-align:left; padding:0.6rem 1rem; color:#4f9cf9; font-weight:600;"></th>
-              <th style="text-align:left; padding:0.6rem 1rem; color:#4f9cf9; font-weight:600;">Traditional Workflows</th>
-              <th style="text-align:left; padding:0.6rem 1rem; color:#4f9cf9; font-weight:600;">Agentic Data Workflows</th>
+            <tr>
+              <th></th>
+              <th>Traditional Workflows</th>
+              <th>Agentic Data Workflows</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.07);">
-              <td style="padding:0.6rem 1rem; font-weight:600;">Effort</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Manual ETL scripts &amp; data cleaning</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Natural language intent to complex action</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.07);">
-              <td style="padding:0.6rem 1rem; font-weight:600;">Speed</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Days or weeks for critical insights</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Real-time discovery &amp; autonomous action</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.07);">
-              <td style="padding:0.6rem 1rem; font-weight:600;">Logic</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Static thresholds &amp; rigid pipelines</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Reasoning-based, self-tuning systems</td>
+            <tr>
+              <td>Effort</td>
+              <td>Manual ETL scripts &amp; data cleaning</td>
+              <td>Natural language intent to complex action</td>
             </tr>
             <tr>
-              <td style="padding:0.6rem 1rem; font-weight:600;">Scale</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Requires hiring more analysts</td>
-              <td style="padding:0.6rem 1rem; color:var(--text);">Scales via multi-agent orchestration</td>
+              <td>Speed</td>
+              <td>Days or weeks for critical insights</td>
+              <td>Real-time discovery &amp; autonomous action</td>
+            </tr>
+            <tr>
+              <td>Logic</td>
+              <td>Static thresholds &amp; rigid pipelines</td>
+              <td>Reasoning-based, self-tuning systems</td>
+            </tr>
+            <tr>
+              <td>Scale</td>
+              <td>Requires hiring more analysts</td>
+              <td>Scales via multi-agent orchestration</td>
             </tr>
           </tbody>
         </table>
@@ -151,32 +151,32 @@
 
       <h2>Getting Started: A Practical Roadmap</h2>
 
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.25rem; margin:1.5rem 0 2rem;">
+      <div class="phase-grid">
 
-        <div style="background:var(--clr-card); border:1px solid var(--clr-border); border-top:3px solid #4f9cf9; border-radius:var(--radius); padding:1.5rem;">
-          <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#4f9cf9; margin-bottom:0.5rem;">Phase 1</div>
-          <h4 style="font-size:1rem; font-weight:700; color:var(--clr-text); margin-bottom:0.75rem;">Pilot</h4>
-          <ul style="margin:0 0 0 1rem; padding:0; color:var(--clr-muted); font-size:0.92rem; line-height:1.7;">
+        <div class="phase-card accent">
+          <div class="phase-label">Phase 1</div>
+          <h4>Pilot</h4>
+          <ul>
             <li>Target repetitive, high-impact tasks</li>
             <li>Build one proof-of-concept agent</li>
             <li>Validate with measurable KPIs</li>
           </ul>
         </div>
 
-        <div style="background:var(--clr-card); border:1px solid var(--clr-border); border-top:3px solid #7b61ff; border-radius:var(--radius); padding:1.5rem;">
-          <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#7b61ff; margin-bottom:0.5rem;">Phase 2</div>
-          <h4 style="font-size:1rem; font-weight:700; color:var(--clr-text); margin-bottom:0.75rem;">Scale &amp; Govern</h4>
-          <ul style="margin:0 0 0 1rem; padding:0; color:var(--clr-muted); font-size:0.92rem; line-height:1.7;">
+        <div class="phase-card purple">
+          <div class="phase-label">Phase 2</div>
+          <h4>Scale &amp; Govern</h4>
+          <ul>
             <li>Expand workflows with proven ROI</li>
             <li>Establish Active Governance Fabric</li>
             <li>Build org-wide data literacy</li>
           </ul>
         </div>
 
-        <div style="background:var(--clr-card); border:1px solid var(--clr-border); border-top:3px solid #06b6d4; border-radius:var(--radius); padding:1.5rem;">
-          <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#06b6d4; margin-bottom:0.5rem;">Phase 3</div>
-          <h4 style="font-size:1rem; font-weight:700; color:var(--clr-text); margin-bottom:0.75rem;">Orchestrate</h4>
-          <ul style="margin:0 0 0 1rem; padding:0; color:var(--clr-muted); font-size:0.92rem; line-height:1.7;">
+        <div class="phase-card cyan">
+          <div class="phase-label">Phase 3</div>
+          <h4>Orchestrate</h4>
+          <ul>
             <li>Deploy interconnected agent ecosystem</li>
             <li>Integrate with enterprise systems</li>
             <li>Shift humans to strategic innovators</li>
@@ -188,9 +188,17 @@
       <h2>The Bottom Line</h2>
       <p>The shift from data management to <strong>Data Intelligence</strong> is already underway. Organizations that pair an AI-ready data architecture with a specialized agent workforce will outpace competitors—turning raw data into autonomous, predictive action at a speed no manual workflow can match.</p>
 
-      
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <ul>
+          <li><a href="/posts/blog-ai-first-data-strategy.html">4 Core Pillars of AI-Ready Data Architecture</a> — The data foundation every agentic system needs.</li>
+          <li><a href="/posts/blog-graphrag-knowledge-graph.html">GraphRAG: From Hallucinations to Hyper-Personalization</a> — Structured retrieval and multi-hop reasoning for accurate AI responses.</li>
+          <li><a href="/posts/blog-operationalizing-enterprise-ai-agents.html">Operationalizing AI Agents</a> — Platform-agnostic blueprint for taking agents to production.</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </article>
+</main>
 
   
 

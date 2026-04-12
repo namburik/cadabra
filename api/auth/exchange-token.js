@@ -1,37 +1,48 @@
 /**
- * GitHub OAuth Token Exchange Endpoint
- * 
- * This is a Node.js/Express endpoint that should be deployed to:
- * - Vercel Functions at /api/auth/exchange-token.js
- * - Netlify Functions at /functions/exchange-token.js
- * - Or your own backend server
- * 
- * Required environment variables:
- * - GITHUB_CLIENT_ID: Ov23ligh67ROJwOiIXxB
- * - GITHUB_CLIENT_SECRET: (keep secret, never commit)
+ * GitHub OAuth Token Exchange Endpoint for Vercel
+ * POST /api/auth/exchange-token
  */
 
 const https = require('https');
 
 module.exports = async (req, res) => {
-  console.log('[OAuth] Request received:', { method: req.method, body: req.body });
+  console.log('[OAuth] Function called');
+  console.log('[OAuth] Request method:', req.method);
+  console.log('[OAuth] Request path:', req.url);
+  console.log('[OAuth] Request headers:', req.headers);
   
-  // Handle CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
+  // Parse body if it's a string (Vercel might send it that way)
+  let body = req.body;
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch (e) {
+      console.log('[OAuth] Body was string but not valid JSON');
+    }
+  }
+  console.log('[OAuth] Parsed body:', body);
+  
+  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    console.log('[OAuth] OPTIONS request, returning 200');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    console.log('[OAuth] Responding to OPTIONS');
     return res.status(200).end();
   }
 
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
+
   if (req.method !== 'POST') {
     console.log('[OAuth] Invalid method:', req.method);
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed. Only POST is supported.' });
   }
 
-  const { code } = req.body;
+  const code = body?.code || req.query?.code;
   
   if (!code) {
     console.log('[OAuth] No code provided');

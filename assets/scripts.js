@@ -135,8 +135,7 @@
         signIn.addEventListener('click', (e) => {
           e.preventDefault();
           const clientId = 'Ov23ligh67ROJwOiIXxB';
-          const redirectUri = 'https://namburi.me/auth/callback.html';
-          window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user:email`;
+          window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user:email`;
         });
         navLinks.appendChild(signIn);
       } else {

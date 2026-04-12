@@ -171,8 +171,8 @@
         signInLinkedIn.addEventListener('click', (e) => {
           e.preventDefault();
           const clientId = '868q8uysenspzk';
-          const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html?linkedin=1');
-          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=r_liteprofile%20r_emailaddress`;
+          const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
+          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=linkedin&scope=r_liteprofile%20r_emailaddress`;
         });
         navLinks.appendChild(signInLinkedIn);
       } else {

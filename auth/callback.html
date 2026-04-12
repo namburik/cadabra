@@ -26,9 +26,9 @@
 
       try {
         console.log('[OAuth] Code received:', code.substring(0, 10) + '...');
-        // Determine provider from URL (github or linkedin)
+        // Determine provider from state param (set during OAuth redirect)
         let provider = 'github';
-        if (window.location.search.includes('linkedin')) provider = 'linkedin';
+        if (params.get('state') === 'linkedin') provider = 'linkedin';
 
         let response, data;
         const controller = new AbortController();

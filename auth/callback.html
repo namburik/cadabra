@@ -36,7 +36,7 @@
         // 3. Fetch user info from GitHub API
         // 4. Return user data and token to the client
         
-        const response = await fetch('/auth/exchange-token', {
+        const response = await fetch('/api/auth/exchange-token', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code })
@@ -65,7 +65,7 @@
 
         statusEl.textContent = `Welcome, ${data.login}! Redirecting...`;
         statusEl.style.color = '#22c55e';
-        setTimeout(() => { window.location.href = '/'; }, 1500);
+        setTimeout(() => { window.location.href = '/blogs.html'; }, 1500);
 
       } catch(err) {
         statusEl.textContent = `Error: ${err.message}`;

@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authenticating...</title>
+  <style>
+    body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #0f172a; color: #f1f5f9; }
+    #status { font-size: 1.1rem; text-align: center; padding: 2rem; }
+  </style>
+</head>
+<body>
+  <div id="status">Authenticating, please wait...</div>
+  <script>
+    (async () => {
+      const statusEl = document.getElementById('status');
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+
+      if (!code) {
+        statusEl.textContent = 'Error: No authorization code received.';
+        statusEl.style.color = '#dc2626';
+        setTimeout(() => { window.location.href = '/'; }, 3000);
+        return;
+      }
+
       try {
         console.log('[OAuth] Code received:', code.substring(0, 10) + '...');
         // Determine provider from URL (github or linkedin)
@@ -35,7 +58,7 @@
         }
         data = await response.json();
         console.log('[OAuth] Auth data received:', data);
-        if(data.error){
+        if (data.error) {
           statusEl.textContent = `Error: ${data.error}`;
           statusEl.style.color = '#dc2626';
           console.error('[OAuth] API error:', data.error, data.details);
@@ -58,24 +81,16 @@
             token: data.token
           }));
         }
-        // Remove code param from URL to prevent re-login after sign-out
+        // Remove code param from URL to prevent re-use after sign-out
         if (window.history.replaceState) {
           const url = new URL(window.location.href);
           url.searchParams.delete('code');
           window.history.replaceState({}, document.title, url.pathname + url.search);
         }
-        statusEl.textContent = `Welcome! Redirecting...`;
+        statusEl.textContent = 'Welcome! Redirecting...';
         statusEl.style.color = '#22c55e';
         setTimeout(() => { window.location.href = '/blogs.html'; }, 1500);
-      } catch(err) {
-        statusEl.textContent = `Error: ${err.message}`;
-        statusEl.style.color = '#dc2626';
-        console.error('[OAuth] Auth error:', err);
-        console.error('[OAuth] Error details:', { message: err.message, code: err.code, name: err.name });
-        setTimeout(() => { window.location.href = '/'; }, 3000);
-      }
-
-      } catch(err) {
+      } catch (err) {
         statusEl.textContent = `Error: ${err.message}`;
         statusEl.style.color = '#dc2626';
         console.error('[OAuth] Auth error:', err);

@@ -56,17 +56,18 @@
       wrapper.style.fontFamily = "ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace";
       wrapper.style.fontSize = '14px';
       wrapper.style.color = 'inherit';
-      // Build clickable system path: agentic://posts/<post-slug>
-      const prefix = document.createElement('span');
-      prefix.textContent = 'agentic://';
-      wrapper.appendChild(prefix);
-
-      // Don't show path parts for blog posts — just show agentic://
+      // Don't show path prefix or parts for blog posts
       const isBlogPost = parts.length > 0 && parts[0].toLowerCase() === 'posts';
 
-      if(parts.length===0 || isBlogPost){
-        const root = document.createElement('span'); root.textContent = '/'; wrapper.appendChild(root);
-      } else {
+      if(!isBlogPost){
+        // Build clickable system path: agentic://
+        const prefix = document.createElement('span');
+        prefix.textContent = 'agentic://';
+        wrapper.appendChild(prefix);
+
+        if(parts.length===0){
+          const root = document.createElement('span'); root.textContent = '/'; wrapper.appendChild(root);
+        } else {
         parts.forEach((p, i) => {
           if(i>0){
             const sep = document.createElement('span'); sep.textContent = '/'; sep.style.padding = '0 4px'; wrapper.appendChild(sep);
@@ -95,7 +96,8 @@
           }
           wrapper.appendChild(a);
         });
-      }
+        } // close else
+      } // close if(!isBlogPost)
 
       // Create inline text links (About / Blogs / Contact / Auth)
       const navLinks = document.createElement('span');

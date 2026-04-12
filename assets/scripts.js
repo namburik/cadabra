@@ -172,7 +172,7 @@
           e.preventDefault();
           const clientId = '868q8uysenspzk';
           const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
-          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=linkedin&scope=r_liteprofile%20r_emailaddress`;
+          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
         });
         navLinks.appendChild(signInLinkedIn);
       } else {

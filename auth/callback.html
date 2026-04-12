@@ -16,6 +16,16 @@
       const statusEl = document.getElementById('status');
       const params = new URLSearchParams(window.location.search);
       const code = params.get('code');
+      const oauthError = params.get('error');
+      const oauthErrorDesc = params.get('error_description');
+
+      if (oauthError) {
+        statusEl.textContent = `Auth error: ${oauthErrorDesc || oauthError}`;
+        statusEl.style.color = '#dc2626';
+        console.error('[OAuth] Provider error:', oauthError, oauthErrorDesc);
+        setTimeout(() => { window.location.href = '/'; }, 4000);
+        return;
+      }
 
       if (!code) {
         statusEl.textContent = 'Error: No authorization code received.';

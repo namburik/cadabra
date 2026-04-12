@@ -72,43 +72,14 @@
       const isBlogPost = parts.length > 0 && parts[0].toLowerCase() === 'posts';
 
       if(!isBlogPost){
-        // Build clickable system path: agentic://
-        const prefix = document.createElement('span');
-        prefix.textContent = 'agentic://';
-        wrapper.appendChild(prefix);
-
-        if(parts.length===0){
-          const root = document.createElement('span'); root.textContent = '/'; wrapper.appendChild(root);
-        } else {
-        parts.forEach((p, i) => {
-          if(i>0){
-            const sep = document.createElement('span'); sep.textContent = '/'; sep.style.padding = '0 4px'; wrapper.appendChild(sep);
-          }
-          // clickable behavior for posts
-          const a = document.createElement('a');
-          a.textContent = p;
-          a.style.color = 'inherit';
-          a.style.textDecoration = 'none';
-          a.style.fontWeight = '500';
-          if (p.toLowerCase() === 'about') {
-            a.href = '/about.html';
-          } else if (p.toLowerCase() === 'contact') {
-            a.href = '/contact.html';
-          } else if (p.toLowerCase() === 'blogs') {
-            a.href = '/blogs.html';
-          } else if(i===0 && p.toLowerCase()==='posts'){
-            a.href = '/blogs.html';
-          } else if(parts[0] && parts[0].toLowerCase()==='posts'){
-            // link to post page under /posts/<slug>.html
-            a.href = '/posts/' + encodeURIComponent(p) + '.html';
-          } else {
-            // default cumulative link
-            const cum = '/' + parts.slice(0, i+1).join('/') + '/';
-            a.href = cum;
-          }
-          wrapper.appendChild(a);
-        });
-        } // close else
+        // Build simple path: just "/" on home, nothing on other pages
+        if(parts.length === 0){
+          const root = document.createElement('span');
+          root.textContent = '/';
+          root.style.opacity = '0.6';
+          wrapper.appendChild(root);
+        }
+        // For other pages, don't show path breadcrumb
       } // close if(!isBlogPost)
 
       // Create inline text links (About / Blogs / Contact / Auth)

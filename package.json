@@ -2,6 +2,9 @@
   "name": "portal-site",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "npm run build:css",
     "build:css": "npx tailwindcss -i ./assets/style.base.css -o ./assets/style.css --minify",

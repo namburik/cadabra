@@ -1,13 +1,25 @@
 {
-  "buildCommand": "npm run build:css || true",
-  "outputDirectory": "./",
+  "buildCommand": "npm run build:css",
+  "outputDirectory": ".",
   "functions": {
     "api/**/*.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.x",
+      "memory": 1024,
+      "maxDuration": 30
     }
   },
   "env": {
     "GITHUB_CLIENT_ID": "@github_client_id",
     "GITHUB_CLIENT_SECRET": "@github_client_secret"
-  }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }

@@ -46,5 +46,13 @@
     "date": "2026-03-19",
     "tags": "agentic AI, AgentOps, governance",
     "image": "/assets/images/blog-operationalizing-enterprise-ai-agents-hero.svg"
+  },
+  {
+    "title": "Beyond the Hype: Why AI TRiSM is the Secret to Scaling Enterprise AI",
+    "url": "/posts/blog-ai-trism-enterprise-security.html",
+    "excerpt": "Data leaks, Shadow AI, and prompt injection are bigger threats than hallucination. AI TRiSM is the operational framework to govern AI before regulators force your hand.",
+    "date": "2026-04-12",
+    "tags": "AI TRiSM, AI security, enterprise AI, Shadow AI, prompt injection, AI governance",
+    "image": "/assets/images/blog-ai-trism-hero.svg"
   }
 ]

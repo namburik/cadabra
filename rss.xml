@@ -9,6 +9,14 @@
     <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Beyond the Hype: Why AI TRiSM is the Secret to Scaling Enterprise AI</title>
+      <link>https://namburi.me/posts/blog-ai-trism-enterprise-security.html</link>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>Data leaks, Shadow AI, and prompt injection are bigger threats than hallucination. AI TRiSM is the operational framework to govern AI before regulators force your hand.</description>
+    </item>
+
+    <item>
       <title>From Prototype to Production: Operationalizing AI Agents</title>
       <link>https://namburi.me/posts/blog-operationalizing-enterprise-ai-agents.html</link>
       <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>

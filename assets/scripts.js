@@ -158,23 +158,46 @@
 
       // Auth button
       if(!auth){
-        // GitHub sign in
-        const signInGitHub = makeLink('#', 'GitHub Sign In', 'signin');
-        signInGitHub.addEventListener('click', (e) => {
-          e.preventDefault();
-          const clientId = 'Ov23ligh67ROJwOiIXxB';
-          window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user:email`;
+        const signInBtn = makeLink('#', 'Sign In', 'signin');
+        const dropdown = document.createElement('div');
+        dropdown.style.cssText = 'display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1e293b;border:1px solid rgba(59,130,246,0.3);border-radius:8px;overflow:hidden;z-index:999;min-width:160px;box-shadow:0 8px 24px rgba(0,0,0,0.4);';
+
+        const ghBtn = document.createElement('button');
+        ghBtn.textContent = '🐙  GitHub';
+        ghBtn.style.cssText = 'display:block;width:100%;padding:10px 16px;background:none;border:none;color:#f1f5f9;font-size:13px;text-align:left;cursor:pointer;';
+        ghBtn.onmouseover = () => ghBtn.style.background = 'rgba(59,130,246,0.15)';
+        ghBtn.onmouseout = () => ghBtn.style.background = 'none';
+        ghBtn.addEventListener('click', () => {
+          window.location.href = `https://github.com/login/oauth/authorize?client_id=Ov23ligh67ROJwOiIXxB&scope=user:email`;
         });
-        navLinks.appendChild(signInGitHub);
-        // LinkedIn sign in
-        const signInLinkedIn = makeLink('#', 'LinkedIn Sign In', 'signin');
-        signInLinkedIn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const clientId = '868q8uysenspzk';
+
+        const liBtn = document.createElement('button');
+        liBtn.textContent = '🔗  LinkedIn';
+        liBtn.style.cssText = 'display:block;width:100%;padding:10px 16px;background:none;border:none;color:#f1f5f9;font-size:13px;text-align:left;cursor:pointer;border-top:1px solid rgba(255,255,255,0.07);';
+        liBtn.onmouseover = () => liBtn.style.background = 'rgba(59,130,246,0.15)';
+        liBtn.onmouseout = () => liBtn.style.background = 'none';
+        liBtn.addEventListener('click', () => {
           const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
-          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
+          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=868q8uysenspzk&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
         });
-        navLinks.appendChild(signInLinkedIn);
+
+        dropdown.appendChild(ghBtn);
+        dropdown.appendChild(liBtn);
+
+        const wrapper2 = document.createElement('span');
+        wrapper2.style.position = 'relative';
+        wrapper2.appendChild(signInBtn);
+        wrapper2.appendChild(dropdown);
+
+        signInBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+        });
+        document.addEventListener('click', (e) => {
+          if (!wrapper2.contains(e.target)) dropdown.style.display = 'none';
+        });
+
+        navLinks.appendChild(wrapper2);
       } else {
         // User badge
         const userBadge = document.createElement('span');

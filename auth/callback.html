@@ -89,10 +89,17 @@
         // Store auth data in localStorage
         localStorage.setItem('github-auth', JSON.stringify({
           login: data.login,
-          id: data.id,
+          email: data.email,
           avatar_url: data.avatar_url,
           token: data.token
         }));
+
+        // Remove code param from URL to prevent re-login after sign-out
+        if (window.history.replaceState) {
+          const url = new URL(window.location.href);
+          url.searchParams.delete('code');
+          window.history.replaceState({}, document.title, url.pathname + url.search);
+        }
 
         statusEl.textContent = `Welcome, ${data.login}! Redirecting...`;
         statusEl.style.color = '#22c55e';

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "npm run build:css",
     "build:css": "npx tailwindcss -i ./assets/style.base.css -o ./assets/style.css --minify",
     "watch:css": "npx tailwindcss -i ./assets/style.base.css -o ./assets/style.css --watch"
   },

@@ -1,5 +1,11 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:css || true",
+  "outputDirectory": "./",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "env": {
     "GITHUB_CLIENT_ID": "@github_client_id",
     "GITHUB_CLIENT_SECRET": "@github_client_secret"

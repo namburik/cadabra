@@ -36,12 +36,16 @@
 
       try {
         console.log('[OAuth] Code received:', code.substring(0, 10) + '...');
-        // LinkedIn-only callback — GitHub OAuth flow uses blogs.html as its redirect URI
+        // Determine provider from state param: LinkedIn sets state=linkedin, GitHub sets state=github
+        const provider = params.get('state') === 'linkedin' ? 'linkedin' : 'github';
+        const endpoint = provider === 'linkedin'
+          ? '/api/auth/linkedin-exchange-token'
+          : '/api/auth/exchange-token';
+        console.log(`[OAuth] Provider: ${provider}, calling ${endpoint}...`);
         let response, data;
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000);
-        console.log('[OAuth] Calling /api/auth/linkedin-exchange-token...');
-        response = await fetch('/api/auth/linkedin-exchange-token', {
+        response = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code }),
@@ -62,13 +66,22 @@
           setTimeout(() => { window.location.href = '/'; }, 3000);
           return;
         }
-        // Store LinkedIn auth data in localStorage
-        localStorage.setItem('linkedin-auth', JSON.stringify({
-          email: data.email,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          token: data.token
-        }));
+        // Store auth data in localStorage keyed by provider
+        if (provider === 'linkedin') {
+          localStorage.setItem('linkedin-auth', JSON.stringify({
+            email: data.email,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            token: data.token
+          }));
+        } else {
+          localStorage.setItem('github-auth', JSON.stringify({
+            login: data.login,
+            email: data.email,
+            avatar_url: data.avatar_url,
+            token: data.token
+          }));
+        }
         // Remove code param from URL to prevent re-use after sign-out
         if (window.history.replaceState) {
           const url = new URL(window.location.href);

@@ -4,7 +4,8 @@
   const GITHUB_CLIENT_ID = 'Ov23ligh67ROJwOiIXxB';
   const LINKEDIN_CLIENT_ID = '868q8uysenspzk';
   function githubAuthUrl(){
-    return `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user:email`;
+    const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
+    return `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${redirectUri}&scope=user:email&state=github`;
   }
   function linkedInAuthUrl(){
     const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');

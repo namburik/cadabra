@@ -89,6 +89,24 @@ module.exports = async (req, res) => {
       request.end();
     });
 
+    // Log user to Google Sheet (fire-and-forget)
+    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+    if (webhookUrl) {
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          login: `${userInfo.given_name || ''} ${userInfo.family_name || ''}`.trim(),
+          email: userInfo.email || '',
+          avatar_url: userInfo.picture || '',
+          provider: 'linkedin'
+        }),
+        redirect: 'follow'
+      })
+        .then(r => r.text().then(body => console.log('[OAuth] Sheet webhook response:', r.status, body)))
+        .catch(e => console.error('[OAuth] Sheet webhook error:', e.message));
+    }
+
     // Return user data
     return res.status(200).json({
       id: userInfo.sub,

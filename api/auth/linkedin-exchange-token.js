@@ -36,7 +36,8 @@ module.exports = async (req, res) => {
   }
 
   // Step 1: Exchange code for access token
-  const tokenData = `grant_type=authorization_code&code=${encodeURIComponent(code)}&redirect_uri=${encodeURIComponent(redirectUri)}&client_id=${clientId}&client_secret=${clientSecret}`;
+  const tokenData = `grant_type=authorization_code&code=${encodeURIComponent(code)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+  const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
   const tokenOptions = {
     hostname: 'www.linkedin.com',
     port: 443,
@@ -44,7 +45,8 @@ module.exports = async (req, res) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': Buffer.byteLength(tokenData)
+      'Content-Length': Buffer.byteLength(tokenData),
+      'Authorization': `Basic ${basicAuth}`
     }
   };
 

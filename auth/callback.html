@@ -99,7 +99,9 @@
         }
         statusEl.textContent = 'Welcome! Redirecting...';
         statusEl.style.color = '#22c55e';
-        setTimeout(() => { window.location.href = '/blogs.html'; }, 1500);
+        const returnTo = (() => { try { return sessionStorage.getItem('auth-return-to'); } catch(e){ return null; } })();
+        if (returnTo) { try { sessionStorage.removeItem('auth-return-to'); } catch(e){} }
+        setTimeout(() => { window.location.href = returnTo || '/blogs.html'; }, 1500);
       } catch (err) {
         statusEl.textContent = `Error: ${err.message}`;
         statusEl.style.color = '#dc2626';

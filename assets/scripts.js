@@ -51,6 +51,24 @@
     try{ localStorage.removeItem('linkedin-auth'); }catch(e){}
   }
 
+  // Blog post auth guard: check if auth is required and redirect to LinkedIn if not signed in
+  (async function blogPostGuard(){
+    if(!window.location.pathname.startsWith('/posts/')) return;
+    if(getAuth()) return; // already signed in
+    try {
+      const res = await fetch('/api/auth/blog-config');
+      const { authRequired } = await res.json();
+      if(!authRequired) return;
+    } catch(e) {
+      return; // if API fails, allow access
+    }
+    // Not authenticated and auth is required — save return URL and redirect to LinkedIn
+    try { sessionStorage.setItem('auth-return-to', window.location.pathname); } catch(e){}
+    const clientId = '868q8uysenspzk';
+    const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
+    window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
+  })();
+
   // Replace traditional nav links with a system-style path (agentic theme)
   function replaceNavWithSystemPath(){
     try{

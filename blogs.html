@@ -43,18 +43,20 @@
         // Exchange code for access token via backend
         (async () => {
           try {
+            console.log('[OAuth] blogs.html: exchanging code', code.substring(0, 10) + '...');
             const response = await fetch('/api/auth/exchange-token', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ code })
             });
 
+            console.log('[OAuth] blogs.html: response status', response.status);
             const data = await response.json();
+            console.log('[OAuth] blogs.html: response data', data);
             
             if(!response.ok || data.error){
-              console.error('Token exchange error:', data.error || data);
-              setTimeout(() => { window.location.href = '/'; }, 1000);
-              return;
+              console.error('[OAuth] blogs.html: Token exchange error:', data.error || data);
+              return; // stay on page, don't redirect away
             }
 
             // Store auth data in localStorage
@@ -65,13 +67,13 @@
               token: data.token
             }));
 
+            console.log('[OAuth] blogs.html: auth success, reloading as', data.login);
             // Clean URL and show blogs page
             window.history.replaceState({}, document.title, '/blogs.html');
             location.reload();
 
           } catch(err) {
-            console.error('Auth error:', err);
-            setTimeout(() => { window.location.href = '/'; }, 1000);
+            console.error('[OAuth] blogs.html: Auth error:', err);
           }
         })();
       }

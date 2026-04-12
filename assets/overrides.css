@@ -259,16 +259,13 @@ body.dark .system-menu-dropdown a:hover{
 @media(max-width:640px){
   .playbook-controls{ margin-top:8px; margin-left:0 }
   .playbook-header{ flex-direction:column; align-items:flex-start }
+  .hero .bento-card.playbook-card{ min-height:360px !important; padding:20px !important }
+  .bento-grid { grid-template-columns: 1fr; gap: 16px; }
 }
 
 /* Reduce font-size by ~30% for the safety test line for visual de-emphasis */
 .playbook-list li.playbook-item--safety{ font-size:0.7em; line-height:1.25; color:var(--muted) }
 
-@media(max-width:640px){
-  .hero .bento-card.playbook-card{ min-height:44px !important; padding:6px !important }
-}
-
-/* Soften legal disclaimer: slightly smaller and lower opacity for muted presentation */
 .disclaimer{
   font-size:0.85rem !important;
   color:var(--muted) !important;

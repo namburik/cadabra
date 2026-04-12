@@ -156,6 +156,29 @@ module.exports = async (req, res) => {
 
     console.log('[OAuth] User data:', { login: userData.login, id: userData.id });
 
+    // Step 3: Log user to Google Sheet (fire-and-forget)
+    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+    if (webhookUrl) {
+      const webhookPayload = JSON.stringify({
+        login: userData.login,
+        id: userData.id,
+        email: userData.email || '',
+        avatar_url: userData.avatar_url || ''
+      });
+      console.log('[OAuth] Calling Google Sheet webhook:', webhookUrl);
+      // Use fetch — handles redirects automatically (Google Apps Script issues a redirect)
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: webhookPayload,
+        redirect: 'follow'
+      })
+        .then(r => r.text().then(body => console.log('[OAuth] Sheet webhook response:', r.status, body)))
+        .catch(e => console.error('[OAuth] Sheet webhook error:', e.message));
+    } else {
+      console.log('[OAuth] GOOGLE_SHEET_WEBHOOK_URL not set, skipping sheet logging');
+    }
+
     // Return user data and token to client
     console.log('[OAuth] Returning success response');
     return res.status(200).json({

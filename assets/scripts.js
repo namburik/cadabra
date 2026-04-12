@@ -140,7 +140,7 @@
 
       // Auth button
       if(!auth){
-        const signInBtn = makeLink('#', '🔒 Sign In for Premium', 'signin');
+        const signInBtn = makeLink('#', '🔒 Free Sign In · Premium Content', 'signin');
         const dropdown = document.createElement('div');
         dropdown.style.cssText = 'display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1e293b;border:1px solid rgba(59,130,246,0.3);border-radius:8px;overflow:hidden;z-index:999;min-width:160px;box-shadow:0 8px 24px rgba(0,0,0,0.4);';
 

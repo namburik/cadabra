@@ -61,7 +61,10 @@
       prefix.textContent = 'agentic://';
       wrapper.appendChild(prefix);
 
-      if(parts.length===0){
+      // Don't show path parts for blog posts — just show agentic://
+      const isBlogPost = parts.length > 0 && parts[0].toLowerCase() === 'posts';
+
+      if(parts.length===0 || isBlogPost){
         const root = document.createElement('span'); root.textContent = '/'; wrapper.appendChild(root);
       } else {
         parts.forEach((p, i) => {

@@ -26,7 +26,7 @@
   <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
   <script src="/assets/scripts.js" defer></script>
   <script>
-    // Handle GitHub OAuth callback
+    // Handle GitHub OAuth callback and auth gate
     (function(){
       const params = new URLSearchParams(window.location.search);
       const code = params.get('code');
@@ -34,7 +34,6 @@
 
       if(error){
         console.error('OAuth error:', error);
-        // Redirect to home after a brief delay
         setTimeout(() => { window.location.href = '/'; }, 1000);
         return;
       }
@@ -56,10 +55,9 @@
             
             if(!response.ok || data.error){
               console.error('[OAuth] blogs.html: Token exchange error:', data.error || data);
-              return; // stay on page, don't redirect away
+              return;
             }
 
-            // Store auth data in localStorage
             localStorage.setItem('github-auth', JSON.stringify({
               login: data.login,
               id: data.id,
@@ -68,7 +66,6 @@
             }));
 
             console.log('[OAuth] blogs.html: auth success, reloading as', data.login);
-            // Clean URL and show blogs page
             window.history.replaceState({}, document.title, '/blogs.html');
             location.reload();
 
@@ -76,6 +73,18 @@
             console.error('[OAuth] blogs.html: Auth error:', err);
           }
         })();
+        return; // wait for async above, don't run gate check
+      }
+
+      // Auth gate: redirect to sign-in if not logged in
+      try {
+        const auth = JSON.parse(localStorage.getItem('github-auth') || 'null');
+        if(!auth || !auth.login){
+          const clientId = 'Ov23ligh67ROJwOiIXxB';
+          window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user:email`;
+        }
+      } catch(e) {
+        window.location.href = '/';
       }
     })();
   </script>

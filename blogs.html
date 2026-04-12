@@ -25,6 +25,58 @@
   <link rel="preload" href="/assets/overrides.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
   <script src="/assets/scripts.js" defer></script>
+  <script>
+    // Handle GitHub OAuth callback
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+      const error = params.get('error');
+
+      if(error){
+        console.error('OAuth error:', error);
+        // Redirect to home after a brief delay
+        setTimeout(() => { window.location.href = '/'; }, 1000);
+        return;
+      }
+
+      if(code){
+        // Exchange code for access token via backend
+        (async () => {
+          try {
+            const response = await fetch('/api/auth/exchange-token', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ code })
+            });
+
+            const data = await response.json();
+            
+            if(!response.ok || data.error){
+              console.error('Token exchange error:', data.error || data);
+              setTimeout(() => { window.location.href = '/'; }, 1000);
+              return;
+            }
+
+            // Store auth data in localStorage
+            localStorage.setItem('github-auth', JSON.stringify({
+              login: data.login,
+              id: data.id,
+              avatar_url: data.avatar_url,
+              token: data.token
+            }));
+
+            // Clean URL and show blogs page
+            window.history.replaceState({}, document.title, '/blogs.html');
+            location.reload();
+
+          } catch(err) {
+            console.error('Auth error:', err);
+            setTimeout(() => { window.location.href = '/'; }, 1000);
+          }
+        })();
+      }
+    })();
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

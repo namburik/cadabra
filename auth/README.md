@@ -1,29 +1,40 @@
 # GitHub OAuth Setup Guide
 
 Your Client ID is: `Ov23ligh67ROJwOiIXxB`
+Your OAuth Redirect URI: `https://namburi.me/blogs.html`
 
-## What's in place:
+## Current Setup ✅
 
-✅ Frontend OAuth flow in [assets/scripts.js](../assets/scripts.js)
-✅ OAuth callback handler at [auth/callback.html](./callback.html)
-✅ Backend implementation reference: [auth/exchange-token-backend.js.txt](./exchange-token-backend.js.txt)
+- ✅ Frontend OAuth flow: [assets/scripts.js](../assets/scripts.js)
+- ✅ OAuth callback handler: [blogs.html](../blogs.html) (added inline script)
+- ✅ Backend endpoint reference: [auth/exchange-token-backend.js.txt](./exchange-token-backend.js.txt)
+
+## Flow
+
+1. User clicks "Sign In" on any page
+2. Redirected to GitHub with Client ID
+3. User authorizes → GitHub redirects to `https://namburi.me/blogs.html?code=XXX`
+4. [blogs.html](../blogs.html) detects `code` parameter and calls backend `/api/auth/exchange-token`
+5. Backend exchanges code for access token
+6. Auth data stored in localStorage
+7. Page reloads → Blogs menu and Sign Out button appear
 
 ## What you need to complete:
 
 ### 1. Get your Client Secret
 
-Go to https://github.com/settings/developers and locate your OAuth app (created for Client ID `Ov23ligh67ROJwOiIXxB`). Copy the **Client Secret**.
+Go to https://github.com/settings/developers and locate your OAuth app (Client ID `Ov23ligh67ROJwOiIXxB`). Copy the **Client Secret**.
 
 **⚠️ IMPORTANT:** Never commit the Client Secret to git. Store it as an environment variable only.
 
-### 2. Set redirect URI in GitHub
+### 2. GitHub OAuth app is already configured
 
-In the GitHub OAuth app settings, set the Authorization callback URL to:
+The redirect URI in GitHub should be:
 ```
-https://yourdomain.com/auth/callback.html
+https://namburi.me/blogs.html
 ```
 
-(Replace `yourdomain.com` with your actual domain.)
+If it's not, update it in GitHub settings.
 
 ### 3. Deploy the backend endpoint
 
@@ -36,42 +47,41 @@ Choose one option:
 3. In Vercel dashboard → Settings → Environment Variables, add:
    - `GITHUB_CLIENT_ID` = `Ov23ligh67ROJwOiIXxB`
    - `GITHUB_CLIENT_SECRET` = (your secret from step 1)
-4. Deploy. Endpoint is now at `https://yourdomain.vercel.app/api/auth/exchange-token`
+4. Deploy. Endpoint is now at `https://namburi.me/api/auth/exchange-token`
 
 #### **Option B: Netlify Functions**
 
 1. Create `/functions/exchange-token.js`
 2. Adapt the code from [exchange-token-backend.js.txt](./exchange-token-backend.js.txt) for Netlify
 3. In Netlify dashboard → Site settings → Environment, add the two env vars above
-4. Update [callback.html](./callback.html) to call `/api/exchange-token` instead of `/auth/exchange-token`
-5. Deploy. Endpoint is now at `https://yourdomain.netlify.app/api/exchange-token`
+4. Update [blogs.html](../blogs.html) callback script if needed (`/api/auth/exchange-token` path should work)
+5. Deploy. Endpoint is now at `https://namburi.me/api/auth/exchange-token`
 
 #### **Option C: Your own Node.js server**
 
 1. Copy the logic from [exchange-token-backend.js.txt](./exchange-token-backend.js.txt) into your Express/server code
-2. Ensure the route is `/auth/exchange-token` and matches what [callback.html](./callback.html) expects
+2. Ensure the route is `/api/auth/exchange-token` (used by [blogs.html](../blogs.html))
 3. Set environment variables on your server
 4. Deploy
 
 ### 4. Test the flow
 
-1. Open your site and you should see "Sign In" button (no Blogs link yet)
+1. Open your site. You should see "Sign In" button (no Blogs link yet)
 2. Click "Sign In"
 3. You'll be redirected to GitHub to authorize
-4. After approval, you're redirected to [callback.html](./callback.html)
-5. Your browser exchanges the code for a token (calls your backend)
+4. After approval, you're redirected back to [blogs.html](../blogs.html) with a `code` parameter
+5. [blogs.html](../blogs.html) calls your backend `/api/auth/exchange-token` to exchange code for token
 6. Auth data is stored in localStorage
-7. You're redirected home, and now you see "Blogs" link + username + "Sign Out" button
+7. Page reloads, and now you see "Blogs" link + username + "Sign Out" button
 
 ### 5. For production
 
-- [ ] Domain configured in GitHub OAuth app
+- [ ] GitHub OAuth app has redirect URI set to `https://namburi.me/blogs.html`
 - [ ] Environment variables set securely (never in code)
-- [ ] Backend endpoint deployed and working
-- [ ] Callback URL matches your domain
+- [ ] Backend endpoint deployed and working at `/api/auth/exchange-token`
 - [ ] Test sign-in flow end-to-end
-- [ ] Add CORS headers to backend if needed (callback.html calls from browser)
+- [ ] Add CORS headers to backend if needed (blogs.html calls from browser)
 
 ---
 
-**Still unsure?** The easiest path is **Vercel** — deploy, add 2 env vars, done. The redirect flow handles the rest automatically.
+**Next step:** Deploy the backend endpoint. Vercel is easiest — just add the 2 env vars and it works automatically. Then test the flow by clicking "Sign In".

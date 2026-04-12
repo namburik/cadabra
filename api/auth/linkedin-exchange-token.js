@@ -99,9 +99,9 @@ module.exports = async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           login: fullName,
+          id: userInfo.sub,
           email: userInfo.email || '',
-          avatar_url: userInfo.picture || '',
-          provider: 'linkedin'
+          avatar_url: userInfo.picture || ''
         }),
         redirect: 'follow'
       })

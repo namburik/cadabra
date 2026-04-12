@@ -1,5 +1,16 @@
 // Theme toggle, year helper, and simple client-side search
 (function(){
+  // OAuth client IDs and URL builders — single source of truth
+  const GITHUB_CLIENT_ID = 'Ov23ligh67ROJwOiIXxB';
+  const LINKEDIN_CLIENT_ID = '868q8uysenspzk';
+  function githubAuthUrl(){
+    return `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user:email`;
+  }
+  function linkedInAuthUrl(){
+    const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
+    return `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${LINKEDIN_CLIENT_ID}&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
+  }
+
   function applyTheme(theme){
     if(theme==='dark') document.body.classList.add('dark'); else document.body.classList.remove('dark');
   }
@@ -64,9 +75,7 @@
     }
     // Not authenticated and auth is required — save return URL and redirect to LinkedIn
     try { sessionStorage.setItem('auth-return-to', window.location.pathname); } catch(e){}
-    const clientId = '868q8uysenspzk';
-    const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
-    window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
+    window.location.href = linkedInAuthUrl();
   })();
 
   // Replace traditional nav links with a system-style path (agentic theme)
@@ -150,7 +159,7 @@
         ghBtn.onmouseover = () => ghBtn.style.background = 'rgba(59,130,246,0.15)';
         ghBtn.onmouseout = () => ghBtn.style.background = 'none';
         ghBtn.addEventListener('click', () => {
-          window.location.href = `https://github.com/login/oauth/authorize?client_id=Ov23ligh67ROJwOiIXxB&scope=user:email`;
+          window.location.href = githubAuthUrl();
         });
 
         const liBtn = document.createElement('button');
@@ -159,8 +168,7 @@
         liBtn.onmouseover = () => liBtn.style.background = 'rgba(59,130,246,0.15)';
         liBtn.onmouseout = () => liBtn.style.background = 'none';
         liBtn.addEventListener('click', () => {
-          const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html');
-          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=868q8uysenspzk&redirect_uri=${redirectUri}&state=linkedin&scope=openid%20profile%20email`;
+          window.location.href = linkedInAuthUrl();
         });
 
         dropdown.appendChild(ghBtn);

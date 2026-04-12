@@ -36,30 +36,17 @@
 
       try {
         console.log('[OAuth] Code received:', code.substring(0, 10) + '...');
-        // Determine provider from state param (set during OAuth redirect)
-        let provider = 'github';
-        if (params.get('state') === 'linkedin') provider = 'linkedin';
-
+        // LinkedIn-only callback — GitHub OAuth flow uses blogs.html as its redirect URI
         let response, data;
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000);
-        if (provider === 'linkedin') {
-          console.log('[OAuth] Calling /api/auth/linkedin-exchange-token...');
-          response = await fetch('/api/auth/linkedin-exchange-token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ code }),
-            signal: controller.signal
-          });
-        } else {
-          console.log('[OAuth] Calling /api/auth/exchange-token...');
-          response = await fetch('/api/auth/exchange-token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ code }),
-            signal: controller.signal
-          });
-        }
+        console.log('[OAuth] Calling /api/auth/linkedin-exchange-token...');
+        response = await fetch('/api/auth/linkedin-exchange-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code }),
+          signal: controller.signal
+        });
         clearTimeout(timeoutId);
         console.log('[OAuth] API response status:', response.status);
         if (!response.ok) {
@@ -75,22 +62,13 @@
           setTimeout(() => { window.location.href = '/'; }, 3000);
           return;
         }
-        // Store auth data in localStorage
-        if (provider === 'linkedin') {
-          localStorage.setItem('linkedin-auth', JSON.stringify({
-            email: data.email,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            token: data.token
-          }));
-        } else {
-          localStorage.setItem('github-auth', JSON.stringify({
-            login: data.login,
-            email: data.email,
-            avatar_url: data.avatar_url,
-            token: data.token
-          }));
-        }
+        // Store LinkedIn auth data in localStorage
+        localStorage.setItem('linkedin-auth', JSON.stringify({
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          token: data.token
+        }));
         // Remove code param from URL to prevent re-use after sign-out
         if (window.history.replaceState) {
           const url = new URL(window.location.href);

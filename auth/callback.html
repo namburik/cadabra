@@ -4,7 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Authentication — agentic and authentic</title>
-  <link rel="stylesheet" href="/assets/style.css" />
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+    }
+    #status {
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="status">Authenticating...</div>
+
   <script>
     (async function(){
       const params = new URLSearchParams(window.location.search);
@@ -16,27 +34,31 @@
       if(error){
         statusEl.textContent = `Authentication failed: ${error}`;
         statusEl.style.color = '#dc2626';
+        console.error('[OAuth] Auth error from GitHub:', error);
         setTimeout(() => { window.location.href = '/'; }, 3000);
         return;
       }
 
       if(!code){
         statusEl.textContent = 'No code received. Redirecting...';
+        statusEl.style.color = '#dc2626';
+        console.error('[OAuth] No code in URL');
         setTimeout(() => { window.location.href = '/'; }, 2000);
         return;
       }
 
       statusEl.textContent = 'Exchanging code for token...';
-
+      console.log('[OAuth] Starting auth callback with code:', code.substring(0, 10) + '...');
+      
       try {
-        statusEl.textContent = 'Exchanging code for token...';
-        console.log('Code received:', code.substring(0, 10) + '...');
+        console.log('[OAuth] Code received:', code.substring(0, 10) + '...');
         
         // Call backend endpoint to exchange code for access token
         // with a timeout to prevent hanging
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
         
+        console.log('[OAuth] Calling /api/auth/exchange-token...');
         const response = await fetch('/api/auth/exchange-token', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -46,7 +68,7 @@
 
         clearTimeout(timeoutId);
         
-        console.log('API response status:', response.status);
+        console.log('[OAuth] API response status:', response.status);
 
         if (!response.ok) {
           const errorText = await response.text();
@@ -54,12 +76,12 @@
         }
 
         const data = await response.json();
-        console.log('Auth data received:', data);
+        console.log('[OAuth] Auth data received:', data);
         
         if(data.error){
           statusEl.textContent = `Error: ${data.error}`;
           statusEl.style.color = '#dc2626';
-          console.error('API error:', data.error, data.details);
+          console.error('[OAuth] API error:', data.error, data.details);
           setTimeout(() => { window.location.href = '/'; }, 3000);
           return;
         }
@@ -74,34 +96,17 @@
 
         statusEl.textContent = `Welcome, ${data.login}! Redirecting...`;
         statusEl.style.color = '#22c55e';
-        console.log('Auth successful, redirecting to blogs');
+        console.log('[OAuth] Auth successful, redirecting to blogs');
         setTimeout(() => { window.location.href = '/blogs.html'; }, 1500);
 
       } catch(err) {
-        clearTimeout(timeoutId);
         statusEl.textContent = `Error: ${err.message}`;
         statusEl.style.color = '#dc2626';
-        console.error('Auth error:', err);
-        console.error('Error details:', { message: err.message, code: err.code, name: err.name });
+        console.error('[OAuth] Auth error:', err);
+        console.error('[OAuth] Error details:', { message: err.message, code: err.code, name: err.name });
         setTimeout(() => { window.location.href = '/'; }, 3000);
       }
     })();
   </script>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    #status {
-      font-size: 1.1rem;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div id="status">Authenticating...</div>
 </body>
 </html>

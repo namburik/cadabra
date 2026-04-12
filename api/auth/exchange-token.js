@@ -121,6 +121,17 @@ module.exports = async (req, res) => {
 
     // Step 2: Fetch user info using access token
     console.log('[OAuth] Fetching user info...');
+    const userOptions = {
+      hostname: 'api.github.com',
+      port: 443,
+      path: '/user',
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'User-Agent': 'agentic-auth',
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    };
     const userData = await new Promise((resolve, reject) => {
       const request = https.request(userOptions, (response) => {
         console.log('[OAuth] GitHub user endpoint responded with status:', response.statusCode);

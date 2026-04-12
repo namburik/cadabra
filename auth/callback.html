@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authentication — agentic and authentic</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script>
+    (async function(){
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+      const error = params.get('error');
+
+      const statusEl = document.getElementById('status');
+      
+      if(error){
+        statusEl.textContent = `Authentication failed: ${error}`;
+        statusEl.style.color = '#dc2626';
+        setTimeout(() => { window.location.href = '/'; }, 3000);
+        return;
+      }
+
+      if(!code){
+        statusEl.textContent = 'No code received. Redirecting...';
+        setTimeout(() => { window.location.href = '/'; }, 2000);
+        return;
+      }
+
+      statusEl.textContent = 'Exchanging code for token...';
+
+      try {
+        // Call backend endpoint to exchange code for access token
+        // This endpoint should:
+        // 1. Take the code from GitHub
+        // 2. Exchange it for an access token using your GitHub Client Secret
+        // 3. Fetch user info from GitHub API
+        // 4. Return user data and token to the client
+        
+        const response = await fetch('/auth/exchange-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if(data.error){
+          statusEl.textContent = `Error: ${data.error}`;
+          statusEl.style.color = '#dc2626';
+          setTimeout(() => { window.location.href = '/'; }, 3000);
+          return;
+        }
+
+        // Store auth data in localStorage
+        localStorage.setItem('github-auth', JSON.stringify({
+          login: data.login,
+          id: data.id,
+          avatar_url: data.avatar_url,
+          token: data.token
+        }));
+
+        statusEl.textContent = `Welcome, ${data.login}! Redirecting...`;
+        statusEl.style.color = '#22c55e';
+        setTimeout(() => { window.location.href = '/'; }, 1500);
+
+      } catch(err) {
+        statusEl.textContent = `Error: ${err.message}`;
+        statusEl.style.color = '#dc2626';
+        console.error('Auth error:', err);
+        setTimeout(() => { window.location.href = '/'; }, 3000);
+      }
+    })();
+  </script>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #status {
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="status">Authenticating...</div>
+</body>
+</html>

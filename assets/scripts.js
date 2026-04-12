@@ -28,6 +28,17 @@
     els.forEach(el => { el.textContent = y; });
   }
 
+  // GitHub auth helpers
+  function getGitHubAuth(){
+    try{ return JSON.parse(localStorage.getItem('github-auth') || 'null'); }catch(e){ return null; }
+  }
+  function setGitHubAuth(userData){
+    try{ localStorage.setItem('github-auth', JSON.stringify(userData)); }catch(e){}
+  }
+  function clearGitHubAuth(){
+    try{ localStorage.removeItem('github-auth'); }catch(e){}
+  }
+
   // Replace traditional nav links with a system-style path (agentic theme)
   function replaceNavWithSystemPath(){
     try{
@@ -83,7 +94,7 @@
         });
       }
 
-      // Create inline text links (About / Blogs / Contact)
+      // Create inline text links (About / Blogs / Contact / Auth)
       const navLinks = document.createElement('span');
       navLinks.className = 'system-inline-links';
       navLinks.style.marginLeft = '12px';
@@ -91,7 +102,7 @@
       navLinks.style.gap = '10px';
       navLinks.style.alignItems = 'center';
 
-      const makeLink = (href, text) => {
+      const makeLink = (href, text, isButton = false) => {
         const a = document.createElement('a');
         a.href = href;
         a.textContent = text;
@@ -99,11 +110,50 @@
         a.style.textDecoration = 'none';
         a.style.padding = '6px 8px';
         a.tabIndex = 0;
+        if(isButton){
+          a.style.background = 'rgba(79, 156, 249, 0.1)';
+          a.style.border = '1px solid rgba(79, 156, 249, 0.3)';
+          a.style.borderRadius = '4px';
+          a.style.cursor = 'pointer';
+        }
         return a;
       };
 
+      const auth = getGitHubAuth();
+
       navLinks.appendChild(makeLink('/about.html', 'About'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
+      
+      // Show Blogs link only if authenticated
+      if(auth && auth.login){
+        navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
+      }
+
+      // Auth button
+      if(!auth || !auth.login){
+        const signIn = makeLink('#', 'Sign In', true);
+        signIn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const clientId = 'Ov23ligh67ROJwOiIXxB';
+          const redirectUri = window.location.origin + '/auth/callback.html';
+          window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user:email`;
+        });
+        navLinks.appendChild(signIn);
+      } else {
+        const user = document.createElement('span');
+        user.textContent = `Signed in as ${auth.login}`;
+        user.style.fontSize = '0.85em';
+        user.style.opacity = '0.8';
+        navLinks.appendChild(user);
+
+        const signOut = makeLink('#', 'Sign Out', true);
+        signOut.addEventListener('click', (e) => {
+          e.preventDefault();
+          clearGitHubAuth();
+          window.location.reload();
+        });
+        navLinks.appendChild(signOut);
+      }
 
       // Hide original nav links visually but keep them in the DOM for crawlers/accessibility
       nav.style.display = 'none';

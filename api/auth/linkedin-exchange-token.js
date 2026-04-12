@@ -66,19 +66,19 @@ module.exports = async (req, res) => {
     }
     const accessToken = accessTokenData.access_token;
 
-    // Step 2: Fetch user profile
-    const profileOptions = {
+    // Step 2: Fetch user info via OpenID Connect userinfo endpoint
+    const userInfoOptions = {
       hostname: 'api.linkedin.com',
       port: 443,
-      path: '/v2/me',
+      path: '/v2/userinfo',
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Connection': 'Keep-Alive'
       }
     };
-    const profileData = await new Promise((resolve, reject) => {
-      const request = https.request(profileOptions, (response) => {
+    const userInfo = await new Promise((resolve, reject) => {
+      const request = https.request(userInfoOptions, (response) => {
         let data = '';
         response.on('data', chunk => { data += chunk; });
         response.on('end', () => {
@@ -88,37 +88,13 @@ module.exports = async (req, res) => {
       request.on('error', (err) => reject(err));
       request.end();
     });
-
-    // Step 3: Fetch user email
-    const emailOptions = {
-      hostname: 'api.linkedin.com',
-      port: 443,
-      path: '/v2/emailAddress?q=members&projection=(elements*(handle~))',
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Connection': 'Keep-Alive'
-      }
-    };
-    const emailData = await new Promise((resolve, reject) => {
-      const request = https.request(emailOptions, (response) => {
-        let data = '';
-        response.on('data', chunk => { data += chunk; });
-        response.on('end', () => {
-          try { resolve(JSON.parse(data)); } catch(e) { reject(e); }
-        });
-      });
-      request.on('error', (err) => reject(err));
-      request.end();
-    });
-    const email = emailData.elements?.[0]?.['handle~']?.emailAddress || '';
 
     // Return user data
     return res.status(200).json({
-      id: profileData.id,
-      firstName: profileData.localizedFirstName,
-      lastName: profileData.localizedLastName,
-      email,
+      id: userInfo.sub,
+      firstName: userInfo.given_name,
+      lastName: userInfo.family_name,
+      email: userInfo.email,
       token: accessToken
     });
   } catch (error) {

@@ -92,11 +92,13 @@ module.exports = async (req, res) => {
     // Log user to Google Sheet (fire-and-forget)
     const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
     if (webhookUrl) {
+      const fullName = `${userInfo.given_name || ''} ${userInfo.family_name || ''}`.trim();
+      console.log('[OAuth] Calling Google Sheet webhook for LinkedIn user:', fullName);
       fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          login: `${userInfo.given_name || ''} ${userInfo.family_name || ''}`.trim(),
+          login: fullName,
           email: userInfo.email || '',
           avatar_url: userInfo.picture || '',
           provider: 'linkedin'
@@ -105,6 +107,8 @@ module.exports = async (req, res) => {
       })
         .then(r => r.text().then(body => console.log('[OAuth] Sheet webhook response:', r.status, body)))
         .catch(e => console.error('[OAuth] Sheet webhook error:', e.message));
+    } else {
+      console.log('[OAuth] GOOGLE_SHEET_WEBHOOK_URL not set, skipping sheet logging');
     }
 
     // Return user data

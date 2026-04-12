@@ -102,19 +102,29 @@
       navLinks.style.gap = '10px';
       navLinks.style.alignItems = 'center';
 
-      const makeLink = (href, text, isButton = false) => {
+      const makeLink = (href, text, style = 'default') => {
         const a = document.createElement('a');
         a.href = href;
         a.textContent = text;
-        a.style.color = 'inherit';
         a.style.textDecoration = 'none';
-        a.style.padding = '6px 8px';
+        a.style.padding = '6px 10px';
+        a.style.borderRadius = '4px';
+        a.style.cursor = 'pointer';
+        a.style.fontWeight = '500';
+        a.style.fontSize = '13px';
+        a.style.transition = 'all 0.15s ease';
         a.tabIndex = 0;
-        if(isButton){
-          a.style.background = 'rgba(79, 156, 249, 0.1)';
-          a.style.border = '1px solid rgba(79, 156, 249, 0.3)';
-          a.style.borderRadius = '4px';
-          a.style.cursor = 'pointer';
+        if(style === 'default'){
+          a.style.color = 'inherit';
+          a.style.opacity = '0.8';
+        } else if(style === 'signin'){
+          a.style.color = '#3b82f6';
+          a.style.background = 'rgba(59, 130, 246, 0.1)';
+          a.style.border = '1px solid rgba(59, 130, 246, 0.4)';
+        } else if(style === 'signout'){
+          a.style.color = '#f87171';
+          a.style.background = 'rgba(248, 113, 113, 0.08)';
+          a.style.border = '1px solid rgba(248, 113, 113, 0.3)';
         }
         return a;
       };
@@ -131,7 +141,7 @@
 
       // Auth button
       if(!auth || !auth.login){
-        const signIn = makeLink('#', 'Sign In', true);
+        const signIn = makeLink('#', '👤 Sign In', 'signin');
         signIn.addEventListener('click', (e) => {
           e.preventDefault();
           const clientId = 'Ov23ligh67ROJwOiIXxB';
@@ -139,13 +149,43 @@
         });
         navLinks.appendChild(signIn);
       } else {
-        const user = document.createElement('span');
-        user.textContent = `Signed in as ${auth.login}`;
-        user.style.fontSize = '0.85em';
-        user.style.opacity = '0.8';
-        navLinks.appendChild(user);
+        // User badge
+        const userBadge = document.createElement('span');
+        userBadge.style.display = 'inline-flex';
+        userBadge.style.alignItems = 'center';
+        userBadge.style.gap = '6px';
+        userBadge.style.padding = '4px 10px';
+        userBadge.style.background = 'rgba(34, 197, 94, 0.1)';
+        userBadge.style.border = '1px solid rgba(34, 197, 94, 0.3)';
+        userBadge.style.borderRadius = '20px';
+        userBadge.style.fontSize = '12px';
+        userBadge.style.fontWeight = '600';
+        userBadge.style.color = '#22c55e';
+        userBadge.style.letterSpacing = '0.01em';
 
-        const signOut = makeLink('#', 'Sign Out', true);
+        const avatar = document.createElement('img');
+        avatar.src = auth.avatar_url || '';
+        avatar.alt = auth.login;
+        avatar.style.width = '18px';
+        avatar.style.height = '18px';
+        avatar.style.borderRadius = '50%';
+        avatar.style.objectFit = 'cover';
+        avatar.onerror = () => { avatar.style.display = 'none'; };
+
+        const dot = document.createElement('span');
+        dot.textContent = '●';
+        dot.style.fontSize = '8px';
+        dot.style.color = '#22c55e';
+
+        const name = document.createElement('span');
+        name.textContent = auth.login;
+
+        userBadge.appendChild(avatar);
+        userBadge.appendChild(dot);
+        userBadge.appendChild(name);
+        navLinks.appendChild(userBadge);
+
+        const signOut = makeLink('#', '↩ Sign Out', 'signout');
         signOut.addEventListener('click', (e) => {
           e.preventDefault();
           clearGitHubAuth();

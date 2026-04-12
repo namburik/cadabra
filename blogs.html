@@ -76,12 +76,15 @@
         return; // wait for async above, don't run gate check
       }
 
-      // Auth gate: redirect to sign-in if not logged in
+      // Auth gate: redirect to home if not logged in
       try {
-        const auth = JSON.parse(localStorage.getItem('github-auth') || 'null');
+        let auth = null;
+        try { auth = JSON.parse(localStorage.getItem('github-auth') || 'null'); } catch(e){}
         if(!auth || !auth.login){
-          const clientId = 'Ov23ligh67ROJwOiIXxB';
-          window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user:email`;
+          try { auth = JSON.parse(localStorage.getItem('linkedin-auth') || 'null'); } catch(e){}
+        }
+        if(!auth || (!auth.login && !auth.email)){
+          window.location.href = '/';
         }
       } catch(e) {
         window.location.href = '/';

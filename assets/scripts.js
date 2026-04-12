@@ -152,7 +152,7 @@
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
       
       // Show Blogs link only if authenticated
-      if(auth && auth.login){
+      if(auth && (auth.login || auth.email)){
         navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
       }
 

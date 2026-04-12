@@ -29,14 +29,26 @@
   }
 
   // GitHub auth helpers
-  function getGitHubAuth(){
-    try{ return JSON.parse(localStorage.getItem('github-auth') || 'null'); }catch(e){ return null; }
+  // --- Auth helpers for GitHub and LinkedIn ---
+  function getAuth(){
+    // Prefer GitHub, fallback to LinkedIn
+    let auth = null;
+    try { auth = JSON.parse(localStorage.getItem('github-auth') || 'null'); } catch(e){}
+    if(auth && auth.login) return { ...auth, provider: 'github' };
+    try { auth = JSON.parse(localStorage.getItem('linkedin-auth') || 'null'); } catch(e){}
+    if(auth && auth.email) return { ...auth, provider: 'linkedin' };
+    return null;
   }
-  function setGitHubAuth(userData){
-    try{ localStorage.setItem('github-auth', JSON.stringify(userData)); }catch(e){}
+  function setAuth(userData, provider){
+    if(provider === 'github'){
+      try{ localStorage.setItem('github-auth', JSON.stringify(userData)); }catch(e){}
+    } else if(provider === 'linkedin'){
+      try{ localStorage.setItem('linkedin-auth', JSON.stringify(userData)); }catch(e){}
+    }
   }
-  function clearGitHubAuth(){
+  function clearAuth(){
     try{ localStorage.removeItem('github-auth'); }catch(e){}
+    try{ localStorage.removeItem('linkedin-auth'); }catch(e){}
   }
 
   // Replace traditional nav links with a system-style path (agentic theme)
@@ -134,7 +146,7 @@
         return a;
       };
 
-      const auth = getGitHubAuth();
+      const auth = getAuth();
 
       navLinks.appendChild(makeLink('/about.html', 'About'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
@@ -145,14 +157,24 @@
       }
 
       // Auth button
-      if(!auth || !auth.login){
-        const signIn = makeLink('#', '👤 Sign In', 'signin');
-        signIn.addEventListener('click', (e) => {
+      if(!auth){
+        // GitHub sign in
+        const signInGitHub = makeLink('#', 'GitHub Sign In', 'signin');
+        signInGitHub.addEventListener('click', (e) => {
           e.preventDefault();
           const clientId = 'Ov23ligh67ROJwOiIXxB';
           window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user:email`;
         });
-        navLinks.appendChild(signIn);
+        navLinks.appendChild(signInGitHub);
+        // LinkedIn sign in
+        const signInLinkedIn = makeLink('#', 'LinkedIn Sign In', 'signin');
+        signInLinkedIn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const clientId = '868q8uysenspzk';
+          const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback.html?linkedin=1');
+          window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=r_liteprofile%20r_emailaddress`;
+        });
+        navLinks.appendChild(signInLinkedIn);
       } else {
         // User badge
         const userBadge = document.createElement('span');
@@ -170,7 +192,7 @@
 
         const avatar = document.createElement('img');
         avatar.src = auth.avatar_url || '';
-        avatar.alt = auth.login;
+        avatar.alt = auth.login || auth.email || '';
         avatar.style.width = '18px';
         avatar.style.height = '18px';
         avatar.style.borderRadius = '50%';
@@ -183,7 +205,7 @@
         dot.style.color = '#22c55e';
 
         const name = document.createElement('span');
-        name.textContent = auth.login;
+        name.textContent = auth.login || auth.email;
 
         userBadge.appendChild(avatar);
         userBadge.appendChild(dot);
@@ -193,7 +215,7 @@
         const signOut = makeLink('#', '↩ Sign Out', 'signout');
         signOut.addEventListener('click', (e) => {
           e.preventDefault();
-          clearGitHubAuth();
+          clearAuth();
           window.location.reload();
         });
         navLinks.appendChild(signOut);

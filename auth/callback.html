@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Authentication — agentic and authentic</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-    }
-    #status {
-      font-size: 1.1rem;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div id="status">Authenticating...</div>
-
-  <script>
-    (async function(){
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get('code');
-      const error = params.get('error');
-
-      const statusEl = document.getElementById('status');
-      
-      if(error){
-        statusEl.textContent = `Authentication failed: ${error}`;
-        statusEl.style.color = '#dc2626';
-        console.error('[OAuth] Auth error from GitHub:', error);
-        setTimeout(() => { window.location.href = '/'; }, 3000);
-        return;
-      }
-
-      if(!code){
-        statusEl.textContent = 'No code received. Redirecting...';
-        statusEl.style.color = '#dc2626';
-        console.error('[OAuth] No code in URL');
-        setTimeout(() => { window.location.href = '/'; }, 2000);
-        return;
-      }
-
-      statusEl.textContent = 'Exchanging code for token...';
-      console.log('[OAuth] Starting auth callback with code:', code.substring(0, 10) + '...');
-      
       try {
         console.log('[OAuth] Code received:', code.substring(0, 10) + '...');
-        
-        // Call backend endpoint to exchange code for access token
-        // with a timeout to prevent hanging
+        // Determine provider from URL (github or linkedin)
+        let provider = 'github';
+        if (window.location.search.includes('linkedin')) provider = 'linkedin';
+
+        // Try GitHub first, fallback to LinkedIn if GitHub fails
+        let response, data;
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
-        
-        console.log('[OAuth] Calling /api/auth/exchange-token...');
-        const response = await fetch('/api/auth/exchange-token', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ code }),
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        if (provider === 'linkedin') {
+          console.log('[OAuth] Calling /api/auth/linkedin-exchange-token...');
+          response = await fetch('/api/auth/linkedin-exchange-token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code }),
+            signal: controller.signal
+          });
+        } else {
+          console.log('[OAuth] Calling /api/auth/exchange-token...');
+          response = await fetch('/api/auth/exchange-token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code }),
+            signal: controller.signal
+          });
+        }
+        clearTimeout(timeoutId);
+        console.log('[OAuth] API response status:', response.status);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Server error: ${response.status} - ${errorText}`);
+        }
+        data = await response.json();
+        console.log('[OAuth] Auth data received:', data);
+        if(data.error){
+          statusEl.textContent = `Error: ${data.error}`;
+          statusEl.style.color = '#dc2626';
+          console.error('[OAuth] API error:', data.error, data.details);
+          setTimeout(() => { window.location.href = '/'; }, 3000);
+          return;
+        }
+        // Store auth data in localStorage
+        if (provider === 'linkedin') {
+          localStorage.setItem('linkedin-auth', JSON.stringify({
+            email: data.email,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            token: data.token
+          }));
+        } else {
+          localStorage.setItem('github-auth', JSON.stringify({
+            login: data.login,
+            email: data.email,
+            avatar_url: data.avatar_url,
+            token: data.token
+          }));
+        }
+        // Remove code param from URL to prevent re-login after sign-out
+        if (window.history.replaceState) {
+          const url = new URL(window.location.href);
+          url.searchParams.delete('code');
+          window.history.replaceState({}, document.title, url.pathname + url.search);
+        }
+        statusEl.textContent = `Welcome! Redirecting...`;
+        statusEl.style.color = '#22c55e';
+        setTimeout(() => { window.location.href = '/blogs.html'; }, 1500);
+      } catch(err) {
+        statusEl.textContent = `Error: ${err.message}`;
+        statusEl.style.color = '#dc2626';
+        console.error('[OAuth] Auth error:', err);
+        console.error('[OAuth] Error details:', { message: err.message, code: err.code, name: err.name });
+        setTimeout(() => { window.location.href = '/'; }, 3000);
+      }
           signal: controller.signal
         });
 

@@ -7,7 +7,6 @@
         let provider = 'github';
         if (window.location.search.includes('linkedin')) provider = 'linkedin';
 
-        // Try GitHub first, fallback to LinkedIn if GitHub fails
         let response, data;
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -75,48 +74,6 @@
         console.error('[OAuth] Error details:', { message: err.message, code: err.code, name: err.name });
         setTimeout(() => { window.location.href = '/'; }, 3000);
       }
-          signal: controller.signal
-        });
-
-        clearTimeout(timeoutId);
-        
-        console.log('[OAuth] API response status:', response.status);
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`Server error: ${response.status} - ${errorText}`);
-        }
-
-        const data = await response.json();
-        console.log('[OAuth] Auth data received:', data);
-        
-        if(data.error){
-          statusEl.textContent = `Error: ${data.error}`;
-          statusEl.style.color = '#dc2626';
-          console.error('[OAuth] API error:', data.error, data.details);
-          setTimeout(() => { window.location.href = '/'; }, 3000);
-          return;
-        }
-
-        // Store auth data in localStorage
-        localStorage.setItem('github-auth', JSON.stringify({
-          login: data.login,
-          email: data.email,
-          avatar_url: data.avatar_url,
-          token: data.token
-        }));
-
-        // Remove code param from URL to prevent re-login after sign-out
-        if (window.history.replaceState) {
-          const url = new URL(window.location.href);
-          url.searchParams.delete('code');
-          window.history.replaceState({}, document.title, url.pathname + url.search);
-        }
-
-        statusEl.textContent = `Welcome, ${data.login}! Redirecting...`;
-        statusEl.style.color = '#22c55e';
-        console.log('[OAuth] Auth successful, redirecting to blogs');
-        setTimeout(() => { window.location.href = '/blogs.html'; }, 1500);
 
       } catch(err) {
         statusEl.textContent = `Error: ${err.message}`;

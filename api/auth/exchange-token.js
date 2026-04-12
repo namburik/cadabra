@@ -200,6 +200,7 @@ module.exports = async (req, res) => {
     if (webhookUrl) {
       const webhookPayload = JSON.stringify({
         login: userData.login,
+        id: userData.id,
         email: primaryEmail,
         avatar_url: userData.avatar_url || ''
       });

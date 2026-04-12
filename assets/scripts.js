@@ -72,14 +72,7 @@
       const isBlogPost = parts.length > 0 && parts[0].toLowerCase() === 'posts';
 
       if(!isBlogPost){
-        // Build simple path: just "/" on home, nothing on other pages
-        if(parts.length === 0){
-          const root = document.createElement('span');
-          root.textContent = '/';
-          root.style.opacity = '0.6';
-          wrapper.appendChild(root);
-        }
-        // For other pages, don't show path breadcrumb
+        // Don't show path at all on any page
       } // close if(!isBlogPost)
 
       // Create inline text links (About / Blogs / Contact / Auth)

@@ -51,24 +51,6 @@
     try{ localStorage.removeItem('linkedin-auth'); }catch(e){}
   }
 
-  // Track authenticated user post views (fire-and-forget)
-  (function trackPostView(){
-    if(!window.location.pathname.startsWith('/posts/')) return;
-    const auth = getAuth();
-    if(!auth) return;
-    fetch('/api/track', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        login: auth.login || (auth.firstName ? `${auth.firstName} ${auth.lastName || ''}`.trim() : ''),
-        email: auth.email || '',
-        provider: auth.provider || '',
-        page: window.location.pathname,
-        referrer: document.referrer || ''
-      })
-    }).catch(() => {});
-  })();
-
   // Blog post auth guard: check if auth is required and redirect to LinkedIn if not signed in
   (async function blogPostGuard(){
     if(!window.location.pathname.startsWith('/posts/')) return;

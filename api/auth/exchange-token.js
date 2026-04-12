@@ -119,8 +119,10 @@ module.exports = async (req, res) => {
     const accessToken = accessTokenData.access_token;
     console.log('[OAuth] Access token received:', accessToken.substring(0, 10) + '...');
 
+
     // Step 2: Fetch user info using access token
     console.log('[OAuth] Fetching user info...');
+    // 2a. Get basic user info
     const userOptions = {
       hostname: 'api.github.com',
       port: 443,
@@ -146,7 +148,6 @@ module.exports = async (req, res) => {
           }
         });
       });
-      
       request.on('error', (err) => {
         console.error('[OAuth] User fetch error:', err);
         reject(err);
@@ -154,15 +155,52 @@ module.exports = async (req, res) => {
       request.end();
     });
 
-    console.log('[OAuth] User data:', { login: userData.login, id: userData.id });
+    // 2b. Get user's primary email (requires user:email scope)
+    let primaryEmail = '';
+    try {
+      const emailOptions = {
+        hostname: 'api.github.com',
+        port: 443,
+        path: '/user/emails',
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'User-Agent': 'agentic-auth',
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      };
+      const emails = await new Promise((resolve, reject) => {
+        const request = https.request(emailOptions, (response) => {
+          let data = '';
+          response.on('data', chunk => { data += chunk; });
+          response.on('end', () => {
+            try {
+              resolve(JSON.parse(data));
+            } catch(e) {
+              reject(e);
+            }
+          });
+        });
+        request.on('error', (err) => reject(err));
+        request.end();
+      });
+      if (Array.isArray(emails)) {
+        const primary = emails.find(e => e.primary && e.verified);
+        if (primary) primaryEmail = primary.email;
+        else if (emails.length > 0) primaryEmail = emails[0].email;
+      }
+    } catch (e) {
+      console.log('[OAuth] Could not fetch user email:', e.message);
+    }
+
+    console.log('[OAuth] User data:', { login: userData.login, id: userData.id, email: primaryEmail });
 
     // Step 3: Log user to Google Sheet (fire-and-forget)
     const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
     if (webhookUrl) {
       const webhookPayload = JSON.stringify({
         login: userData.login,
-        id: userData.id,
-        email: userData.email || '',
+        email: primaryEmail,
         avatar_url: userData.avatar_url || ''
       });
       console.log('[OAuth] Calling Google Sheet webhook:', webhookUrl);
@@ -183,9 +221,8 @@ module.exports = async (req, res) => {
     console.log('[OAuth] Returning success response');
     return res.status(200).json({
       login: userData.login,
-      id: userData.id,
+      email: primaryEmail,
       avatar_url: userData.avatar_url,
-      email: userData.email,
       token: accessToken
     });
 

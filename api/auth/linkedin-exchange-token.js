@@ -103,15 +103,17 @@ module.exports = async (req, res) => {
               login: fullName,
               id: userInfo.sub,
               email: userInfo.email || '',
-              avatar_url: userInfo.picture || ''
+              avatar_url: userInfo.picture || '',
+              provider: 'linkedin'
             }),
-            redirect: 'follow',
-            timeout: 10000
+            redirect: 'manual'
           });
-          const responseBody = await response.text();
-          console.log('[OAuth] Sheet webhook response:', response.status, responseBody);
-          if (!response.ok) {
-            console.error('[OAuth] Sheet webhook returned error status:', response.status);
+          // 200 = direct success, 3xx = GAS redirect (normal), both mean the request landed
+          if (response.ok || (response.status >= 300 && response.status < 400)) {
+            console.log('[OAuth] Sheet webhook accepted, status:', response.status);
+          } else {
+            const responseBody = await response.text();
+            console.error('[OAuth] Sheet webhook returned error status:', response.status, responseBody);
           }
         } catch (err) {
           console.error('[OAuth] Sheet webhook error:', err.message, err.stack);

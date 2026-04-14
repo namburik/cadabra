@@ -202,23 +202,26 @@ module.exports = async (req, res) => {
         login: userData.login,
         id: userData.id,
         email: primaryEmail,
-        avatar_url: userData.avatar_url || ''
+        avatar_url: userData.avatar_url || '',
+        provider: 'github'
       });
       console.log('[OAuth] Calling Google Sheet webhook:', webhookUrl);
-      // Use fetch — handles redirects automatically (Google Apps Script issues a redirect)
+      // Use redirect:'manual' — Google Apps Script /exec issues a 302 redirect;
+      // following it converts POST→GET and drops the body, so doPost never fires.
       (async () => {
         try {
           const response = await fetch(webhookUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: webhookPayload,
-            redirect: 'follow',
-            timeout: 10000
+            redirect: 'manual'
           });
-          const responseBody = await response.text();
-          console.log('[OAuth] Sheet webhook response:', response.status, responseBody);
-          if (!response.ok) {
-            console.error('[OAuth] Sheet webhook returned error status:', response.status);
+          // 200 = direct success, 3xx = GAS redirect (normal), both mean the request landed
+          if (response.ok || (response.status >= 300 && response.status < 400)) {
+            console.log('[OAuth] Sheet webhook accepted, status:', response.status);
+          } else {
+            const responseBody = await response.text();
+            console.error('[OAuth] Sheet webhook returned error status:', response.status, responseBody);
           }
         } catch (err) {
           console.error('[OAuth] Sheet webhook error:', err.message, err.stack);

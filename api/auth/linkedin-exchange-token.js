@@ -94,19 +94,29 @@ module.exports = async (req, res) => {
     if (webhookUrl) {
       const fullName = `${userInfo.given_name || ''} ${userInfo.family_name || ''}`.trim();
       console.log('[OAuth] Calling Google Sheet webhook for LinkedIn user:', fullName);
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          login: fullName,
-          id: userInfo.sub,
-          email: userInfo.email || '',
-          avatar_url: userInfo.picture || ''
-        }),
-        redirect: 'follow'
-      })
-        .then(r => r.text().then(body => console.log('[OAuth] Sheet webhook response:', r.status, body)))
-        .catch(e => console.error('[OAuth] Sheet webhook error:', e.message));
+      (async () => {
+        try {
+          const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              login: fullName,
+              id: userInfo.sub,
+              email: userInfo.email || '',
+              avatar_url: userInfo.picture || ''
+            }),
+            redirect: 'follow',
+            timeout: 10000
+          });
+          const responseBody = await response.text();
+          console.log('[OAuth] Sheet webhook response:', response.status, responseBody);
+          if (!response.ok) {
+            console.error('[OAuth] Sheet webhook returned error status:', response.status);
+          }
+        } catch (err) {
+          console.error('[OAuth] Sheet webhook error:', err.message, err.stack);
+        }
+      })();
     } else {
       console.log('[OAuth] GOOGLE_SHEET_WEBHOOK_URL not set, skipping sheet logging');
     }

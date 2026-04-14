@@ -26,6 +26,12 @@
   <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
   <script src="/assets/scripts.js" defer></script>
   <script>
+    window.va = window.va || function () { 
+      (window.vaq = window.vaq || []).push(arguments); 
+    };
+  </script>
+  <script defer src="/_vercel/analytics/script.js"></script>
+  <script>
     // Handle GitHub OAuth callback and auth gate
     (function(){
       const params = new URLSearchParams(window.location.search);

@@ -6,8 +6,8 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://namburi.me/posts/agentic-mesh-demo.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234f9cf9'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white'>M</text></svg>" />
-  <title>Agentic Mesh Demo — Kishore Namburi</title>
-  <meta name="description" content="Watch the Agentic Mesh Demo video by Kishore Namburi.">
+  <title>Agentic Mesh Demo — The "One-Size-Fits-All" Framework is a Myth · Kishore Namburi</title>
+  <meta name="description" content="Why the Agentic Mesh Architecture beats monolithic frameworks. A demo showing framework-agnostic, MCP-decoupled agent infrastructure that scales infinitely.">
   <meta name="author" content="Kishore Namburi" />
   <meta property="og:title" content="Agentic Mesh Demo — Kishore Namburi">
   <meta property="og:description" content="Watch the Agentic Mesh Demo video by Kishore Namburi.">
@@ -27,14 +27,92 @@
   <script src="/assets/scripts.js" defer></script>
 </head>
 <body>
-  <main class="container" style="max-width: 800px; margin: 2rem auto; padding: 2rem;">
-    <h1 style="font-family: 'Merriweather', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 1.5rem;">Agentic Mesh Demo</h1>
-    <p style="font-size: 1.1rem; margin-bottom: 2rem;">Watch the demo video showcasing the Agentic Mesh in action.</p>
-    <video controls poster="/assets/images/agentic-mesh-demo-thumbnail.jpg" style="width: 100%; max-width: 720px; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08);">
-      <source src="/assets/media/agentic-mesh-demo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <p style="margin-top: 2rem; font-size: 1rem; color: #555;">&copy; 2026 Kishore Namburi</p>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">mytake: agentic and authentic</a>
+      <nav class="nav">
+        <a href="/blogs.html">Blogs</a>
+        <a href="/demos.html">Demos</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container blog-container" style="max-width: 800px; margin: 2rem auto; padding: 2rem;" id="content" tabindex="-1">
+
+    <article>
+      <header class="blog-header">
+        <div class="card-tags" style="margin-bottom:1rem;">
+          <span class="card-tag card-tag--demo">Demo</span>
+          <span class="card-tag card-tag--orchestration">Orchestration</span>
+        </div>
+        <h1>Agentic Mesh Demo</h1>
+        <p style="font-size:1.1rem; color:var(--muted); margin-top:0.5rem;">The "One-Size-Fits-All" Agentic Framework is a Myth.</p>
+        <div class="blog-meta">
+          <time datetime="2026-05-03">May 2026</time>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
+
+      <video controls poster="/assets/images/agentic-mesh-demo-thumbnail.jpg" style="width: 100%; max-width: 720px; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); margin-bottom: 2.5rem;">
+        <source src="/assets/media/agentic-mesh-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="blog-content">
+        <p class="blog-intro">The industry is trapped in a "Framework War"—LangGraph vs. AutoGen vs. CrewAI. But in reality, betting on a single framework is a dead-end. Instead, we need an <strong>Agentic Mesh Architecture</strong> designed for infinite evolution.</p>
+
+        <p>My latest work demonstrates a shift away from monolithic agents toward a modular, decoupled mesh. Here is why I think this architecture is the future:</p>
+
+        <h2>1. The "Best-of-Breed" Mesh (Framework Agnosticism)</h2>
+
+        <p>Stop trying to force one framework to do everything for you. Different business domains require different cognitive architectures. My mesh treats frameworks as modular services:</p>
+
+        <ul>
+          <li><strong>AutoGen</strong> for multi-agent deliberation and intent parsing.</li>
+          <li><strong>LangGraph</strong> for stateful, long-running process flows.</li>
+          <li><strong>CrewAI</strong> for role-based compliance and safety gates.</li>
+        </ul>
+
+        <div class="phase-card accent" style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; border-radius: 8px;">
+          <div class="phase-label">The Result</div>
+          <p style="margin:0;">You can swap, upgrade, or add a new framework without re-architecting your entire system.</p>
+        </div>
+
+        <h2>2. Decoupling the "Brain" from the "Tools" (The MCP Advantage)</h2>
+
+        <p>Stop hard-coding backend tools directly into your agent logic. That creates an unmaintainable mess.</p>
+
+        <ul>
+          <li><strong>The Universal Tool Bus:</strong> By implementing the Model Context Protocol (MCP), I've decoupled the "thinking" (the agents) from the "doing" (the backend).</li>
+          <li><strong>Zero-Redeploy Scaling:</strong> When a schema changes or a new API is needed, you update the MCP server once. Every agent in the mesh—regardless of its framework—inherits the capability instantly.</li>
+        </ul>
+
+        <h2>The Takeaway: AI as Infrastructure</h2>
+
+        <p>My biggest learning from this build is that enterprise AI doesn't have to be a fragile "prompting" project. By building an <strong>Agnostic Mesh</strong> and a <strong>Decoupled Tool Bus</strong>, you transform AI from a "black-box experiment" into production-grade infrastructure that scales infinitely.</p>
+
+        <div class="related-articles">
+          <h3>Related</h3>
+          <ul>
+            <li><a href="/posts/blog-multiagent-yaml-orchestration.html">Configurable Multi-Agent Workflows in Python: A YAML-Driven Orchestration Demo</a></li>
+            <li><a href="/posts/blog-multi-agent-systems-architecture.html">Multi-Agent Systems: The Architecture of Partnership</a></li>
+            <li><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p style="color:var(--muted);font-size:0.9rem;margin:0;">&copy; 2026 Kishore Namburi. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

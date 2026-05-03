@@ -140,9 +140,9 @@
 
       const auth = getAuth();
 
+      navLinks.appendChild(makeLink('/about.html', 'About'));
       navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
       navLinks.appendChild(makeLink('/demos.html', 'Demos'));
-      navLinks.appendChild(makeLink('/about.html', 'About'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
 
       // Auth button

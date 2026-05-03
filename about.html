@@ -55,7 +55,7 @@
     <div class="container">
       <a class="logo" href="/">mytake: agentic and authentic</a>
       <nav class="nav">
-        <a id="nav-blogs" href="/blogs.html" style="display:none;">Blogs</a>
+        <a href="/blogs.html">Blogs</a>
         <a href="/about.html">About</a>
         <a href="/contact.html">Contact</a>
       </nav>
@@ -64,21 +64,6 @@
       </div>
     </div>
   </header>
-
-  <script>
-    // Show Blogs nav only if logged in
-    (function(){
-      try {
-        let auth = JSON.parse(localStorage.getItem('github-auth') || 'null');
-        if(!auth || !auth.login){
-          auth = JSON.parse(localStorage.getItem('linkedin-auth') || 'null');
-        }
-        if(auth && (auth.login || auth.email)){
-          document.getElementById('nav-blogs').style.display = 'inline-block';
-        }
-      } catch(e){}
-    })();
-  </script>
 
   
   <main id="content" tabindex="-1" class="container narrow">

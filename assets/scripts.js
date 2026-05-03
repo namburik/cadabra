@@ -140,13 +140,10 @@
 
       const auth = getAuth();
 
+      navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
+      navLinks.appendChild(makeLink('/demos.html', 'Demos'));
       navLinks.appendChild(makeLink('/about.html', 'About'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
-      
-      // Show Blogs link only if authenticated
-      if(auth && (auth.login || auth.email)){
-        navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
-      }
 
       // Auth button
       if(!auth){

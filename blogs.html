@@ -82,19 +82,8 @@
         return; // wait for async above, don't run gate check
       }
 
-      // Auth gate: redirect to home if not logged in
-      try {
-        let auth = null;
-        try { auth = JSON.parse(localStorage.getItem('github-auth') || 'null'); } catch(e){}
-        if(!auth || !auth.login){
-          try { auth = JSON.parse(localStorage.getItem('linkedin-auth') || 'null'); } catch(e){}
-        }
-        if(!auth || (!auth.login && !auth.email)){
-          window.location.href = '/';
-        }
-      } catch(e) {
-        window.location.href = '/';
-      }
+      // Auth gate removed - blogs page is now publicly accessible
+      // Auth code structure retained for future use
     })();
   </script>
   <script type="application/ld+json">

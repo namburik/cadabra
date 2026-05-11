@@ -103,7 +103,7 @@
         // Don't show path at all on any page
       } // close if(!isBlogPost)
 
-      // Create inline text links (About / Blogs / Contact / Auth)
+      // Create inline text links (About / Blogs / Demos / Contact)
       const navLinks = document.createElement('span');
       navLinks.className = 'system-inline-links';
       navLinks.style.marginLeft = '12px';
@@ -111,7 +111,7 @@
       navLinks.style.gap = '10px';
       navLinks.style.alignItems = 'center';
 
-      const makeLink = (href, text, style = 'default') => {
+      const makeLink = (href, text) => {
         const a = document.createElement('a');
         a.href = href;
         a.textContent = text;
@@ -122,116 +122,16 @@
         a.style.fontWeight = '500';
         a.style.fontSize = '13px';
         a.style.transition = 'all 0.15s ease';
+        a.style.color = 'inherit';
+        a.style.opacity = '0.8';
         a.tabIndex = 0;
-        if(style === 'default'){
-          a.style.color = 'inherit';
-          a.style.opacity = '0.8';
-        } else if(style === 'signin'){
-          a.style.color = '#3b82f6';
-          a.style.background = 'rgba(59, 130, 246, 0.1)';
-          a.style.border = '1px solid rgba(59, 130, 246, 0.4)';
-        } else if(style === 'signout'){
-          a.style.color = '#f87171';
-          a.style.background = 'rgba(248, 113, 113, 0.08)';
-          a.style.border = '1px solid rgba(248, 113, 113, 0.3)';
-        }
         return a;
       };
-
-      const auth = getAuth();
 
       navLinks.appendChild(makeLink('/about.html', 'About'));
       navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
       navLinks.appendChild(makeLink('/demos.html', 'Demos'));
       navLinks.appendChild(makeLink('/contact.html', 'Contact'));
-
-      // Auth button
-      if(!auth){
-        const signInBtn = makeLink('#', '🔒 Premium · Free', 'signin');
-        const dropdown = document.createElement('div');
-        dropdown.style.cssText = 'display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1e293b;border:1px solid rgba(59,130,246,0.3);border-radius:8px;overflow:hidden;z-index:999;min-width:160px;box-shadow:0 8px 24px rgba(0,0,0,0.4);';
-
-        const ghBtn = document.createElement('button');
-        ghBtn.textContent = '🐙  GitHub';
-        ghBtn.style.cssText = 'display:block;width:100%;padding:10px 16px;background:none;border:none;color:#f1f5f9;font-size:13px;text-align:left;cursor:pointer;';
-        ghBtn.onmouseover = () => ghBtn.style.background = 'rgba(59,130,246,0.15)';
-        ghBtn.onmouseout = () => ghBtn.style.background = 'none';
-        ghBtn.addEventListener('click', () => {
-          window.location.href = githubAuthUrl();
-        });
-
-        const liBtn = document.createElement('button');
-        liBtn.textContent = '🔗  LinkedIn';
-        liBtn.style.cssText = 'display:block;width:100%;padding:10px 16px;background:none;border:none;color:#f1f5f9;font-size:13px;text-align:left;cursor:pointer;border-top:1px solid rgba(255,255,255,0.07);';
-        liBtn.onmouseover = () => liBtn.style.background = 'rgba(59,130,246,0.15)';
-        liBtn.onmouseout = () => liBtn.style.background = 'none';
-        liBtn.addEventListener('click', () => {
-          window.location.href = linkedInAuthUrl();
-        });
-
-        dropdown.appendChild(ghBtn);
-        dropdown.appendChild(liBtn);
-
-        const wrapper2 = document.createElement('span');
-        wrapper2.className = 'nav-signin-wrap';
-        wrapper2.style.position = 'relative';
-        wrapper2.appendChild(signInBtn);
-        wrapper2.appendChild(dropdown);
-
-        signInBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-        });
-        document.addEventListener('click', (e) => {
-          if (!wrapper2.contains(e.target)) dropdown.style.display = 'none';
-        });
-
-        navLinks.appendChild(wrapper2);
-      } else {
-        // User badge
-        const userBadge = document.createElement('span');
-        userBadge.style.display = 'inline-flex';
-        userBadge.style.alignItems = 'center';
-        userBadge.style.gap = '6px';
-        userBadge.style.padding = '4px 10px';
-        userBadge.style.background = 'rgba(34, 197, 94, 0.1)';
-        userBadge.style.border = '1px solid rgba(34, 197, 94, 0.3)';
-        userBadge.style.borderRadius = '20px';
-        userBadge.style.fontSize = '12px';
-        userBadge.style.fontWeight = '600';
-        userBadge.style.color = '#22c55e';
-        userBadge.style.letterSpacing = '0.01em';
-
-        const avatar = document.createElement('img');
-        avatar.src = auth.avatar_url || '';
-        avatar.alt = auth.login || auth.email || '';
-        avatar.style.width = '18px';
-        avatar.style.height = '18px';
-        avatar.style.borderRadius = '50%';
-        avatar.style.objectFit = 'cover';
-        avatar.onerror = () => { avatar.style.display = 'none'; };
-
-        const dot = document.createElement('span');
-        dot.textContent = '●';
-        dot.style.fontSize = '8px';
-        dot.style.color = '#22c55e';
-
-        const name = document.createElement('span');
-        name.textContent = auth.login || auth.email;
-
-        userBadge.appendChild(avatar);
-        userBadge.appendChild(dot);
-        userBadge.appendChild(name);
-        navLinks.appendChild(userBadge);
-
-        const signOut = makeLink('#', '↩ Sign Out', 'signout');
-        signOut.addEventListener('click', (e) => {
-          e.preventDefault();
-          clearAuth();
-          window.location.reload();
-        });
-        navLinks.appendChild(signOut);
-      }
 
       // Hide original nav links visually but keep them in the DOM for crawlers/accessibility
       nav.style.display = 'none';

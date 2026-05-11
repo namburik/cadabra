@@ -23,7 +23,7 @@
     "image": "/assets/images/blog-agentic-ai-workflows-hero.svg"
   },
   {
-    "title": "AI First Series: Building the Data Framework: 4 Core Pillars of AI-Ready Architecture",
+    "title": "AI First Series: Building the AI-Ready Data Framework",
     "url": "/posts/blog-ai-first-data-strategy.html",
     "excerpt": "AI-ready data architecture built on four pillars: Knowledge Core, semantic data mesh, HTAP convergence, and Active Governance Fabric.",
     "date": "2026-03-15",
@@ -63,7 +63,7 @@
     "image": "/assets/images/blog-ai-trism-hero.svg"
   },
   {
-    "title": "Configurable Multi-Agent Workflows in Python: A YAML-Driven Orchestration",
+    "title": "Configurable Multi-Agent Workflows: A YAML-Driven Orchestration",
     "url": "/posts/blog-multiagent-yaml-orchestration.html",
     "excerpt": "How to orchestrate secure, flexible agent workflows in Python using LangGraph and YAML—no code changes required for routing updates.",
     "date": "2026-04-17",

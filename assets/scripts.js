@@ -173,6 +173,7 @@
         dropdown.appendChild(liBtn);
 
         const wrapper2 = document.createElement('span');
+        wrapper2.className = 'nav-signin-wrap';
         wrapper2.style.position = 'relative';
         wrapper2.appendChild(signInBtn);
         wrapper2.appendChild(dropdown);

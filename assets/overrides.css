@@ -47,6 +47,7 @@ body:not(.dark) header a {
 @media (max-width:640px){
   .system-path{ font-size:13px }
   .system-menu-btn{ padding:6px }
+  .nav-signin-wrap{ display:none !important }
 }
 
 /* Ensure the hamburger/menu icon has consistent color in light and dark themes */

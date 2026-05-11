@@ -104,7 +104,7 @@
     <div class="blog-content">
       <p class="blog-intro">You deploy an LLM assistant, the demo goes well, then a real customer asks: <em>"What device is Sarah using, and what should we offer her?"</em> The model answers confidently—and wrong. That's not a model problem. It's a data access problem. Standard RAG fetches relevant documents but can't follow relationships between them. <strong>GraphRAG</strong> pairs a Knowledge Graph with an LLM so the AI reasons over your actual connected data. Stack: <strong>Neo4j</strong> for the graph, <strong>LangChain</strong> and <strong>LangGraph</strong> for orchestration, <strong>LlamaIndex</strong> for natural language to graph queries.</p>
 
-      <h2>The Four Problems It Solves</h2>
+      <h2>Four Enterprise Problems GraphRAG Solves</h2>
 
       <div class="pattern-grid" style="grid-template-columns: repeat(4, 1fr);">
         <div class="pattern-card">
@@ -128,12 +128,12 @@
         <div class="pattern-card">
           <div class="icon">💬</div>
           <div class="core-label">Problem 4</div>
-          <h4>Needing a DB Expert</h4>
+          <h4>No Graph Expertise Required</h4>
           <p>LlamaIndex's NL2GraphQuery translates plain English into Cypher automatically. Business users type; the stack handles the query.</p>
         </div>
       </div>
 
-      <h2>How the Stack Fits Together</h2>
+      <h2>The GraphRAG Stack: Neo4j, LangChain, LlamaIndex</h2>
       <ul>
         <li><strong>Neo4j</strong> — stores entities and relationships as a native property graph, queried via Cypher. Available self-hosted or AuraDB.</li>
         <li><strong>LangChain</strong> — manages prompt templates and LLM calls. Model-agnostic: OpenAI, Anthropic, Mistral, or local models all plug in the same way.</li>
@@ -183,7 +183,7 @@
         </table>
       </div>
 
-      <h2>Where It Works</h2>
+      <h2>GraphRAG Enterprise Use Cases</h2>
       <ul>
         <li><strong>Retail</strong> — Customer 360 graphs drive recommendations built on actual purchase history, not category averages.</li>
         <li><strong>Telecom</strong> — Network and subscriber graphs surface the exact facts relevant to one customer's issue, instantly.</li>
@@ -191,7 +191,7 @@
         <li><strong>Healthcare</strong> — Patient graphs (diagnoses, medications, allergies, labs) give clinical tools precise, interconnected context where accuracy is non-negotiable.</li>
       </ul>
 
-      <h2>Getting Started</h2>
+      <h2>Getting Started with GraphRAG</h2>
       <p>The tooling is mature. The harder work is upfront design:</p>
       <ol>
         <li><strong>Sketch your ontology</strong> — define entity types, relationships, and key properties before writing any code.</li>
@@ -201,7 +201,7 @@
         <li><strong>Use LangGraph for multi-step queries</strong> — once you're chaining lookups, explicit state management beats prompt hacks.</li>
       </ol>
 
-      <h2>Worth Building?</h2>
+      <h2>Is GraphRAG Worth Building for Enterprise AI?</h2>
       <p>If your AI keeps getting specifics wrong or recommendations feel generic, the issue is almost always retrieval—not the model. GraphRAG is the practical fix: open-source tools, no cloud lock-in, and an architecture that scales from pilot to production without a rewrite. In an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this graph is the <strong>Knowledge Core</strong>—the verified, relationship-rich foundation every agent in your ecosystem reasons from.</p>
 
       <div class="related-articles">

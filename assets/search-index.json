@@ -63,7 +63,7 @@
     "image": "/assets/images/blog-ai-trism-hero.svg"
   },
   {
-    "title": "Configurable Multi-Agent Workflows in Python: A YAML-Driven Orchestration Demo",
+    "title": "Configurable Multi-Agent Workflows in Python: A YAML-Driven Orchestration",
     "url": "/posts/blog-multiagent-yaml-orchestration.html",
     "excerpt": "How to orchestrate secure, flexible agent workflows in Python using LangGraph and YAML—no code changes required for routing updates.",
     "date": "2026-04-17",

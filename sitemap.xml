@@ -27,6 +27,12 @@
 
   <!-- Posts -->
   <url>
+    <loc>https://namburi.me/posts/blog-unified-agentic-architecture.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://namburi.me/posts/blog-graphrag-context-infrastructure.html</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>

@@ -9,6 +9,14 @@
     <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The Unified Agentic Stack: A Complete Blueprint for Production AI</title>
+      <link>https://namburi.me/posts/blog-unified-agentic-architecture.html</link>
+      <pubDate>Sun, 11 May 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>Six blogs, one architecture. A layer-by-layer blueprint for production agentic AI — channels, intelligent routing, multi-agent orchestration, GraphRAG Knowledge Core, Governance Middleware, and AgentOps. The complete unified stack.</description>
+    </item>
+
+    <item>
       <title>Beyond GraphRAG 2.0: The Context Infrastructure Mandate</title>
       <link>https://namburi.me/posts/blog-graphrag-context-infrastructure.html</link>
       <pubDate>Sun, 11 May 2026 00:00:00 +0000</pubDate>

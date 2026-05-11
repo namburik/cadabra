@@ -9,6 +9,14 @@
     <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The Negotiator: Why Data Governance Must Stop Saying "No"</title>
+      <link>https://namburi.me/posts/blog-data-governance-negotiator.html</link>
+      <pubDate>Sun, 11 May 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>Traditional data governance blocks autonomous agents with 403 errors and kills AI productivity. Agentic Governance routes requests through an intelligent gateway that finds a compliant path to Yes—without stalling the workflow.</description>
+    </item>
+
+    <item>
       <title>Beyond the Hype: Why AI TRiSM is the Secret to Scaling Enterprise AI</title>
       <link>https://namburi.me/posts/blog-ai-trism-enterprise-security.html</link>
       <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>

@@ -1,5 +1,12 @@
 [
   {
+    "title": "Beyond GraphRAG 2.0: The Context Infrastructure Mandate",
+    "url": "/posts/blog-graphrag-context-infrastructure.html",
+    "excerpt": "GraphRAG gave agents the Map. The Context Infrastructure Mandate gives them the Pilot—a persistent runtime of decision traces, the Guardian Agent, and the SAO Context Graph that makes every autonomous action auditable.",
+    "date": "2026-05-11",
+    "tags": "GraphRAG, Context Infrastructure, Guardian Agent, Context Engineering, SAO, agentic AI, Neo4j, LangGraph"
+  },
+  {
     "title": "Beyond the Bot: The 2026 Agentic Playbook",
     "url": "/posts/blog-2026-agentic-playbook.html",
     "excerpt": "Agentic AI in 2026: production blueprint—orchestration patterns, Knowledge Core, Guardian Agents, and FinOps separating real deployments from demos.",
@@ -54,5 +61,26 @@
     "date": "2026-04-12",
     "tags": "AI TRiSM, AI security, enterprise AI, Shadow AI, prompt injection, AI governance",
     "image": "/assets/images/blog-ai-trism-hero.svg"
+  },
+  {
+    "title": "Configurable Multi-Agent Workflows in Python: A YAML-Driven Orchestration Demo",
+    "url": "/posts/blog-multiagent-yaml-orchestration.html",
+    "excerpt": "How to orchestrate secure, flexible agent workflows in Python using LangGraph and YAML—no code changes required for routing updates.",
+    "date": "2026-04-17",
+    "tags": "multi-agent, LangGraph, YAML, orchestration, Python, agentic AI"
+  },
+  {
+    "title": "Multi-Agent Systems: The Architecture of Partnership",
+    "url": "/posts/blog-multi-agent-systems-architecture.html",
+    "excerpt": "Build resilient digital workforces using a 6-layer architecture that separates thinking from doing—reliable, controllable, and cross-platform.",
+    "date": "2026-04-11",
+    "tags": "multi-agent systems, AI architecture, LangGraph, CrewAI, AutoGen, agent orchestration, human-in-the-loop"
+  },
+  {
+    "title": "The Negotiator: Why Data Governance Must Stop Saying \"No\"",
+    "url": "/posts/blog-data-governance-negotiator.html",
+    "excerpt": "Traditional data governance blocks autonomous agents with 403 errors and kills AI productivity. Agentic Governance routes requests through an intelligent gateway that finds a compliant path to Yes—without stalling the workflow.",
+    "date": "2026-05-11",
+    "tags": "data governance, agentic AI, agentic governance, PII, Snowflake, Databricks, just-in-time access, enterprise AI"
   }
 ]

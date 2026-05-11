@@ -9,6 +9,14 @@
     <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Beyond GraphRAG 2.0: The Context Infrastructure Mandate</title>
+      <link>https://namburi.me/posts/blog-graphrag-context-infrastructure.html</link>
+      <pubDate>Sun, 11 May 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>GraphRAG gave agents the Map. The Context Infrastructure Mandate gives them the Pilot—a persistent runtime of decision traces, the Guardian Agent, and the SAO Context Graph that makes every autonomous action auditable.</description>
+    </item>
+
+    <item>
       <title>The Negotiator: Why Data Governance Must Stop Saying "No"</title>
       <link>https://namburi.me/posts/blog-data-governance-negotiator.html</link>
       <pubDate>Sun, 11 May 2026 00:00:00 +0000</pubDate>

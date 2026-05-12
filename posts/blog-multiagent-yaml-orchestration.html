@@ -80,7 +80,7 @@
                     <li><strong>Declarative YAML file:</strong> Defines how requests map to agents</li>
                 </ul>
 
-                <h2>Example YAML: Your Workflow Specification</h2>
+                <h2>Example YAML: Workflow Specification</h2>
                 <p>Here’s a sample <code>multiagent_workflow.yaml</code> declaring agents, their types, and routing:</p>
                 <pre><code>agents:
     sme_agent:
@@ -138,7 +138,7 @@ async def build_agents_from_config(config: dict):
 </code></pre>
 
         <h3>4. LangGraph Integration</h3>
-        <p>Update your workflow runner to glue the system together:</p>
+        <p>Update workflow runner to glue the system together:</p>
         <pre><code>async def run_langgraph(prompt: str, agent_map: dict, op_agent_map: dict):
     graph = LangGraph()
     graph.add_node("supervisor", Supervisor(agent_map, op_agent_map))
@@ -148,7 +148,7 @@ async def build_agents_from_config(config: dict):
 </code></pre>
 
         <h3>5. Bringing It All Together</h3>
-        <p>Your entry function can now be:</p>
+        <p>The entry function can now be:</p>
         <pre><code>async def execute_demo(prompt: str = None, config_path: str = "multiagent_workflow.yaml"):
     logger.info(f"Loading workflow config from {config_path}...")
     config = load_workflow_config(config_path)
@@ -173,7 +173,7 @@ async def build_agents_from_config(config: dict):
         </ul>
 
         <p><strong>Ready to try?</strong><br>
-        Clone <a href="https://github.com/namburik/mcp_board_agent" target="_blank">namburik/mcp_board_agent</a>, tweak <code>multiagent_workflow.yaml</code>, and run your workflows!</p>
+        Clone <a href="https://github.com/namburik/mcp_board_agent" target="_blank">namburik/mcp_board_agent</a>, tweak <code>multiagent_workflow.yaml</code>, and run workflows!</p>
     </article>
 </body>
 </html>

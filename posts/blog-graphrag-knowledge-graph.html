@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <title>GraphRAG: Ground AI in Your Knowledge Graph | Kishore Namburi</title>
+  <title>GraphRAG: Ground AI in Knowledge Graph | Kishore Namburi</title>
   <meta name="description" content="How GraphRAG and Neo4j eliminate hallucinations, enable multi-hop reasoning, and power hyper-personalized AI — without requiring graph expertise." />
-  <meta property="og:title" content="GraphRAG: Ground AI in Your Knowledge Graph" />
+  <meta property="og:title" content="GraphRAG: Ground AI in Knowledge Graph" />
   <meta property="og:description" content="How GraphRAG and Neo4j eliminate hallucinations, enable multi-hop reasoning, and power hyper-personalized AI — without requiring graph expertise." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="/posts/blog-graphrag-knowledge-graph.html" />
   <meta name="image" property="og:image" content="/assets/images/blog-graphrag-knowledge-graph.png" />
   <meta property="og:site_name" content="Kishore Namburi" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GraphRAG: Ground AI in Your Knowledge Graph" />
+  <meta name="twitter:title" content="GraphRAG: Ground AI in Knowledge Graph" />
   <meta name="twitter:description" content="How GraphRAG and Neo4j eliminate hallucinations, enable multi-hop reasoning, and power hyper-personalized AI — without requiring graph expertise." />
   <meta name="twitter:image" content="/assets/images/blog-graphrag-knowledge-graph.png" />
   <meta name="theme-color" content="#0a0e1a" />
@@ -41,7 +41,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "@id": "/posts/blog-graphrag-knowledge-graph.html",
-    "headline": "GraphRAG: Ground AI in Your Knowledge Graph",
+    "headline": "GraphRAG: Ground AI in Knowledge Graph",
     "description": "How GraphRAG and Neo4j eliminate hallucinations, enable multi-hop reasoning, and power hyper-personalized AI — without requiring graph expertise.",
     "datePublished": "2026-03-17",
     "dateModified": "2026-03-17",
@@ -90,7 +90,7 @@
   <main id="content" class="blog-container" tabindex="-1">
     <article>
       <header class="blog-header">
-        <h1>From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Your Knowledge Graph</h1>
+        <h1>From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Knowledge Graph</h1>
         <div class="blog-meta">
           <time datetime="2026-03-17">March 2026</time>
           <span>6 min read</span>
@@ -102,7 +102,7 @@
       </header>
 
     <div class="blog-content">
-      <p class="blog-intro">You deploy an LLM assistant, the demo goes well, then a real customer asks: <em>"What device is Sarah using, and what should we offer her?"</em> The model answers confidently—and wrong. That's not a model problem. It's a data access problem. Standard RAG fetches relevant documents but can't follow relationships between them. <strong>GraphRAG</strong> pairs a Knowledge Graph with an LLM so the AI reasons over your actual connected data. Stack: <strong>Neo4j</strong> for the graph, <strong>LangChain</strong> and <strong>LangGraph</strong> for orchestration, <strong>LlamaIndex</strong> for natural language to graph queries.</p>
+      <p class="blog-intro">You deploy an LLM assistant, the demo goes well, then a real customer asks: <em>"What device is Sarah using, and what should we offer her?"</em> The model answers confidently—and wrong. That's not a model problem. It's a data access problem. Standard RAG fetches relevant documents but can't follow relationships between them. <strong>GraphRAG</strong> pairs a Knowledge Graph with an LLM so the AI reasons over actual connected data. Stack: <strong>Neo4j</strong> for the graph, <strong>LangChain</strong> and <strong>LangGraph</strong> for orchestration, <strong>LlamaIndex</strong> for natural language to graph queries.</p>
 
       <h2>Four Enterprise Problems GraphRAG Solves</h2>
 
@@ -117,7 +117,7 @@
           <div class="icon">🔗</div>
           <div class="core-label">Problem 2</div>
           <h4>Disconnected Data</h4>
-          <p>Vector search finds similar text but can't answer multi-hop questions. Neo4j's Cypher traverses relationships across your graph in a single query.</p>
+          <p>Vector search finds similar text but can't answer multi-hop questions. Neo4j's Cypher traverses relationships across graphs in a single query.</p>
         </div>
         <div class="pattern-card">
           <div class="icon">🎯</div>
@@ -194,15 +194,15 @@
       <h2>Getting Started with GraphRAG</h2>
       <p>The tooling is mature. The harder work is upfront design:</p>
       <ol>
-        <li><strong>Sketch your ontology</strong> — define entity types, relationships, and key properties before writing any code.</li>
+        <li><strong>Sketch ontology</strong> — define entity types, relationships, and key properties before writing any code.</li>
         <li><strong>Run Neo4j</strong> — AuraDB Free is enough for a proof of concept; scale to Enterprise when ready.</li>
-        <li><strong>Connect an LLM via LangChain</strong> — start with whatever fits your cost and latency targets; swap models later without touching the graph pipeline.</li>
+        <li><strong>Connect an LLM via LangChain</strong> — start with whatever fits cost and latency targets; swap models later without touching the graph pipeline.</li>
         <li><strong>Add LlamaIndex</strong> — <code>Neo4jGraphStore</code> and <code>KnowledgeGraphIndex</code> wire up NL2GraphQuery in minimal configuration.</li>
         <li><strong>Use LangGraph for multi-step queries</strong> — once you're chaining lookups, explicit state management beats prompt hacks.</li>
       </ol>
 
       <h2>Is GraphRAG Worth Building for Enterprise AI?</h2>
-      <p>If your AI keeps getting specifics wrong or recommendations feel generic, the issue is almost always retrieval—not the model. GraphRAG is the practical fix: open-source tools, no cloud lock-in, and an architecture that scales from pilot to production without a rewrite. In an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this graph is the <strong>Knowledge Core</strong>—the verified, relationship-rich foundation every agent in your ecosystem reasons from.</p>
+      <p>If AI keeps getting specifics wrong or recommendations feel generic, the issue is almost always retrieval—not the model. GraphRAG is the practical fix: open-source tools, no cloud lock-in, and an architecture that scales from pilot to production without a rewrite. In an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, this graph is the <strong>Knowledge Core</strong>—the verified, relationship-rich foundation every agent in the ecosystem reasons from.</p>
 
       <div class="related-articles">
         <h3>Related Articles</h3>

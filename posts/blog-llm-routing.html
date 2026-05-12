@@ -197,22 +197,22 @@
         <div class="pillar-card">
           <div class="pillar-number">1</div>
           <div>
-            <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Profile Your Workload</h4>
-            <p style="margin:0;">Analyse your query distribution. In most enterprise deployments, fewer than 20–30% of queries require frontier-model reasoning. Establishing this baseline shapes your routing thresholds.</p>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Profile Workload</h4>
+            <p style="margin:0;">Analyse query distribution. In most enterprise deployments, fewer than 20–30% of queries require frontier-model reasoning. Establishing this baseline shapes routing thresholds.</p>
           </div>
         </div>
         <div class="pillar-card">
           <div class="pillar-number">2</div>
           <div>
             <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Define Model Tiers</h4>
-            <p style="margin:0;">Select your SLM (e.g., Phi-3 Mini, Llama 3 8B) and frontier model. Consider latency, privacy requirements, and data residency when choosing between hosted APIs and on-premise inference with vLLM or Ollama.</p>
+            <p style="margin:0;">Select SLM (e.g., Phi-3 Mini, Llama 3 8B) and frontier model. Consider latency, privacy requirements, and data residency when choosing between hosted APIs and on-premise inference with vLLM or Ollama.</p>
           </div>
         </div>
         <div class="pillar-card">
           <div class="pillar-number">3</div>
           <div>
             <h4 style="font-size:1rem;font-weight:700;color:var(--clr-text);margin:0 0 0.4rem;">Train or Fine-Tune the Router</h4>
-            <p style="margin:0;">Use labelled difficulty annotations or proxy signals (user satisfaction, re-query rate) to train your routing classifier. The LLMRouter CLI simplifies this step considerably.</p>
+            <p style="margin:0;">Use labelled difficulty annotations or proxy signals (user satisfaction, re-query rate) to train routing classifier. The LLMRouter CLI simplifies this step considerably.</p>
           </div>
         </div>
         <div class="pillar-card">
@@ -225,7 +225,7 @@
       </div>
 
       <h2>Routing Within the Governed Agentic Stack</h2>
-      <p>Intelligent routing doesn't operate in isolation. In a production agentic architecture, the models being routed are answering questions grounded in your <strong>Knowledge Core</strong>—the verified, relationship-rich data layer that makes agent responses accurate at the individual and operational level. Routing policy should therefore account for more than task complexity: data sensitivity tier, regulatory constraints on which model may process which data classification, and the agent's own permission boundary are all governance signals that belong in the routing decision.</p>
+      <p>Intelligent routing doesn't operate in isolation. In a production agentic architecture, the models being routed are answering questions grounded in <strong>Knowledge Core</strong>—the verified, relationship-rich data layer that makes agent responses accurate at the individual and operational level. Routing policy should therefore account for more than task complexity: data sensitivity tier, regulatory constraints on which model may process which data classification, and the agent's own permission boundary are all governance signals that belong in the routing decision.</p>
       <p>In an architecture shaped by an <a href="/posts/blog-ai-first-data-strategy.html">AI-first data strategy</a>, the router becomes a governance control point—a place where compliance requirements, cost discipline, and performance targets are enforced simultaneously rather than managed as separate concerns across different teams.</p>
 
       <h2>The Bottom Line</h2>

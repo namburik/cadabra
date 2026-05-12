@@ -118,78 +118,26 @@
     <div class="resume-toolbar">
       <h1>Kishore Namburi — Resume</h1>
       <a
-        href="/pub/share/kishore_namburi_resume.docx"
-        download="kishore_namburi_resume.docx"
-        class="btn-download"
-        aria-label="Download resume as Word document"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download .docx
-      </a>
+          href="/pub/share/kishore_namburi_resume.pdf"
+          download="kishore_namburi_resume.pdf"
+          class="btn-download"
+          aria-label="Download resume as PDF"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
     </div>
 
-    <div id="resumeContainer"></div>
-
-    <script>
-      // Detect if running on localhost/local development
-      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168');
-      const container = document.getElementById('resumeContainer');
-      const publicUrl = 'https://namburi.me/pub/share/kishore_namburi_resume.docx';
-      const localUrl = '/pub/share/kishore_namburi_resume.docx';
-
-      if (isLocalhost) {
-        // Local development: show fallback with download link
-        container.innerHTML = `
-          <div class="resume-fallback">
-            <p><strong>Resume preview unavailable in local development.</strong></p>
-            <p>The online document viewer requires a publicly accessible HTTPS URL. Download the full resume below:</p>
-            <p><a href="${localUrl}" download="kishore_namburi_resume.docx" class="btn-download" style="display:inline-flex;">Download Resume (.docx)</a></p>
-          </div>
-        `;
-      } else {
-        // Production: embed using Office Online viewer
-        container.innerHTML = `
-          <div class="resume-embed-wrapper" id="embedWrapper">
-            <iframe
-              id="resumeEmbed"
-              src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(publicUrl)}"
-              title="Kishore Namburi Resume"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div id="resumeFallback" class="resume-fallback" style="display:none;">
-            <p><strong>Resume preview unavailable.</strong> The document viewer requires a live internet connection and public URL to load.</p>
-            <p><a href="${publicUrl}" download="kishore_namburi_resume.docx" class="btn-download" style="display:inline-flex;">Download Resume (.docx)</a></p>
-          </div>
-        `;
-
-        // Fallback if embed fails to load
-        const timer = setTimeout(() => {
-          const iframe = document.getElementById('resumeEmbed');
-          const fallback = document.getElementById('resumeFallback');
-          const embedWrapper = document.getElementById('embedWrapper');
-          
-          if (iframe && fallback && embedWrapper) {
-            embedWrapper.style.display = 'none';
-            fallback.style.display = 'block';
-          }
-        }, 4000);
-
-        const iframe = document.getElementById('resumeEmbed');
-        if (iframe) {
-          iframe.onload = () => clearTimeout(timer);
-          iframe.onerror = () => {
-            clearTimeout(timer);
-            const fallback = document.getElementById('resumeFallback');
-            const embedWrapper = document.getElementById('embedWrapper');
-            if (embedWrapper && fallback) {
-              embedWrapper.style.display = 'none';
-              fallback.style.display = 'block';
-            }
-          };
-        }
-      }
-    </script>
+    <div class="resume-embed-wrapper">
+      <iframe
+        src="/pub/share/kishore_namburi_resume.pdf"
+        title="Kishore Namburi Resume PDF"
+        width="100%"
+        height="800"
+        style="min-height:500px;border:none;"
+        allowfullscreen
+      ></iframe>
+    </div>
   </main>
 
   <footer class="site-footer mt-12">

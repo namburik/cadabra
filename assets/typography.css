@@ -1,14 +1,20 @@
 /* Typography and micro-interaction overrides */
 
-/* Body uses a readable serif for an "Authentic" feel */
+/* Body and headings use Inter — loaded on all pages */
 body {
-  font-family: 'Merriweather', Georgia, serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Headers use a tech-forward sans for an "Agentic" vibe */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
+}
+
+/* Merriweather is only loaded on individual blog post pages — scope it there */
+.blog-content p,
+.blog-content li,
+.blog-content blockquote {
+  font-family: 'Merriweather', Georgia, serif;
 }
 
 /* Featured post card interaction: subtle lift + glow */
@@ -37,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 .bento-grid{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:repeat(2, minmax(84px, auto));gap:.5rem;align-items:stretch}
 .bento-card{background:var(--card);padding:.5rem;border-radius:8px;box-shadow:0 6px 18px rgba(12,12,20,.05);text-decoration:none;color:inherit;display:block;transition:transform 160ms var(--transition),box-shadow 160ms var(--transition),filter 160ms}
 .bento-card h2,.bento-card h3{margin:0 0 .35rem;font-weight:700}
-.bento-card p{margin:0;color:var(--muted)}
+.bento-card p{margin:0;color:var(--clr-body)}
 .bento-primary{grid-row:1 / span 2;display:flex;flex-direction:column;justify-content:center;padding:1.5rem;}
 .bento-meta p{margin-top:.5rem}
 .bento-card:hover,.bento-card:focus-within{transform:translateY(-6px);box-shadow:0 22px 48px rgba(12,12,20,.12),0 8px 20px rgba(11,99,214,.05);filter:brightness(1.025)}
@@ -66,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 .focus-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 .focus-mcp{background:#0b63d6}
 .focus-langgraph{background:#7b61ff}
-.status-note{font-size:.95rem;color:var(--muted)}
+.status-note{font-size:.95rem;color:var(--clr-meta)}
 
 /* Visual tile */
 .visual-card{display:flex;flex-direction:column;gap:.6rem;align-items:center;width:100%}
@@ -126,7 +132,7 @@ body.dark .hero-bento::before{
 .featured-card .card-content{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 8px 26px rgba(12,12,20,.06);height:100%;display:flex;flex-direction:column;justify-content:space-between;transition:transform 180ms var(--transition),box-shadow 180ms var(--transition)}
 .featured-card .card-content:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(12,12,20,.12)}
 .featured-card h3{margin:0 0 .5rem}
-.card-excerpt{margin:0 0 .8rem;color:var(--muted)}
+.card-excerpt{margin:0 0 .8rem;color:var(--clr-body)}
 .tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
 .tag{background:rgba(11,99,214,.08);color:var(--clr-accent);padding:.25rem .5rem;border-radius:999px;font-size:.85rem}
 body.dark .tag{background:rgba(127,90,255,.06);color:#bdb6ff}

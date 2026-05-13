@@ -73,7 +73,7 @@
       <div class="two-col">
         <div>
           <h3>Request Router</h3>
-          <p class="text-gray-700">Logic: Intent-Based Routing &gt; General Inbox</p>
+          <p class="text-gray-700 dark:text-gray-300">Logic: Intent-Based Routing &gt; General Inbox</p>
 
           <div class="request-router" style="margin-top:12px;">
             <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -99,7 +99,7 @@
             <div style="margin-top:12px;">
               <label for="agenticInput" class="sr-only">Agentic Input</label>
               <div style="display:flex;gap:8px;align-items:center;">
-                <span style="font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;color:#374151">&gt;</span>
+                <span style="font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;color:var(--clr-text)">&gt;</span>
                 <input id="agenticInput" type="text" placeholder="Input Request Metadata..." style="flex:1;padding:8px;border:1px solid #e5e7eb;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;" />
                 <button id="sendRequest" class="btn">Send Request</button>
               </div>
@@ -111,7 +111,7 @@
         <div>
           <div class="contact-form-box" id="requestPanel">
             <h3>Request Panel</h3>
-            <p class="text-gray-700">Selected intent: <span id="selectedIntent">None</span></p>
+            <p class="text-gray-700 dark:text-gray-300">Selected intent: <span id="selectedIntent">None</span></p>
 
             <div class="compact-row">
               <div class="field">
@@ -135,7 +135,7 @@
             <input type="text" id="r_hp" name="_gotcha" value="" tabindex="-1" style="position:absolute;left:-9999px;top:auto;" aria-hidden="true" />
 
             <div style="display:flex;gap:8px;align-items:center;margin-top:8px;">
-              <p id="requestStatus" role="status" aria-live="polite" style="color:#374151;font-size:14px;margin-left:8px"></p>
+              <p id="requestStatus" role="status" aria-live="polite" style="color:var(--clr-text);font-size:14px;margin-left:8px"></p>
             </div>
 
             <p style="margin-top:12px">Or email <a href="mailto:hello@namburi.me">hello@namburi.me</a></p>

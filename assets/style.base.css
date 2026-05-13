@@ -46,6 +46,16 @@ body.dark .blog-content {
   color: #d1d5db;
 }
 
+/* Index page supporting text — brighter in dark mode */
+.site-caption, .why-build { color: var(--body); }
+body.dark .site-caption, body.dark .why-build { color: #d1d5db; }
+
+/* Bento card paragraph text — brighter in dark mode */
+body.dark .bento-card p { color: #d1d5db; }
+
+/* Vis-caption dark mode */
+body.dark .vis-caption { color: #a0adb8; }
+
 /* Ensure skip-to-content target isn't hidden behind fixed header */
 [id="content"]{scroll-margin-top:80px}
 

@@ -78,21 +78,21 @@
           <div class="request-router" style="margin-top:12px;">
             <div style="display:flex;gap:10px;flex-wrap:wrap;">
               <button type="button" class="btn btn-outline" data-intent="collaborate" aria-pressed="false" style="min-width:160px;text-align:left;">
-                <strong>Collaborate</strong>
-                <div style="font-size:13px;color:#6b7280;margin-top:6px">Logic: Strategy + Engineering = Shared Outcome</div>
-                <div style="font-size:13px;color:#6b7280">Action: “Let’s build something agentic. Describe your stack and the problem.”</div>
+                <strong style="color:var(--clr-text)">Collaborate</strong>
+                <div style="font-size:13px;color:var(--clr-meta);margin-top:6px">Logic: Strategy + Engineering = Shared Outcome</div>
+                <div style="font-size:13px;color:var(--clr-meta)">Action: "Let's build something agentic. Describe your stack and the problem."</div>
               </button>
 
               <button type="button" class="btn btn-outline" data-intent="consult" aria-pressed="false" style="min-width:160px;text-align:left;">
-                <strong>Consult</strong>
-                <div style="font-size:13px;color:#6b7280;margin-top:6px">Logic: Expertise / Complexity = Roadmap</div>
-                <div style="font-size:13px;color:#6b7280">Action: “Need a pragmatic AI framework? I provide strategy for enterprise AI governance.”</div>
+                <strong style="color:var(--clr-text)">Consult</strong>
+                <div style="font-size:13px;color:var(--clr-meta);margin-top:6px">Logic: Expertise / Complexity = Roadmap</div>
+                <div style="font-size:13px;color:var(--clr-meta)">Action: "Need a pragmatic AI framework? I provide strategy for enterprise AI governance."</div>
               </button>
 
               <button type="button" class="btn btn-outline" data-intent="coffee" aria-pressed="false" style="min-width:160px;text-align:left;">
-                <strong>Coffee/Chat</strong>
-                <div style="font-size:13px;color:#6b7280;margin-top:6px">Logic: Community + Curiosity = Authenticity</div>
-                <div style="font-size:13px;color:#6b7280">Action: “For builders, researchers, and old-school engineers. No pitches, just high-signal talk.”</div>
+                <strong style="color:var(--clr-text)">Coffee/Chat</strong>
+                <div style="font-size:13px;color:var(--clr-meta);margin-top:6px">Logic: Community + Curiosity = Authenticity</div>
+                <div style="font-size:13px;color:var(--clr-meta)">Action: "For builders, researchers, and old-school engineers. No pitches, just high-signal talk."</div>
               </button>
             </div>
 
@@ -100,7 +100,7 @@
               <label for="agenticInput" class="sr-only">Agentic Input</label>
               <div style="display:flex;gap:8px;align-items:center;">
                 <span style="font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;color:var(--clr-text)">&gt;</span>
-                <input id="agenticInput" type="text" placeholder="Input Request Metadata..." style="flex:1;padding:8px;border:1px solid #e5e7eb;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;" />
+                <input id="agenticInput" type="text" placeholder="Input Request Metadata..." style="flex:1;padding:8px;border:1px solid var(--clr-border);border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;background:var(--clr-card);color:var(--clr-text);" />
                 <button id="sendRequest" class="btn">Send Request</button>
               </div>
             </div>

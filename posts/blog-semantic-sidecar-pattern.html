@@ -144,7 +144,7 @@
             <ul>
               <li><strong>Data Ingestion:</strong> Changes in the main system are synced—via event-driven or scheduled processes—to the sidecar. Common patterns: CDC → streaming (Debezium/Kafka), event buses, or periodic ETL. Choose based on latency and consistency requirements.</li>
               <li><strong>Knowledge Graph:</strong> Using a graph database such as Neo4j, raw data is transformed into a web of relationships enabling multi-hop queries, peer discovery, and complex risk analytics.</li>
-              <li><strong>Semantic Layer:</strong> Maps graph data to business ontologies (e.g., FIBO for financial services), normalizing and enriching context for LLMs and agents.</li>
+              <li><strong>Semantic Layer:</strong> Maps graph data to domain ontologies — FIBO for financial services, SNOMED CT for clinical — normalizing and enriching context for LLMs and agents where accuracy is non-negotiable.</li>
             </ul>
           </div>
         </div>

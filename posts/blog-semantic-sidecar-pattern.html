@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <title>The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents | Kishore Namburi</title>
-  <meta name="description" content="How the Semantic Sidecar pattern enables robust, compliant, and agile AI systems by decoupling the semantic layer from the core application." />
+  <title>Semantic Sidecar: Grounding AI Agents | Kishore Namburi</title>
+  <meta name="description" content="How the Semantic Sidecar pattern enables robust, compliant AI systems by decoupling the semantic layer — so agents ship on Day 1 while schemas mature." />
   <meta property="og:title" content="The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents" />
-  <meta property="og:description" content="How the Semantic Sidecar pattern enables robust, compliant, and agile AI systems by decoupling the semantic layer from the core application." />
+  <meta property="og:description" content="How the Semantic Sidecar pattern enables robust, compliant AI systems by decoupling the semantic layer — so agents ship on Day 1 while schemas mature." />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="/posts/blog-semantic-sidecar-pattern.html" />
-  <meta name="image" property="og:image" content="/assets/images/blog-semantic-sidecar-pattern.png" />
+  <meta property="og:url" content="https://namburi.me/posts/blog-semantic-sidecar-pattern.html" />
+  <meta name="image" property="og:image" content="https://namburi.me/assets/images/blog-semantic-sidecar-pattern.png" />
   <meta property="og:site_name" content="Kishore Namburi" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents" />
-  <meta name="twitter:description" content="How the Semantic Sidecar pattern enables robust, compliant, and agile AI systems by decoupling the semantic layer from the core application." />
-  <meta name="twitter:image" content="/assets/images/blog-semantic-sidecar-pattern.png" />
+  <meta name="twitter:description" content="How the Semantic Sidecar pattern enables robust, compliant AI systems by decoupling the semantic layer — so agents ship on Day 1 while schemas mature." />
+  <meta name="twitter:image" content="https://namburi.me/assets/images/blog-semantic-sidecar-pattern.png" />
   <meta name="theme-color" content="#0a0e1a" />
   <meta name="author" content="Kishore Namburi" />
   <link rel="canonical" href="https://namburi.me/posts/blog-semantic-sidecar-pattern.html" />
@@ -41,9 +41,9 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": "/posts/blog-semantic-sidecar-pattern.html",
+    "@id": "https://namburi.me/posts/blog-semantic-sidecar-pattern.html",
     "headline": "The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents",
-    "description": "How the Semantic Sidecar pattern enables robust, compliant, and agile AI systems by decoupling the semantic layer from the core application.",
+    "description": "How the Semantic Sidecar pattern enables robust, compliant AI systems by decoupling the semantic layer — so agents ship on Day 1 while schemas mature.",
     "datePublished": "2026-05-15",
     "dateModified": "2026-05-15",
     "author": {
@@ -66,9 +66,9 @@
         "https://www.linkedin.com/in/tonamburi/"
       ]
     },
-    "image": "/assets/images/blog-semantic-sidecar-pattern.png",
-    "url": "/posts/blog-semantic-sidecar-pattern.html",
-    "mainEntityOfPage": "/posts/blog-semantic-sidecar-pattern.html",
+    "image": "https://namburi.me/assets/images/blog-semantic-sidecar-pattern.png",
+    "url": "https://namburi.me/posts/blog-semantic-sidecar-pattern.html",
+    "mainEntityOfPage": "https://namburi.me/posts/blog-semantic-sidecar-pattern.html",
     "keywords": ["semantic sidecar", "knowledge graph", "AI governance", "enterprise AI", "architecture", "compliance", "grounding", "ontology", "agentic AI"]
   }
   </script>
@@ -118,22 +118,22 @@
         <div class="pattern-grid" style="grid-template-columns: repeat(4, 1fr);">
           <div class="pattern-card">
             <div class="core-label">Parallelism</div>
-            <h4>Parallel Tracks</h4>
+            <h3>Parallel Tracks</h3>
             <p>Build and wire agents to the sidecar while the core system remains stable and untouched.</p>
           </div>
           <div class="pattern-card">
             <div class="core-label">Velocity</div>
-            <h4>Decoupled Velocity</h4>
+            <h3>Decoupled Velocity</h3>
             <p>Refine ontologies and data mappings incrementally — ship on Day 1 without waiting for a full schema overhaul.</p>
           </div>
           <div class="pattern-card">
             <div class="core-label">Compliance</div>
-            <h4>Compliance from Day 1</h4>
+            <h3>Compliance from Day 1</h3>
             <p>Data grounding required for regulated sectors is in place from the start, with the complexity kept off the critical path.</p>
           </div>
           <div class="pattern-card">
             <div class="core-label">Friction</div>
-            <h4>Reduced Friction</h4>
+            <h3>Reduced Friction</h3>
             <p>Transforms a blocking prerequisite — build the schema first — into a side-by-side evolution alongside shipping.</p>
           </div>
         </div>
@@ -220,21 +220,21 @@
         <div class="phase-grid" style="grid-template-columns: repeat(3, 1fr);">
           <div class="phase-card accent">
             <div class="phase-label">Privacy</div>
-            <h4>Data Privacy &amp; Access Control</h4>
+            <h3>Data Privacy &amp; Access Control</h3>
             <ul>
               <li>A cross-service boundary creates a new PII exposure pathway. Enforce ACLs, encryption at rest/in transit, and tokenized access; mask PII before it reaches models.</li>
             </ul>
           </div>
           <div class="phase-card purple">
             <div class="phase-label">Traceability</div>
-            <h4>Provenance &amp; Audit Trails</h4>
+            <h3>Provenance &amp; Audit Trails</h3>
             <ul>
               <li>The KG is a derived copy of production data. Record source, timestamps, and transformation lineage for every update — the audit trail that makes agent decisions explainable and compliant.</li>
             </ul>
           </div>
           <div class="phase-card cyan">
             <div class="phase-label">Consistency</div>
-            <h4>Conflict Resolution &amp; Reconciliation</h4>
+            <h3>Conflict Resolution &amp; Reconciliation</h3>
             <ul>
               <li>Async sync introduces a lag window. Design reconciliation jobs and conflict policies; treat that gap as a known, managed state — not an edge case.</li>
             </ul>
@@ -248,7 +248,7 @@
         <div class="phase-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="phase-card accent">
             <div class="phase-label">Day 1</div>
-            <h4>Ready from the Start</h4>
+            <h3>Ready from the Start</h3>
             <ul>
               <li>Compliance-ready and auditable from launch</li>
               <li>Grounded context reduces hallucination risk — without eliminating it</li>
@@ -256,7 +256,7 @@
           </div>
           <div class="phase-card purple">
             <div class="phase-label">Day N</div>
-            <h4>Evolves Without Disruption</h4>
+            <h3>Evolves Without Disruption</h3>
             <ul>
               <li>New ontologies and features added to the sidecar, not the core</li>
               <li>Architecture adapts to shifting requirements without destabilising the business system</li>
@@ -280,7 +280,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p class="copyright">© <span class="site-year"></span> Kishore Namburi • mytake:agentic and authentic &gt; Insights are personal. Code is MIT.</p>
+      <p class="copyright">© <span class="site-year"></span> Kishore Namburi • mytake: agentic and authentic • Insights are personal. Code is MIT.</p>
     </div>
   </footer>
 

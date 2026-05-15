@@ -103,11 +103,11 @@
       </header>
 
       <div class="blog-content">
-        <p class="blog-intro">Building production-grade AI in regulated or high-stakes environments requires separating intelligence from transactions. The Semantic Sidecar is the go-to pattern for this — not a compromise between governance and agility, but the architecture that delivers both without sacrificing either.</p>
+        <p class="blog-intro">Enterprise teams adding AI to production systems face a concrete dilemma: the intelligence layer needs validated, structured business data to reason accurately — but wiring it into the transactional core turns every ontology update into a deployment risk and every model change into a potential outage. In regulated industries, an LLM reasoning from stale or unvalidated context isn't just inaccurate; it's a compliance liability.</p>
 
-        <h2>Why the Sidecar Is the Right Pattern</h2>
+        <h2>The Sidecar Eliminates the Dilemma</h2>
 
-        <p>Coupling the semantic layer to the transaction core creates fragility: every ontology update, re-indexing job, or KG change becomes a deployment risk against the business-critical path. The Sidecar eliminates that coupling entirely — the intelligence layer runs alongside the core, governed and independently deployable from day one.</p>
+        <p>The Semantic Sidecar decouples the problem entirely. The system of record stays untouched — ACID-compliant, stable, operational whether the sidecar is running or not. The sidecar receives changes via async sync, builds a Knowledge Graph from validated business data, and exposes ontology-mapped context to LLMs through a governed API. Agents get grounded, auditable responses. The core takes none of the risk.</p>
 
         <div class="pattern-grid" style="grid-template-columns: repeat(3, 1fr);">
           <div class="pattern-card">

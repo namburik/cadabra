@@ -103,27 +103,32 @@
       </header>
 
       <div class="blog-content">
-        <p class="blog-intro">Enterprise teams adding AI to production systems face a concrete dilemma: the intelligence layer needs validated, structured business data to reason accurately — but wiring it into the transactional core turns every ontology update into a deployment risk and every model change into a potential outage. In regulated industries, an LLM reasoning from stale or unvalidated context isn't just inaccurate; it's a compliance liability.</p>
+        <p class="blog-intro">The Semantic Sidecar addresses the "Chicken or the Egg" dilemma of enterprise AI: build a robust data schema first, or ship agents immediately? In regulated industries, neither option works alone — shipping agents without mapped data leads to non-compliant hallucinations, yet building the schema first stalls development for months.</p>
 
-        <h2>The Sidecar Eliminates the Dilemma</h2>
+        <h2>The Sidecar Breaks the Deadlock</h2>
 
-        <p>The Semantic Sidecar decouples the problem entirely. The system of record stays untouched — ACID-compliant, stable, operational whether the sidecar is running or not. The sidecar receives changes via async sync, builds a Knowledge Graph from validated business data, and exposes ontology-mapped context to LLMs through a governed API. Agents get grounded, auditable responses. The core takes none of the risk.</p>
+        <p>The pattern makes schema-building a parallel, non-blocking activity. Developers wire agents to the sidecar while the core system stays untouched; ontologies and data mappings evolve incrementally within the sidecar — no big-bang overhaul of the transactional core required.</p>
 
-        <div class="pattern-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="pattern-grid" style="grid-template-columns: repeat(4, 1fr);">
           <div class="pattern-card">
-            <div class="core-label">Compliance</div>
-            <h4>A Path to Compliance</h4>
-            <p>Auditability and grounding from Day 1 without stalling development.</p>
+            <div class="core-label">Parallelism</div>
+            <h4>Parallel Tracks</h4>
+            <p>Build and wire agents to the sidecar while the core system remains stable and untouched.</p>
           </div>
           <div class="pattern-card">
             <div class="core-label">Velocity</div>
-            <h4>Decoupled Iteration</h4>
-            <p>Evolve Knowledge Graph logic and business ontologies independently of the core transactional system.</p>
+            <h4>Decoupled Velocity</h4>
+            <p>Refine ontologies and data mappings incrementally — ship on Day 1 without waiting for a full schema overhaul.</p>
           </div>
           <div class="pattern-card">
-            <div class="core-label">Flexibility</div>
-            <h4>Architectural Flexibility</h4>
-            <p>The intelligence layer scales with changing business and regulatory requirements without touching the core.</p>
+            <div class="core-label">Compliance</div>
+            <h4>Compliance from Day 1</h4>
+            <p>Data grounding required for regulated sectors is in place from the start, with the complexity kept off the critical path.</p>
+          </div>
+          <div class="pattern-card">
+            <div class="core-label">Friction</div>
+            <h4>Reduced Friction</h4>
+            <p>Transforms a blocking prerequisite — build the schema first — into a side-by-side evolution alongside shipping.</p>
           </div>
         </div>
 

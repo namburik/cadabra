@@ -9,6 +9,14 @@
     <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents</title>
+      <link>https://namburi.me/posts/blog-semantic-sidecar-pattern.html</link>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>How the Semantic Sidecar pattern enables robust, compliant, and agile AI systems by decoupling the semantic layer from the core application.</description>
+    </item>
+
+    <item>
       <title>The Unified Agentic Stack: A Complete Blueprint for Production AI</title>
       <link>https://namburi.me/posts/blog-unified-agentic-architecture.html</link>
       <pubDate>Sun, 11 May 2026 00:00:00 +0000</pubDate>
@@ -33,11 +41,27 @@
     </item>
 
     <item>
+      <title>YAML-Driven Agent Workflows</title>
+      <link>https://namburi.me/posts/blog-multiagent-yaml-orchestration.html</link>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>How to build configurable multi-agent workflows where routing logic lives in YAML — no code changes to add new agents or update operation routing.</description>
+    </item>
+
+    <item>
       <title>Beyond the Hype: Why AI TRiSM is the Secret to Scaling Enterprise AI</title>
       <link>https://namburi.me/posts/blog-ai-trism-enterprise-security.html</link>
       <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>
       <dc:creator>Kishore Namburi</dc:creator>
       <description>Data leaks, Shadow AI, and prompt injection are bigger threats than hallucination. AI TRiSM is the operational framework to govern AI before regulators force your hand.</description>
+    </item>
+
+    <item>
+      <title>Multi-Agent AI: Build a Digital Workforce</title>
+      <link>https://namburi.me/posts/blog-multi-agent-systems-architecture.html</link>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>How CrewAI, AutoGen, LangGraph, and n8n form a digital AI workforce — six decoupled layers, each owning a single concern, each independently replaceable.</description>
     </item>
 
     <item>

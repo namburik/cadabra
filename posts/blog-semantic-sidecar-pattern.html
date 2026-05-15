@@ -109,11 +109,23 @@
 
         <p>The classic tension in enterprise AI architecture is between governance and velocity. Embedding the semantic layer directly in the transaction core locks compliance in from day one—but at the cost of development speed and deployment risk. Leaving it out ships faster, but creates a debt that compounds as AI becomes load-bearing. The Semantic Sidecar resolves this by treating the intelligence layer as a first-class but independent service: deployed alongside the core, not embedded within it.</p>
 
-        <ul>
-          <li><strong>A Path to Compliance:</strong> Gain auditability and grounding from Day 1 without stalling development.</li>
-          <li><strong>Decoupled Iteration:</strong> Evolve Knowledge Graph (KG) logic and business ontologies independently of the core transactional system.</li>
-          <li><strong>Architectural Flexibility:</strong> Business needs and regulatory requirements change. A sidecar architecture allows the intelligence layer to scale without risking business continuity.</li>
-        </ul>
+        <div class="pattern-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="pattern-card">
+            <div class="core-label">Compliance</div>
+            <h4>A Path to Compliance</h4>
+            <p>Gain auditability and grounding from Day 1 without stalling development.</p>
+          </div>
+          <div class="pattern-card">
+            <div class="core-label">Velocity</div>
+            <h4>Decoupled Iteration</h4>
+            <p>Evolve Knowledge Graph logic and business ontologies independently of the core transactional system.</p>
+          </div>
+          <div class="pattern-card">
+            <div class="core-label">Flexibility</div>
+            <h4>Architectural Flexibility</h4>
+            <p>Business needs and regulatory requirements change. The sidecar lets the intelligence layer scale without risking business continuity.</p>
+          </div>
+        </div>
 
         <h2>How the Semantic Sidecar Works</h2>
 
@@ -146,19 +158,58 @@
         <p>Independence also yields performance benefits: heavy analytical and graph queries are offloaded from the transactional database, keeping the system of record fast under load. For KG access and sync processors, prefer idempotent patterns, optimistic concurrency, and well-defined retry semantics over global blocking locks in distributed environments. Encapsulate all graph logic—Cypher queries, ontology mappings—within the sidecar to prevent leakage into the application layer. Schema setup (Neo4j constraints and indices) should be idempotent on startup to maintain consistency across environments.</p>
 
         <h2>Operational Concerns</h2>
-        <p>In production, consider the following controls and safeguards:</p>
-        <ul>
-          <li><strong>Data privacy &amp; access control:</strong> Enforce ACLs, encryption at rest and in transit, and tokenized access between core and sidecar. Filter or mask PII before it reaches models when required.</li>
-          <li><strong>Provenance &amp; audit trails:</strong> Record source, timestamps, and transformation lineage for KG updates to support compliance and explainability.</li>
-          <li><strong>Conflict resolution &amp; reconciliation:</strong> Design reconciliation jobs and conflict policies for eventual-consistency scenarios where the sidecar lags behind the system of record.</li>
-          <li><strong>Monitoring &amp; observability:</strong> Instrument sync pipelines and KG query latency, error rates, and throughput. Alert on sync failures and data skew.</li>
-          <li><strong>Security &amp; validation:</strong> Validate incoming events, rate-limit queries, and protect ETL endpoints from abuse.</li>
-          <li><strong>Testability:</strong> Include integration tests that assert grounded responses and regression tests when ontologies change.</li>
-        </ul>
+
+        <p>The sidecar pattern introduces three concerns that don't exist in a monolithic setup. Moving data across a service boundary exposes PII to a new pathway. Deriving a KG from production data creates a transformed copy whose lineage must be traceable for agents to be explainable and auditable. And the async sync window means the sidecar's view can lag the system of record—making reconciliation a first-class design concern, not an afterthought.</p>
+
+        <div class="phase-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="phase-card accent">
+            <div class="phase-label">Privacy</div>
+            <h4>Data Privacy &amp; Access Control</h4>
+            <ul>
+              <li>Enforce ACLs, encryption at rest and in transit, and tokenized access between core and sidecar.</li>
+              <li>Filter or mask PII before it reaches models when required.</li>
+            </ul>
+          </div>
+          <div class="phase-card purple">
+            <div class="phase-label">Traceability</div>
+            <h4>Provenance &amp; Audit Trails</h4>
+            <ul>
+              <li>Record source, timestamps, and transformation lineage for every KG update.</li>
+              <li>Enables compliance reporting and explainability for agent decisions.</li>
+            </ul>
+          </div>
+          <div class="phase-card cyan">
+            <div class="phase-label">Consistency</div>
+            <h4>Conflict Resolution &amp; Reconciliation</h4>
+            <ul>
+              <li>Design reconciliation jobs and conflict policies for the eventual-consistency gap.</li>
+              <li>Treat the lag window between sidecar and system of record as a known, managed state.</li>
+            </ul>
+          </div>
+        </div>
 
         <h2>From Day 1 to Day N</h2>
 
-        <p>The sidecar's independence is its long-term advantage. On Day 1, the system is ready for compliance, auditability, and more trustworthy LLM responses—providing grounded context that reduces, though does not eliminate, hallucination risk. On Day N, as AI maturity grows, new ontologies and analytical features can be added to the sidecar without a "big bang" re-architecture of the core system.</p>
+        <div class="phase-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="phase-card accent">
+            <div class="phase-label">Day 1</div>
+            <h4>Ready from the Start</h4>
+            <ul>
+              <li>Compliance-ready and auditable from launch</li>
+              <li>Grounded LLM context reduces — though does not eliminate — hallucination risk</li>
+              <li>Core system ships independently, no big-bang delivery</li>
+            </ul>
+          </div>
+          <div class="phase-card purple">
+            <div class="phase-label">Day N</div>
+            <h4>Evolves Without Disruption</h4>
+            <ul>
+              <li>New ontologies and analytical features added to the sidecar, not the core</li>
+              <li>Intelligence layer scales with AI maturity</li>
+              <li>Architecture absorbs new requirements without re-architecting the business system</li>
+            </ul>
+          </div>
+        </div>
 
         <p>To build systems that are both robust and intelligent, the Semantic Sidecar must be a first-class citizen in the architecture. It is the most effective way to scale the "brain" of a system without breaking the "body."</p>
 

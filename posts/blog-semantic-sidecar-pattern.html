@@ -111,7 +111,7 @@
 
         <h2>The Sidecar Breaks the Deadlock</h2>
 
-        <p>The Semantic Sidecar dissolves the dilemma by making schema-building a parallel, non-blocking activity. Developers wire agents to the sidecar while the core system stays untouched; ontologies and data mappings evolve incrementally within the sidecar — no big-bang overhaul of the transactional core required, no compliance gap while the schema matures.</p>
+        <p>The Semantic Sidecar dissolves the dilemma by making schema-building a parallel, non-blocking activity. Developers wire agents to the sidecar while the core system stays untouched; ontologies and data mappings evolve incrementally — no big-bang overhaul required, no compliance gap while the schema matures.</p>
 
         <div class="pattern-grid" style="grid-template-columns: repeat(4, 1fr);">
           <div class="pattern-card">
@@ -136,9 +136,56 @@
           </div>
         </div>
 
-        <h2>How the Semantic Sidecar Works</h2>
+        <p>How the three approaches compare across the dimensions that matter most in regulated environments:</p>
 
-        <p>Two parallel paths — the critical path owns business operations; the intelligence path grounds agents in validated context — run independently without blocking each other.</p>
+        <div class="blog-table-wrap">
+          <table class="blog-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Schema-First</th>
+                <th>Agents-First</th>
+                <th>Semantic Sidecar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Time to first agent</td>
+                <td>Months</td>
+                <td>Day 1</td>
+                <td>Day 1</td>
+              </tr>
+              <tr>
+                <td>Compliance posture</td>
+                <td>Delayed until schema completes</td>
+                <td>Exposed from launch</td>
+                <td>Grounded from Day 1</td>
+              </tr>
+              <tr>
+                <td>Core system stability</td>
+                <td>Stable</td>
+                <td>Coupling risk</td>
+                <td>Stable</td>
+              </tr>
+              <tr>
+                <td>Schema evolution</td>
+                <td>Complete upfront</td>
+                <td>Skipped</td>
+                <td>Incremental, off critical path</td>
+              </tr>
+              <tr>
+                <td>Audit trail</td>
+                <td>Post-build</td>
+                <td>None</td>
+                <td>Full lineage from launch</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>How It Works</h2>
+
+        <p>The Sidecar introduces a second service that runs alongside the core — receiving data changes asynchronously, building a Knowledge Graph, and serving validated, ontology-mapped context to agents. The core system never changes; the intelligence layer evolves continuously beside it.</p>
 
         <div class="phase-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="phase-card accent">
@@ -151,14 +198,12 @@
           <div class="phase-card purple">
             <div class="phase-label">2 · Intelligence Path</div>
             <ul>
-              <li><strong>Data Ingestion:</strong> Changes synced to the sidecar via CDC → streaming (Debezium/Kafka), event buses, or periodic ETL — choose based on latency and consistency needs.</li>
+              <li><strong>Data Ingestion:</strong> Changes synced via CDC → streaming (Debezium/Kafka), event buses, or periodic ETL. Trades immediate consistency for decoupling — design reconciliation and SLAs accordingly.</li>
               <li><strong>Knowledge Graph:</strong> Neo4j (or JanusGraph, Dgraph, TigerGraph) stores entities as connected nodes, enabling multi-hop queries and risk analytics via Cypher.</li>
               <li><strong>Semantic Layer:</strong> Maps graph data to domain ontologies — FIBO for financial services, SNOMED CT for clinical — exposing a business-centric API to LLMs and agents where accuracy is non-negotiable.</li>
             </ul>
           </div>
         </div>
-
-        <p>Sync approaches trade immediate consistency for decoupling — design reconciliation and SLA strategies accordingly.</p>
 
         <h2>Resilience and Performance by Design</h2>
 
@@ -166,35 +211,37 @@
 
         <p>Heavy analytical and graph queries are offloaded from the transactional database, keeping the system of record fast under load. Prefer idempotent patterns and optimistic concurrency for sync processors; encapsulate all graph logic within the sidecar to prevent leakage into the application layer.</p>
 
-        <h2>Operational Concerns</h2>
+        <h2>What the Sidecar Introduces</h2>
 
-        <p>Three concerns arise specifically from the sidecar's structure: a cross-service boundary that creates a new PII exposure pathway; a derived KG whose transformation lineage must be traceable; and an async sync window that introduces lag requiring active management.</p>
+        <p>Three operational concerns arise specifically from the sidecar's structure — each a direct consequence of the decoupling that makes the pattern valuable.</p>
 
         <div class="phase-grid" style="grid-template-columns: repeat(3, 1fr);">
           <div class="phase-card accent">
             <div class="phase-label">Privacy</div>
             <h4>Data Privacy &amp; Access Control</h4>
             <ul>
-              <li>Enforce ACLs, encryption at rest/in transit, and tokenized access between core and sidecar; mask PII before it reaches models.</li>
+              <li>A cross-service boundary creates a new PII exposure pathway. Enforce ACLs, encryption at rest/in transit, and tokenized access; mask PII before it reaches models.</li>
             </ul>
           </div>
           <div class="phase-card purple">
             <div class="phase-label">Traceability</div>
             <h4>Provenance &amp; Audit Trails</h4>
             <ul>
-              <li>Record source, timestamps, and transformation lineage for every KG update — the audit trail that makes agent decisions explainable and compliant.</li>
+              <li>The KG is a derived copy of production data. Record source, timestamps, and transformation lineage for every update — the audit trail that makes agent decisions explainable and compliant.</li>
             </ul>
           </div>
           <div class="phase-card cyan">
             <div class="phase-label">Consistency</div>
             <h4>Conflict Resolution &amp; Reconciliation</h4>
             <ul>
-              <li>Design reconciliation jobs and conflict policies; treat the lag window between sidecar and system of record as a known, managed state.</li>
+              <li>Async sync introduces a lag window. Design reconciliation jobs and conflict policies; treat that gap as a known, managed state — not an edge case.</li>
             </ul>
           </div>
         </div>
 
         <h2>From Day 1 to Day N</h2>
+
+        <p>The Sidecar's independence is a compounding advantage. What ships on Day 1 is already compliant; what ships on Day N is more intelligent — without ever having touched the core system.</p>
 
         <div class="phase-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="phase-card accent">

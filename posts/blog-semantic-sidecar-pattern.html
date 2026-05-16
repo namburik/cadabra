@@ -94,7 +94,7 @@
         <h1>The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents</h1>
         <div class="blog-meta">
           <time datetime="2026-05-15">May 2026</time>
-          <span>7 min read</span>
+          <span>5 min read</span>
           <span>By Kishore Namburi</span>
         </div>
         <figure style="margin:1.5rem 0 0;border-radius:10px;overflow:hidden;">
@@ -103,9 +103,7 @@
       </header>
 
       <div class="blog-content">
-        <p class="blog-intro">Agentic AI is only as good as the business context it reasons from. For enterprise agents to be accurate, compliant, and trusted, they must understand the semantic meaning of business data — entities, relationships, and domain ontologies. Access to a Knowledge Graph isn't optional; it's the foundation that separates production-grade agents from well-dressed demos.</p>
-
-        <p>Yet every enterprise AI team faces the same divide: build the semantic schema first, or ship agents immediately? This is the <strong>"Chicken or the Egg" dilemma</strong> — and in regulated industries, both paths carry a compliance cost.</p>
+        <p class="blog-intro">Every enterprise AI team faces the same divide: build the semantic schema first, or ship agents immediately? This is the <strong>"Chicken or the Egg" dilemma</strong> — and in regulated industries, both paths carry a compliance cost.</p>
 
         <p>The <strong>schema-first</strong> path is responsible but stalls. Cross-team alignment across a legacy data landscape takes months — by the time it's ready, requirements have shifted and the window has closed.</p>
 
@@ -201,8 +199,7 @@
             <div class="phase-label">2 · Intelligence Path</div>
             <ul>
               <li><strong>Data Ingestion:</strong> Changes synced via CDC → streaming (Debezium/Kafka), event buses, or periodic ETL. Trades immediate consistency for decoupling — design reconciliation and SLAs accordingly.</li>
-              <li><strong>Knowledge Graph:</strong> Neo4j (or JanusGraph, Dgraph, TigerGraph) stores entities as connected nodes, enabling multi-hop queries and risk analytics via Cypher.</li>
-              <li><strong>Semantic Layer:</strong> Maps graph data to domain ontologies — FIBO for financial services, SNOMED CT for clinical — exposing a business-centric API to LLMs and agents where accuracy is non-negotiable.</li>
+              <li><strong>Knowledge Graph + Semantic Layer:</strong> Entities stored as connected nodes; domain ontologies map graph data to business-centric APIs that agents query. (Architecture detail: <a href="/posts/blog-graphrag-context-infrastructure.html">Beyond GraphRAG 2.0</a>.)</li>
             </ul>
           </div>
         </div>
@@ -217,19 +214,12 @@
 
         <p>Three operational concerns arise specifically from the sidecar's structure — each a direct consequence of the decoupling that makes the pattern valuable.</p>
 
-        <div class="phase-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="phase-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="phase-card accent">
             <div class="phase-label">Privacy</div>
             <h3>Data Privacy &amp; Access Control</h3>
             <ul>
               <li>A cross-service boundary creates a new PII exposure pathway. Enforce ACLs, encryption at rest/in transit, and tokenized access; mask PII before it reaches models.</li>
-            </ul>
-          </div>
-          <div class="phase-card purple">
-            <div class="phase-label">Traceability</div>
-            <h3>Provenance &amp; Audit Trails</h3>
-            <ul>
-              <li>The KG is a derived copy of production data. Record source, timestamps, and transformation lineage for every update — the audit trail that makes agent decisions explainable and compliant.</li>
             </ul>
           </div>
           <div class="phase-card cyan">
@@ -240,6 +230,7 @@
             </ul>
           </div>
         </div>
+        <p style="font-size:0.92rem;color:var(--clr-muted);margin-top:0.5rem;">Provenance and audit trails — how agent decisions become machine-verifiable compliance records — are covered in <a href="/posts/blog-graphrag-context-infrastructure.html">Beyond GraphRAG 2.0: The Context Mandate</a>.</p>
 
         <h2>From Day 1 to Day N</h2>
 
@@ -269,6 +260,7 @@
         <div class="related-articles">
           <h3>Related Articles</h3>
           <ul>
+            <li><a href="/posts/blog-graphrag-context-infrastructure.html">Beyond GraphRAG 2.0: The Context Infrastructure Mandate</a> — Guardian Agent, SAO traces, and runtime compliance enforcement.</li>
             <li><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The 2026 Agentic Playbook</a> — Architecture patterns for agentic AI, orchestration, and safety layers.</li>
             <li><a href="/posts/blog-graphrag-knowledge-graph.html">From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI</a> — Knowledge graphs, multi-hop reasoning, and grounded responses.</li>
             <li><a href="/posts/blog-ai-first-data-strategy.html">Building the AI-Ready Data Framework</a> — Four pillars of AI-ready architecture, Knowledge Core, and governance fabric.</li>

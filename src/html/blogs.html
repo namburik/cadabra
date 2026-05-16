@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://namburi.me/blogs.html">
+  <link rel="canonical" href="https://namburi.me/src/html/blogs.html">
   <link rel="alternate" type="application/rss+xml" title="Kishore Namburi — AI Blogs" href="https://namburi.me/rss.xml" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234f9cf9'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white'>M</text></svg>" />
   <title>Blogs & Use Cases — agentic and authentic</title>
@@ -14,7 +14,7 @@
   <meta property="og:description" content="agentic and authentic: collection of practical AI blogs and use cases covering deployment, automation, and operational advice.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kishore Namburi">
-  <meta property="og:url" content="https://namburi.me/blogs.html">
+  <meta property="og:url" content="https://namburi.me/src/html/blogs.html">
   <meta name="image" property="og:image" content="/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Blogs & Use Cases — agentic and authentic">
@@ -73,7 +73,7 @@
             }));
 
             console.log('[OAuth] blogs.html: auth success, reloading as', data.login);
-            window.history.replaceState({}, document.title, '/blogs.html');
+            window.history.replaceState({}, document.title, '/src/html/blogs.html');
             location.reload();
 
           } catch(err) {
@@ -91,10 +91,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": "https://namburi.me/blogs.html",
+    "@id": "https://namburi.me/src/html/blogs.html",
     "name": "Blogs & Use Cases — agentic and authentic",
     "description": "Practical AI blogs and use cases covering deployment, automation, and operational advice by Kishore Namburi.",
-    "url": "https://namburi.me/blogs.html",
+    "url": "https://namburi.me/src/html/blogs.html",
     "author": {
       "@type": "Person",
       "@id": "https://namburi.me/#person",
@@ -116,10 +116,10 @@
     <div class="container">
       <a class="logo" href="/">mytake: agentic and authentic</a>
       <nav class="nav">
-        <a href="/about.html">About</a>
-        <a href="/blogs.html">Blogs</a>
-        <a href="/demos.html">Demos</a>
-        <a href="/contact.html">Contact</a>
+        <a href="/src/html/about.html">About</a>
+        <a href="/src/html/blogs.html">Blogs</a>
+        <a href="/src/html/demos.html">Demos</a>
+        <a href="/src/html/contact.html">Contact</a>
       </nav>
       <div class="nav-controls">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
@@ -166,7 +166,7 @@
             </article>
 
       <article id="agentic-playbook" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
-        <a href="/posts/blog-2026-agentic-playbook.html" class="block p-6 h-full">
+        <a href="/posts/blog-agentic-playbook.html" class="block p-6 h-full">
           <div class="card-tags"><span class="card-tag card-tag--blog">Blog</span><span class="card-tag card-tag--orchestration">Orchestration</span></div>
           <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Beyond the Bot: The Agentic Playbook</h2>
           <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Architecture, orchestration, GraphRAG, MCP, and safety patterns for production agentic systems.</p>
@@ -197,11 +197,19 @@
         </a>
       </article>
 
+      <article id="slm-agent-runtime" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/blog-slm-agent-runtime.html" class="block p-6 h-full">
+          <div class="card-tags"><span class="card-tag card-tag--blog">Blog</span><span class="card-tag card-tag--data-architecture">Architecture</span></div>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Why SLMs Are the Agent Runtime of Choice</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Fine-tuned small models outperform frontier LLMs on tool-call reliability, schema adherence, and multi-step agent execution — not as a substitute, but as a better fit.</p>
+        </a>
+      </article>
+
       <article id="llm-routing" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
         <a href="/posts/blog-llm-routing.html" class="block p-6 h-full">
-          <div class="card-tags"><span class="card-tag card-tag--blog">Blog</span><span class="card-tag card-tag--cost-optimization">Cost Optimization</span></div>
+          <div class="card-tags"><span class="card-tag card-tag--blog">Blog</span><span class="card-tag card-tag--orchestration">Orchestration</span></div>
           <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Maximizing ROI: Intelligent LLM Routing</h2>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Route queries to the right model tier to balance performance, governance, and cost.</p>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">SLM-first routing strategy: anchor the stack on a local model, use Best-of-N sampling to push its accuracy ceiling, and reserve frontier models for the edge cases that genuinely need them.</p>
         </a>
       </article>
 

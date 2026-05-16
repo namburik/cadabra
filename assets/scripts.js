@@ -85,7 +85,7 @@
       const nav = document.querySelector('.nav');
       if(!nav) return;
       const raw = window.location.pathname || '/';
-      // Normalize and remove index.html
+      // Normalize and remove ./src/html/index.html
       let path = raw.replace(/index\.html$/i, '');
       path = path.replace(/\.html$/i, '');
       const parts = path.split('/').filter(Boolean);
@@ -128,10 +128,10 @@
         return a;
       };
 
-      navLinks.appendChild(makeLink('/about.html', 'About'));
-      navLinks.appendChild(makeLink('/blogs.html', 'Blogs'));
-      navLinks.appendChild(makeLink('/demos.html', 'Demos'));
-      navLinks.appendChild(makeLink('/contact.html', 'Contact'));
+      navLinks.appendChild(makeLink('/src/html/about.html', 'About'));
+      navLinks.appendChild(makeLink('/src/html/blogs.html', 'Blogs'));
+      navLinks.appendChild(makeLink('/src/html/demos.html', 'Demos'));
+      navLinks.appendChild(makeLink('/src/html/contact.html', 'Contact'));
 
       // Hide original nav links visually but keep them in the DOM for crawlers/accessibility
       nav.style.display = 'none';

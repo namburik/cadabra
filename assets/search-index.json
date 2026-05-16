@@ -8,7 +8,7 @@
   },
   {
     "title": "Beyond the Bot: The 2026 Agentic Playbook",
-    "url": "/posts/blog-2026-agentic-playbook.html",
+    "url": "/posts/blog-agentic-playbook.html",
     "excerpt": "Agentic AI in 2026: production blueprint—orchestration patterns, Knowledge Core, Guardian Agents, and FinOps separating real deployments from demos.",
     "date": "2026-03-17",
     "tags": "agentic AI, enterprise AI, architecture",
@@ -40,7 +40,7 @@
   },
   {
     "title": "Maximizing ROI: The Strategic Shift to Intelligent LLM Routing",
-    "url": "/posts/blog-llm-routing.html",
+    "url": "/posts/blog-slm-agent-runtime.html",
     "excerpt": "LLM routing cuts AI inference costs 60–80% by directing each query to the right model tier. How Hybrid LLM and BEST-Route strategies balance performance, governance, and spend.",
     "date": "2026-03-17",
     "tags": "LLM routing, cost optimization, model ensemble",

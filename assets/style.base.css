@@ -67,7 +67,7 @@ body.dark .vis-caption { color: #a0adb8; }
 		--tw-ring-color: rgba(79, 156, 249, 0.7);
 	}
 
-	/* Mobile menu links (index.html) */
+	/* Mobile menu links (./src/html/index.html) */
 	.mobile-nav-link {
 		@apply py-1 text-[0.95rem] text-muted transition-colors duration-200
 					 hover:text-ink focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2;

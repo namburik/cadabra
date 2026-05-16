@@ -80,9 +80,9 @@
       <a href="/" class="logo">mytake: agentic and authentic</a>
       <nav class="nav">
         <a href="/about.html">About</a>
-        <a href="/blogs.html">Blogs</a>
-        <a href="/demos.html">Demos</a>
-        <a href="/contact.html">Contact</a>
+        <a href="/#blogs">Blogs</a>
+        <a href="/src/html/demos.html">Demos</a>
+        <a href="/#contact">Contact</a>
       </nav>
       <div class="nav-controls ml-auto">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">🌓</button>
@@ -114,23 +114,23 @@
         <p>The unified stack is the antidote. Six layers, each owning a single concern, each independently replaceable, all tightly coordinated. Build in sequence — bottom to top — and every layer you add makes the one below it more powerful.</p>
 
         <h2>Layer 1 — Channels: The Universal Input Gateway</h2>
-        <p>WhatsApp, Slack, REST APIs, web apps, event streams — all arriving in different formats. <strong>MCP (Model Context Protocol)</strong> normalizes every upstream source into a single interface before it reaches the intelligence layer. One agent, every surface.</p>
+        <p>WhatsApp, Slack, REST APIs, web apps, event streams — all arriving in different formats. Each channel exposes an <strong>MCP (Model Context Protocol)</strong> server; agents consume every surface through the same tool-call protocol, so adding a new channel is an MCP server implementation, not a new integration pattern.</p>
 
         <h2>Layer 2 — LLM Router: The Intelligence Backbone</h2>
-        <p>The first decision is not <em>what</em> to answer — it's <em>which model</em> should answer it. <a href="/posts/blog-llm-routing.html">Intelligent routing</a> directs 60–80% of traffic to SLMs and reserves frontier models for the queries that genuinely need them. In a governed stack, data sensitivity and regulatory jurisdiction influence routing decisions alongside complexity.</p>
+        <p>The first decision is not <em>what</em> to answer — it's <em>which model</em> should answer it. <a href="/posts/blog-slm-agent-runtime.html">Intelligent routing</a> keeps the majority of requests on fast, local SLMs and escalates to frontier models only when task complexity genuinely requires it. In a governed stack, data sensitivity and regulatory jurisdiction influence routing decisions alongside complexity.</p>
 
         <div class="pattern-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="pattern-card">
             <div class="icon">⚡</div>
             <div class="core-label">SLM Track</div>
             <h4>Small / Local Models</h4>
-            <p>FAQs, classification, repetitive tasks. Fast and cheap — handles the majority of production traffic.</p>
+            <p>Fine-tuned for precision — tool calls, schema adherence, structured output, agent loops. Runs locally, low latency. The default for runtime-layer tasks.</p>
           </div>
           <div class="pattern-card">
             <div class="icon">🧠</div>
             <div class="core-label">Frontier Track</div>
             <h4>Large / Frontier Models</h4>
-            <p>Complex reasoning, ambiguous intent, high-stakes synthesis. Reserved for the 20–30% that needs it.</p>
+            <p>Open-ended reasoning, ambiguous intent, novel synthesis. Escalated to when the task genuinely exceeds what a specialist can handle.</p>
           </div>
         </div>
 
@@ -168,7 +168,7 @@
           <div class="phase-card accent">
             <div class="phase-label">Knowledge Graph</div>
             <h4>Verified Facts</h4>
-            <p style="font-size:0.92rem;color:var(--clr-muted);margin-bottom:0;">Context Graph — multi-hop reasoning, zero hallucinations.</p>
+            <p style="font-size:0.92rem;color:var(--clr-muted);margin-bottom:0;">Context Graph — multi-hop reasoning, stronger grounding, and lower hallucination risk.</p>
           </div>
           <div class="phase-card purple">
             <div class="phase-label">Semantic Index</div>
@@ -187,8 +187,8 @@
           </div>
         </div>
 
-        <h2>Layer 5 — Governance Middleware: The Pre-Frontal Cortex</h2>
-        <p>Traditional governance says "no" until a human says "yes" — that breaks at agent speed. This layer reimagines compliance as <strong>intelligent inline middleware</strong> that finds a compliant path without stopping the workflow. See the <a href="/posts/blog-data-governance-negotiator.html">Negotiator</a> and <a href="/posts/blog-ai-trism-enterprise-security.html">TRiSM</a> posts for the full patterns.</p>
+        <h2>Layer 5 — Governance Middleware: The Runtime Policy Layer</h2>
+        <p>Traditional governance is a gate — it blocks until a human approves, which breaks at agent speed. This layer replaces the gate with four concrete mechanisms. The <strong>Guardian Agent</strong> evaluates reasoning against machine-verifiable contracts before any action fires. The <strong>TRiSM layer</strong> classifies each request by data sensitivity and real-time risk score, restricting access to high-sensitivity paths before a tool call is issued. The <strong>Agentic Negotiator</strong> resolves policy violations inline by substituting a compliant alternative — masked data, a permitted endpoint, a redacted response — when policy allows it. The <strong>HITL Gate</strong> handles the irreducible cases: it pauses the agent with full context preserved so a human can approve and the workflow resumes exactly where it stopped. Most violations resolve at the Negotiator; the HITL Gate exists for the decisions that genuinely require human judgment. See the <a href="/posts/blog-data-governance-negotiator.html">Negotiator</a> and <a href="/posts/blog-ai-trism-enterprise-security.html">TRiSM</a> posts for the full patterns.</p>
 
         <div class="blog-table-wrap">
           <table class="blog-table">
@@ -199,29 +199,29 @@
               <tr>
                 <td><strong>Guardian Agent</strong></td>
                 <td>Runtime safety</td>
-                <td>Intercepts reasoning before action; enforces machine-verifiable contracts</td>
+                <td>Evaluates reasoning against machine-verifiable contracts before any action fires; blocks non-compliant calls at the reasoning step</td>
               </tr>
               <tr>
                 <td><strong>TRiSM Layer</strong></td>
                 <td>Trust &amp; Risk</td>
-                <td>Model catalog, DSPM data boundaries, real-time risk scoring</td>
+                <td>Classifies requests by data sensitivity via DSPM; computes real-time risk scores; restricts high-sensitivity data paths before tool calls are issued</td>
               </tr>
               <tr>
                 <td><strong>Agentic Negotiator</strong></td>
                 <td>Policy resolver</td>
-                <td>Intercept → triage intent → pivot to compliant path → deliver without stalling</td>
+                <td>Intercepts policy violations; substitutes compliant alternatives (masked data, permitted endpoints, redacted responses) inline when policy allows; escalates to HITL when no inline resolution exists</td>
               </tr>
               <tr>
                 <td><strong>HITL Gate</strong></td>
                 <td>Human escalation</td>
-                <td>Stateful pause for high-stakes decisions; context preserved during approval wait</td>
+                <td>Stateful pause for decisions that require human judgment; full agent context preserved so the workflow resumes exactly where it stopped after approval</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <h2>Layer 6 — Data Substrate: The AI-Ready Foundation</h2>
-        <p>Everything above depends on clean, semantically consistent data below. The <a href="/posts/blog-ai-first-data-strategy.html">four-pillar substrate</a> builds this in sequence — each pillar enabling the next: <strong>Semantic Data Mesh</strong> (agreed definitions across domains) → <strong>HTAP Lakehouse</strong> (real-time reads, no ETL lag) → <strong>MCP Interoperability</strong> (swap storage engines without touching agent logic) → <strong>AI-Augmented Fabric</strong> (agents that maintain the data layer itself).</p>
+        <p>Everything above depends on clean, semantically consistent data below. The <a href="/posts/blog-ai-first-data-strategy.html">four-pillar substrate</a> builds this in sequence — each pillar enabling the next: <strong>Semantic Data Mesh</strong> (agreed definitions across domains) → <strong>HTAP Lakehouse</strong> (real-time reads, no ETL lag) → <strong>Storage Adapter Layer</strong> (each backend — lakehouse, vector store, graph DB — exposes an MCP server; agents use the same tool-call interface as Layer 1, so swapping a storage engine means replacing one MCP server, not rewriting agent code) → <strong>AI-Augmented Fabric</strong> (agents that maintain the data layer itself).</p>
 
         <h2>AgentOps: The Discipline That Ships</h2>
         <p>Architecture without operations is a whiteboard. <a href="/posts/blog-operationalizing-enterprise-ai-agents.html">AgentOps</a> makes the stack production-grade: <strong>behavioral testing</strong> validates decision quality, not just output format; <strong>cost-per-outcome tracking</strong> applies FinOps at agent granularity; <strong>SAO trace-driven tuning</strong> turns every failure into a training signal; <strong>shadow routing</strong> validates changes against live traffic before they go live.</p>
@@ -253,18 +253,19 @@
         </div>
 
         <blockquote style="border-left:3px solid var(--clr-accent);padding:1rem 1.5rem;margin:2rem 0;background:var(--clr-surface);border-radius:0 8px 8px 0;">
-          <p style="margin:0;font-size:1.05rem;font-style:italic;color:var(--clr-text);">Architecture compounds. Models commoditize. The decisive advantage comes from the most interconnected, cost-aware, and governed agentic stack — not by deploying the most powerful model.</p>
+          <p style="margin:0;font-size:1.05rem;font-style:italic;color:var(--clr-text);">A more capable model widens what an agent can reason about. It does not give you an audit trail, prevent data egress violations, reduce per-query cost, or make your knowledge graph more accurate. Those are orthogonal concerns — and this stack is where they get resolved.</p>
         </blockquote>
 
         <h2>Build the Unified Agentic Stack: The Architecture Is the Strategy</h2>
-        <p>Start at the bottom. Get the data substrate right before you build the Knowledge Core. Deploy Governance Middleware before you give agents real execution permissions. Add AgentOps before you scale. The order matters — every layer you add makes the one below it more powerful, and that compounding only works if the layers were designed to talk to each other. The architecture is the strategy.</p>
+        <p>The counterargument is real: a sufficiently capable model, prompted well, can handle a wide range of tasks without a six-layer stack. That is true for prototypes. At production scale the failure modes are different — a better model does not stop an agent from exfiltrating regulated data, does not cap your inference bill, does not recover a multi-step pipeline when one tool call fails. The layers here exist because each one solves a problem that is orthogonal to reasoning quality: governance knows data classification from the substrate; routing consults governance constraints, not just task complexity; memory feeds the Knowledge Core's retraining signal. The compounding is real, but it is compounding of <em>specific capabilities</em>, not a general claim about "interconnectedness."</p>
+        <p>Start at the bottom. Get the data substrate right before you build the Knowledge Core. Deploy Governance Middleware before you give agents real execution permissions. Add AgentOps before you scale. The order matters because each layer depends on the one below — and that dependency only pays off if the layers were designed to share state from the start.</p>
 
         <div class="related-articles">
           <h3>The Full Series</h3>
           <ul>
-            <li><a href="/posts/blog-2026-agentic-playbook.html">Beyond the Bot: The Enterprise Agentic Playbook</a> — Production patterns, safety layers, and the six-pattern blueprint for autonomous enterprise AI.</li>
-            <li><a href="/posts/blog-llm-routing.html">Maximizing ROI: The Strategic Shift to Intelligent LLM Routing</a> — How to cut inference costs 60–80% with predictive model selection.</li>
-            <li><a href="/posts/blog-graphrag-knowledge-graph.html">From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Knowledge Graph</a> — The Knowledge Core: Neo4j, multi-hop reasoning, and zero-hallucination retrieval.</li>
+            <li><a href="/posts/blog-agentic-playbook.html">Beyond the Bot: The Enterprise Agentic Playbook</a> — Production patterns, safety layers, and the six-pattern blueprint for autonomous enterprise AI.</li>
+            <li><a href="/posts/blog-slm-agent-runtime.html">Why SLMs Are the Agent Runtime of Choice</a> — Fine-tuned small models outperform frontier LLMs on tool-call reliability, schema adherence, and loop latency.</li>
+            <li><a href="/posts/blog-graphrag-knowledge-graph.html">From Hallucinations to Hyper-Personalization: How GraphRAG Grounds AI in Knowledge Graph</a> — The Knowledge Core: Neo4j, multi-hop reasoning, and retrieval designed to reduce hallucination risk.</li>
             <li><a href="/posts/blog-graphrag-context-infrastructure.html">Beyond GraphRAG 2.0: The Context Infrastructure Mandate</a> — The Amnesia Problem, SAO decision traces, and the Guardian Agent runtime controller.</li>
             <li><a href="/posts/blog-semantic-sidecar-pattern.html">The Semantic Sidecar Pattern: Decoupled Grounding for AI Agents</a> — Ship agents on Day 1 while the Knowledge Core schema matures in parallel, without blocking core transactions.</li>
             <li><a href="/posts/blog-data-governance-negotiator.html">The Negotiator: Why Data Governance Must Stop Saying "No"</a> — The Stealth Remediation Loop that turns policy blockers into compliant paths.</li>

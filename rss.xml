@@ -74,7 +74,7 @@
 
     <item>
       <title>Beyond the Bot: The 2026 Agentic Playbook</title>
-      <link>https://namburi.me/posts/blog-2026-agentic-playbook.html</link>
+      <link>https://namburi.me/posts/blog-agentic-playbook.html</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <dc:creator>Kishore Namburi</dc:creator>
       <description>The 'Chat with your PDF' era is over. Discover 2026 blueprint for building production-grade autonomous enterprise AI ecosystems.</description>
@@ -90,7 +90,7 @@
 
     <item>
       <title>Maximizing ROI: The Strategic Shift to Intelligent LLM Routing</title>
-      <link>https://namburi.me/posts/blog-llm-routing.html</link>
+      <link>https://namburi.me/posts/blog-slm-agent-runtime.html</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
       <dc:creator>Kishore Namburi</dc:creator>
       <description>Stop defaulting every query to frontier models. Discover how intelligent LLM routing dynamically balances cost and performance across a model ensemble.</description>

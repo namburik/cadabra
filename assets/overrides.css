@@ -11,18 +11,8 @@ body:not(.dark) p.text-sm.text-gray-600 { color: var(--text) !important; }
 /* Also ensure table cells that used white text show correctly in light mode */
 body:not(.dark) td[style*="rgba(255,255,255"] { color: var(--text) !important; }
 
-/* Hide visual top navigation in light mode while keeping it available to screen readers */
-body:not(.dark) .nav {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
+/* Nav is hidden by JS once system-path is injected; CSS fallback shows it if JS fails */
+.nav[aria-hidden="true"] { display: none !important; }
 
 /* Keep header background consistent in light mode (match About/Index/Contact)
    Consolidated for `.site-header` and `header.fixed` to avoid duplicate blocks. */
@@ -42,28 +32,30 @@ body:not(.dark) header a {
 
 /* System menu dropdown styles */
 .system-menu-wrap{ position:relative;display:inline-flex;align-items:center }
-.system-menu-btn{ background:transparent;border:0;color:var(--agentic-menu-color,inherit);cursor:pointer;display:flex;align-items:center;padding:6px }
+.system-menu-btn{ background:transparent;border:0;color:var(--agentic-menu-color,inherit);cursor:pointer;display:flex;align-items:center;padding:11px;min-width:44px;min-height:44px;justify-content:center }
 .system-menu-dropdown{
-  position:absolute;
-  right:0;
-  top:calc(100% + 8px);
+  position:fixed;
+  right:12px;
+  top:60px;
   background:#fff;
   border:1px solid rgba(16,24,40,0.08);
-  border-radius:8px;
-  box-shadow:0 6px 18px rgba(2,6,23,0.12);
-  z-index:200;
-  min-width:140px;
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(2,6,23,0.16);
+  z-index:9999;
+  min-width:180px;
   overflow:hidden;
 }
 .system-menu-dropdown a{
   display:block;
-  padding:10px 16px;
+  padding:14px 20px;
   text-decoration:none;
   color:inherit;
-  font-size:14px;
+  font-size:15px;
   font-weight:500;
+  border-bottom:1px solid rgba(16,24,40,0.05);
 }
-.system-menu-dropdown a:hover{ background: rgba(0,0,0,0.04); border-radius:4px }
+.system-menu-dropdown a:last-child{ border-bottom:none; }
+.system-menu-dropdown a:hover{ background: rgba(0,0,0,0.04); }
 
 @media (max-width:640px){
   .system-path{ font-size:13px }
@@ -77,14 +69,15 @@ body:not(.dark) .system-menu-btn { color: #0a0e1a !important; }
 /* Dark theme adjustments for the compact menu */
 body.dark .system-menu-dropdown{
   background: #0b1220 !important;
-  border: 1px solid rgba(255,255,255,0.06) !important;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.6) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.7) !important;
 }
 body.dark .system-menu-dropdown a{
   color: #e6edf3 !important;
+  border-bottom-color: rgba(255,255,255,0.06) !important;
 }
 body.dark .system-menu-dropdown a:hover{
-  background: rgba(255,255,255,0.03) !important;
+  background: rgba(255,255,255,0.05) !important;
 }
 
 /* Accessibility focus styles */

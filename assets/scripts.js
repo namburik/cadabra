@@ -100,12 +100,14 @@
       nav.setAttribute('aria-hidden', 'true');
 
       const navControls = document.querySelector('.nav-controls');
-      const insertTarget = navControls
-        ? () => navControls.insertBefore(el, navControls.firstChild)
-        : () => {
-            const hdr = document.querySelector('.site-header .container, header .container');
-            if(hdr) hdr.appendChild(el); else nav.parentNode.insertBefore(el, nav.nextSibling);
-          };
+      function insertEl(el){
+        if(navControls){
+          navControls.insertBefore(el, navControls.firstChild);
+        } else {
+          const hdr = document.querySelector('.site-header .container, header .container');
+          if(hdr) hdr.appendChild(el); else nav.parentNode.insertBefore(el, nav.nextSibling);
+        }
+      }
 
       if(window.innerWidth <= 640){
         // --- Mobile: hamburger + dropdown ---
@@ -147,8 +149,7 @@
         wrap.appendChild(btn);
         wrap.appendChild(dropdown);
 
-        const el = wrap;
-        insertTarget();
+        insertEl(wrap);
       } else {
         // --- Desktop: inline links ---
         const wrapper = document.createElement('div');
@@ -171,8 +172,7 @@
 
         wrapper.appendChild(navLinks);
 
-        const el = wrapper;
-        insertTarget();
+        insertEl(wrapper);
       }
     }catch(e){ /* no-op on failure */ }
   }

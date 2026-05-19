@@ -75,19 +75,25 @@
   <main id="content" tabindex="-1" class="container">
     <h1 class="text-4xl font-extrabold leading-tight mb-2">Demos</h1>
     
-    <div class="list mt-6">
+    <div class="list grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
 
-      <article id="agentic-mesh-demo" class="list-item">
-        <div class="card-tags"><span class="card-tag card-tag--demo">Demo</span><span class="card-tag card-tag--orchestration">Orchestration</span></div>
-        <h2><a href="/posts/agentic-mesh-demo.html">Agentic Mesh Demo</a></h2>
-        <p>Watch a live walkthrough of the Agentic Mesh architecture in action — see how agents communicate, coordinate, and solve problems in a distributed system.</p>
+      <article id="agentic-mesh-demo" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/agentic-mesh-demo.html" class="block p-6 h-full">
+          <div class="card-tags"><span class="card-tag card-tag--demo">Demo</span><span class="card-tag card-tag--orchestration">Orchestration</span></div>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Agentic Mesh Demo</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Watch a live walkthrough of the Agentic Mesh architecture in action — see how agents communicate, coordinate, and solve problems in a distributed system.</p>
+        </a>
       </article>
 
-      <article id="payments-agentic-demo" class="list-item">
-        <div class="card-tags"><span class="card-tag card-tag--demo">Live Agent</span><span class="card-tag card-tag--payments">Payments</span><span class="card-tag card-tag--agentic">Agentic AI</span><span class="card-tag card-tag--architecture">Architecture</span></div>
-        <h2><a href="/posts/ec2-live-demo.html">paytek: Live Payments Agent</a></h2>
-        <p>Chat with a live agentic payments system — onboard a merchant, watch multi-agent orchestration handle approvals, flag risk, and track state in real time.</p>
-        <p style="margin-top:0.5rem;font-size:0.9rem;"><a href="/posts/paytek-blog-implementations.html">Where Agentic AI Meets Enterprise Reality →</a></p>
+      <article id="payments-agentic-demo" class="list-item p-0 rounded-lg overflow-hidden border border-gray-200/50 bg-white/50 shadow-sm h-full transform transition duration-150 hover:shadow-lg hover:-translate-y-1">
+        <a href="/posts/ec2-live-demo.html" class="block p-6 h-full">
+          <div class="card-tags"><span class="card-tag card-tag--demo">Live Agent</span><span class="card-tag card-tag--payments">Payments</span><span class="card-tag card-tag--agentic">Agentic AI</span><span class="card-tag card-tag--architecture">Architecture</span></div>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">paytek: Live Payments Agent</h2>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Chat with a live agentic payments system — onboard a merchant, watch multi-agent orchestration handle approvals, flag risk, and track state in real time.</p>
+        </a>
+        <div class="px-6 pb-6">
+          <a href="/posts/paytek-blog-implementations.html" class="text-blue-600 dark:text-blue-400 hover:underline">Where Agentic AI Meets Enterprise Reality →</a>
+        </div>
       </article>
 
     </div>

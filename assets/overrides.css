@@ -41,12 +41,32 @@ body:not(.dark) header a {
 }
 
 /* System menu dropdown styles */
-.system-menu-btn{ background:transparent;border:0;color:var(--agentic-menu-color,inherit);cursor:pointer }
+.system-menu-wrap{ position:relative;display:inline-flex;align-items:center }
+.system-menu-btn{ background:transparent;border:0;color:var(--agentic-menu-color,inherit);cursor:pointer;display:flex;align-items:center;padding:6px }
+.system-menu-dropdown{
+  position:absolute;
+  right:0;
+  top:calc(100% + 8px);
+  background:#fff;
+  border:1px solid rgba(16,24,40,0.08);
+  border-radius:8px;
+  box-shadow:0 6px 18px rgba(2,6,23,0.12);
+  z-index:200;
+  min-width:140px;
+  overflow:hidden;
+}
+.system-menu-dropdown a{
+  display:block;
+  padding:10px 16px;
+  text-decoration:none;
+  color:inherit;
+  font-size:14px;
+  font-weight:500;
+}
 .system-menu-dropdown a:hover{ background: rgba(0,0,0,0.04); border-radius:4px }
 
 @media (max-width:640px){
   .system-path{ font-size:13px }
-  .system-menu-btn{ padding:6px }
 }
 
 /* Ensure the hamburger/menu icon has consistent color in light and dark themes */

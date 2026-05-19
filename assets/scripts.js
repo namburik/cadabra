@@ -79,78 +79,101 @@
     window.location.href = linkedInAuthUrl();
   })();
 
+  const NAV_LINKS = [
+    ['/src/html/about.html', 'About'],
+    ['/src/html/blogs.html', 'Blogs'],
+    ['/src/html/demos.html', 'Demos'],
+    ['/src/html/contact.html', 'Contact'],
+  ];
+
+  const ICON_MENU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  const ICON_CLOSE = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
   // Replace traditional nav links with a system-style path (agentic theme)
   function replaceNavWithSystemPath(){
     try{
       const nav = document.querySelector('.nav');
       if(!nav) return;
-      const raw = window.location.pathname || '/';
-      // Normalize and remove ./src/html/index.html
-      let path = raw.replace(/index\.html$/i, '');
-      path = path.replace(/\.html$/i, '');
-      const parts = path.split('/').filter(Boolean);
-      // Build system path element
-      const wrapper = document.createElement('div');
-      wrapper.className = 'system-path';
-      wrapper.setAttribute('aria-label', 'System path');
-      wrapper.style.fontFamily = "ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace";
-      wrapper.style.fontSize = '14px';
-      wrapper.style.color = 'inherit';
-      // Don't show path prefix or parts for blog posts
-      const isBlogPost = parts.length > 0 && parts[0].toLowerCase() === 'posts';
 
-      if(!isBlogPost){
-        // Don't show path at all on any page
-      } // close if(!isBlogPost)
-
-      // Create inline text links (About / Blogs / Demos / Contact)
-      const navLinks = document.createElement('span');
-      navLinks.className = 'system-inline-links';
-      navLinks.style.marginLeft = '12px';
-      navLinks.style.display = 'inline-flex';
-      navLinks.style.gap = '10px';
-      navLinks.style.alignItems = 'center';
-
-      const makeLink = (href, text) => {
-        const a = document.createElement('a');
-        a.href = href;
-        a.textContent = text;
-        a.style.textDecoration = 'none';
-        a.style.padding = '6px 10px';
-        a.style.borderRadius = '4px';
-        a.style.cursor = 'pointer';
-        a.style.fontWeight = '500';
-        a.style.fontSize = '13px';
-        a.style.transition = 'all 0.15s ease';
-        a.style.color = 'inherit';
-        a.style.opacity = '0.8';
-        a.tabIndex = 0;
-        return a;
-      };
-
-      navLinks.appendChild(makeLink('/src/html/about.html', 'About'));
-      navLinks.appendChild(makeLink('/src/html/blogs.html', 'Blogs'));
-      navLinks.appendChild(makeLink('/src/html/demos.html', 'Demos'));
-      navLinks.appendChild(makeLink('/src/html/contact.html', 'Contact'));
-
-      // Hide original nav links visually but keep them in the DOM for crawlers/accessibility
+      // Hide original nav (kept in DOM for crawlers/accessibility)
       nav.style.display = 'none';
       nav.setAttribute('aria-hidden', 'true');
-      const navControls = document.querySelector('.nav-controls');
-      // Append quick links into the wrapper
-      wrapper.appendChild(navLinks);
-      if(navControls) {
-        navControls.insertBefore(wrapper, navControls.firstChild);
-      } else {
-        // fallback: append into header container to ensure visibility
-        const headerContainer = document.querySelector('.site-header .container');
-        if(headerContainer) headerContainer.appendChild(wrapper);
-        else nav.parentNode.insertBefore(wrapper, nav.nextSibling);
-      }
 
-      // Ensure wrapper is visible and aligned
-      wrapper.style.display = wrapper.style.display || 'inline-flex';
-      wrapper.style.alignItems = 'center';
+      const navControls = document.querySelector('.nav-controls');
+      const insertTarget = navControls
+        ? () => navControls.insertBefore(el, navControls.firstChild)
+        : () => {
+            const hdr = document.querySelector('.site-header .container, header .container');
+            if(hdr) hdr.appendChild(el); else nav.parentNode.insertBefore(el, nav.nextSibling);
+          };
+
+      if(window.innerWidth <= 640){
+        // --- Mobile: hamburger + dropdown ---
+        const wrap = document.createElement('div');
+        wrap.className = 'system-menu-wrap';
+
+        const btn = document.createElement('button');
+        btn.className = 'system-menu-btn';
+        btn.setAttribute('aria-label', 'Open navigation menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.innerHTML = ICON_MENU;
+
+        const dropdown = document.createElement('div');
+        dropdown.className = 'system-menu-dropdown';
+        dropdown.setAttribute('role', 'menu');
+        dropdown.hidden = true;
+
+        NAV_LINKS.forEach(([href, label]) => {
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = label;
+          a.setAttribute('role', 'menuitem');
+          dropdown.appendChild(a);
+        });
+
+        let open = false;
+        const setOpen = (state) => {
+          open = state;
+          dropdown.hidden = !open;
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.innerHTML = open ? ICON_CLOSE : ICON_MENU;
+          btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        };
+
+        btn.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!open); });
+        document.addEventListener('click', () => { if(open) setOpen(false); });
+        dropdown.addEventListener('click', (e) => e.stopPropagation());
+
+        wrap.appendChild(btn);
+        wrap.appendChild(dropdown);
+
+        const el = wrap;
+        insertTarget();
+      } else {
+        // --- Desktop: inline links ---
+        const wrapper = document.createElement('div');
+        wrapper.className = 'system-path';
+        wrapper.setAttribute('aria-label', 'Navigation');
+        wrapper.style.cssText = "display:inline-flex;align-items:center;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,'Roboto Mono',monospace;font-size:14px;color:inherit";
+
+        const navLinks = document.createElement('span');
+        navLinks.className = 'system-inline-links';
+        navLinks.style.cssText = 'margin-left:12px;display:inline-flex;gap:10px;align-items:center';
+
+        NAV_LINKS.forEach(([href, text]) => {
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = text;
+          a.style.cssText = 'text-decoration:none;padding:6px 10px;border-radius:4px;cursor:pointer;font-weight:500;font-size:13px;transition:all 0.15s ease;color:inherit;opacity:0.8';
+          a.tabIndex = 0;
+          navLinks.appendChild(a);
+        });
+
+        wrapper.appendChild(navLinks);
+
+        const el = wrapper;
+        insertTarget();
+      }
     }catch(e){ /* no-op on failure */ }
   }
 

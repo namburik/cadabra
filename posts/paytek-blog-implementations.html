@@ -123,11 +123,11 @@
 
       <div class="blog-content">
 
-        <p class="blog-intro"><strong>paytek</strong> is a production agentic platform for enterprise merchant onboarding — built under the constraints, trade-offs, and failure modes that surface in realtime, not in theory. Each capability earned its place independently before the platform took shape. This page maps every pattern from this site to the code that makes it run. Concept to working code, one click away.</p>
+        <p class="blog-intro"><strong>paytek</strong> is a agentic platform for enterprise merchant onboarding — built under the constraints, trade-offs, and failure modes that surface in realtime, not in theory. Each capability earned its place independently before the platform took shape. This page maps every pattern from this site to the a working engine that powers it, one click away.</p>
 
         <div class="phase-card accent" style="margin:1.5rem 0;">
           <div class="phase-label">The platform</div>
-          <p style="margin:0;">A merchant chats — the AI extracts business details, validates them in real time, and routes through a multi-agent workflow that handles approvals, flags risk, and tracks state across Stripe, PayPal, and Adyen. The architecture makes explicit choices: LangGraph for stateful workflow, MCP for tool grounding, Neo4j for relational context, Postgres and DynamoDB for persistence, a framework-agnostic agent mesh for orchestration, and AI from Google, Ollama, and OpenRouter. Every choice is documented — so when you face the same decision, you know why this one was made.</p>
+          <p style="margin:0;">A merchant chats — an Autonomous agent extracts business details, validates them in real time, and routes through a multi-agent workflow that handles approvals, flags risk, and tracks state across Stripe, PayPal, and Adyen. The architecture makes explicit choices: LangGraph for stateful workflow, MCP for tool grounding, Neo4j for relational context, Postgres and DynamoDB for persistence, a framework-agnostic agent mesh for orchestration, and AI from Google, Ollama, and OpenRouter. Every choice is documented — so when you face the same decision, you know why this one was made.</p>
         </div>
 
         <!-- ARCHITECTURE -->
@@ -141,7 +141,7 @@
               <h4>Full-stack agentic system</h4>
             </div>
             <div class="impl-right">
-              <p>paytek delivers every layer of the unified stack in a single running system — no gaps, no stub implementations. MCP for tool grounding, LangGraph for stateful workflow, a multi-framework agent mesh, triple datastore (Postgres + DynamoDB + Neo4j), FastAPI routes, and a Streamlit conversational UI — all production-deployed on AWS EC2. Can be forked as a foundation.</p>
+              <p>paytek delivers every layer of the unified stack in a single running system — no gaps, no stub implementations. MCP for tool grounding, LangGraph for stateful workflow, a multi-framework agent mesh, triple datastore (Postgres + DynamoDB + Neo4j), FastAPI routes, and a Streamlit conversational UI — all production-deployed on AWS. Can be forked as a foundation.</p>
               <a href="/posts/blog-unified-agentic-architecture.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -152,7 +152,7 @@
               <h4>Knowledge-grounded decisions</h4>
             </div>
             <div class="impl-right">
-              <p>paytek grounds agent decisions in structured knowledge, not probabilistic text retrieval. The FIBO financial ontology schemas the Neo4j layer, and <code>GraphRAGHandlers</code> exposes it as MCP tools — giving every agent multi-hop reasoning over verified merchant relationships. Decisions backed by facts, not best-guess embeddings.</p>
+              <p>paytek grounds agent decisions in structured knowledge, not probabilistic text retrieval. The FIBO financial ontology schemas the Neo4j layer, and <code>GraphHandlers</code> exposes it as MCP tools — giving every agent multi-hop reasoning over verified merchant relationships. Decisions backed by facts, not best-guess embeddings.</p>
               <a href="/posts/blog-graphrag-context-infrastructure.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -192,7 +192,7 @@
               <h4>Config-driven workflow logic</h4>
             </div>
             <div class="impl-right">
-              <p>paytek separates workflow logic from code entirely — gate rules, routing conditions, and agent parameters live in configuration, not in the agent. Update a compliance rule or onboarding gate without touching the codebase. Teams managing policy and teams managing code work independently of each other.</p>
+              <p>paytek separates workflow logic from code entirely — gate rules, routing conditions, and agent parameters live in configuration, not in the agent. Update a compliance rule or gate without touching the codebase. Teams managing policy and teams managing code work independently of each other.</p>
               <a href="/posts/blog-multiagent-yaml-orchestration.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -203,7 +203,7 @@
               <h4>Stateful, recoverable workflow</h4>
             </div>
             <div class="impl-right">
-              <p>paytek turns the entire merchant onboarding journey into a stateful, recoverable workflow — conversational intake → structured extraction with extended thinking → parallel gate checks → LLM risk scoring (0–1 with reasoning) → human-in-the-loop interrupt → persistence. Every step is named, observable, and checkpointed to DynamoDB. No silent failures, no lost state.</p>
+              <p>paytek turns the entire merchant journey into a stateful, recoverable workflow — conversational intake → structured extraction with extended thinking → parallel gate checks → LLM risk scoring (0–1 with reasoning) → human-in-the-loop interrupt → persistence. Every step is named, observable, and checkpointed to DynamoDB. No silent failures, no lost state.</p>
               <a href="/posts/blog-agentic-playbook.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -272,7 +272,7 @@
               <h4>Production-grade deployment</h4>
             </div>
             <div class="impl-right">
-              <p>paytek ships production-ready — Docker + docker-compose on AWS EC2, timestamped log rotation, per-service health checks, and auto-recovery built in from the start. Stateless services restart automatically; stateful ones surface for human review rather than failing silently. A lightweight response evaluator scores agent output quality in real time, so issues surface during the run — not in the post-mortem.</p>
+              <p>paytek ships production-ready — Docker + docker-compose on AWS, timestamped log rotation, per-service health checks, and auto-recovery built in from the start. Stateless services restart automatically; stateful ones surface for human review rather than failing silently. A lightweight response evaluator scores agent output quality in real time, so issues surface during the run — not in the post-mortem.</p>
               <a href="/posts/blog-operationalizing-enterprise-ai-agents.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -310,7 +310,7 @@
 
         <div class="phase-card" style="margin:2rem 0;">
           <div class="phase-label">The throughline</div>
-          <p style="margin:0;">paytek is the system where all of them run together. From experience: start with the <a href="/posts/blog-unified-agentic-architecture.html">unified stack overview</a> if you're building from scratch, or jump straight to the section where your architecture has the most open questions. The practical guide to Agentic AI is right here — that's paytek in your hands.</p>
+          <p style="margin:0;">paytek is the system where all of them run together. Our experience says start with the <a href="/posts/blog-unified-agentic-architecture.html">unified stack overview</a> if you're building from scratch, or jump straight to the section where your architecture has the most open questions. The practical guide to Agentic AI is right here — that's paytek in your hands.</p>
         </div>
 
         <div class="related-articles">

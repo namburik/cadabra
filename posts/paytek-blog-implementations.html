@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <title>paytek: From Blog to Code — Every Concept, Implemented</title>
+  <meta name="description" content="How every blog on this site maps to a working implementation in paytek — the agentic payments platform built on LangGraph, MCP, Neo4j, and multi-framework agents." />
+  <meta property="og:title" content="paytek: From Blog to Code — Every Concept, Implemented" />
+  <meta property="og:description" content="How every blog on this site maps to a working implementation in paytek — the agentic payments platform built on LangGraph, MCP, Neo4j, and multi-framework agents." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/posts/paytek-blog-implementations.html" />
+  <meta property="og:site_name" content="Kishore Namburi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="paytek: From Blog to Code — Every Concept, Implemented" />
+  <meta name="twitter:description" content="How every blog on this site maps to a working implementation in paytek — the agentic payments platform built on LangGraph, MCP, Neo4j, and multi-framework agents." />
+  <meta name="theme-color" content="#0a0e1a" />
+  <meta name="author" content="Kishore Namburi" />
+  <link rel="canonical" href="/posts/paytek-blog-implementations.html" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234f9cf9'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white'>M</text></svg>" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/typography.css">
+  <script src="/assets/scripts.js?v=2" defer></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/analytics/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/blog.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/blog.css"></noscript>
+  <link rel="preload" href="/assets/overrides.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "/posts/paytek-blog-implementations.html",
+    "name": "paytek: From Blog to Code — Every Concept, Implemented",
+    "description": "How every blog on this site maps to a working implementation in paytek — the agentic payments platform built on LangGraph, MCP, Neo4j, and multi-framework agents.",
+    "datePublished": "2026-05-19",
+    "author": {
+      "@type": "Person",
+      "@id": "https://namburi.me/#person",
+      "name": "Kishore Namburi",
+      "url": "https://namburi.me",
+      "sameAs": [
+        "https://github.com/knamburi",
+        "https://www.linkedin.com/in/tonamburi/"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://namburi.me/#person",
+      "name": "Kishore Namburi",
+      "url": "https://namburi.me"
+    },
+    "url": "/posts/paytek-blog-implementations.html",
+    "keywords": ["paytek", "agentic AI", "LangGraph", "MCP", "Neo4j", "GraphRAG", "multi-agent", "payments", "AI TRiSM", "semantic sidecar"]
+  }
+  </script>
+</head>
+<body class="antialiased font-sans text-gray-900 bg-white">
+  <header class="fixed inset-x-0 top-0 z-[100] border-b border-white/10 bg-[#0a0e1a]/90 backdrop-blur-xl">
+    <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[110] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#0a0e1a]">Skip to content</a>
+    <div class="container flex h-[68px] items-center gap-8">
+      <a href="/" class="logo">mytake: agentic and authentic</a>
+      <nav class="nav">
+        <a href="/src/html/about.html">About</a>
+        <a href="/src/html/blogs.html">Blogs</a>
+        <a href="/src/html/demos.html">Demos</a>
+        <a href="/src/html/contact.html">Contact</a>
+      </nav>
+      <div class="nav-controls ml-auto">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="blog-container" tabindex="-1">
+    <article>
+      <header class="blog-header">
+        <div class="card-tags" style="margin-bottom:0.75rem;">
+          <span class="card-tag card-tag--demo">Demo</span>
+          <span class="card-tag card-tag--payments">Payments</span>
+          <span class="card-tag card-tag--agentic">Agentic AI</span>
+          <span class="card-tag card-tag--architecture">Architecture</span>
+        </div>
+        <h1>paytek: From Blog to Code</h1>
+        <p style="font-size:1.15rem; color:var(--clr-muted); margin-top:0.4rem; margin-bottom:0;">Every concept written about on this site — implemented in a single running system.</p>
+        <div class="blog-meta">
+          <time datetime="2026-05-19">May 2026</time>
+          <span>Reference guide</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
+
+      <div class="blog-content">
+
+        <p class="blog-intro">The blogs on this site are not thought experiments. Each one documents a pattern that was built, tested, and shipped inside <strong>paytek</strong> — a conversational agentic platform for merchant onboarding in payments. This page is the map: every blog post linked back to the part of the system that proves it works.</p>
+
+        <div class="phase-card accent" style="margin:1.5rem 0;">
+          <div class="phase-label">What is paytek?</div>
+          <p style="margin:0;">A merchant chats — the AI extracts business details, validates them in real time, and submits through a multi-agent workflow that routes approvals, flags risk, and tracks state across platforms like Stripe, PayPal, and Adyen. Not a chatbot wrapper — a full agentic system built on LangGraph, MCP, Neo4j, Postgres, DynamoDB, and a framework-agnostic agent mesh.</p>
+        </div>
+
+        <!-- ARCHITECTURE -->
+        <h2>Architecture</h2>
+
+        <div class="pattern-grid">
+
+          <div class="pattern-card">
+            <div class="core-label">Architecture</div>
+            <h4><a href="/posts/blog-unified-agentic-architecture.html">The Unified Agentic Stack: A Complete Blueprint for Production AI</a></h4>
+            <p>paytek <em>is</em> the unified stack — end to end. MCP server for tool grounding, LangGraph for stateful workflow, a multi-framework agent mesh, triple datastore (Postgres + DynamoDB + Neo4j), FastAPI routes, and a Streamlit conversational UI all wired together and running in production on AWS EC2.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Architecture</div>
+            <h4><a href="/posts/blog-graphrag-context-infrastructure.html">Beyond GraphRAG 2.0: The Context Infrastructure Mandate</a></h4>
+            <p>A <code>GraphRAGHandlers</code> class loads the merchant knowledge graph from Neo4j on startup and exposes similarity search as MCP tools. The Neo4j layer uses the FIBO financial ontology as its schema — grounding every agent decision in a structured, queryable knowledge graph, not raw text retrieval.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Architecture</div>
+            <h4><a href="/posts/blog-slm-agent-runtime.html">Why SLMs Are the Agent Runtime of Choice</a></h4>
+            <p>Model selection is config-driven, not hardcoded. OpenRouter integration provides pluggable model backends. The agent bridge imports <code>ChatOllama</code>, making local SLMs a drop-in runtime — no architecture changes needed to swap models at the edge.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Architecture</div>
+            <h4><a href="/posts/blog-semantic-sidecar-pattern.html">The Semantic Sidecar Pattern: Decoupled Grounding for AI Agents</a></h4>
+            <p>The MCP server is the sidecar — a standalone process that provides semantic context and domain grounding over a clean protocol boundary. Agents from any framework connect to it without coupling to the data layer. A semantic context module and core data module separate what agents can <em>know</em> from what agents can <em>do</em>.</p>
+          </div>
+
+        </div>
+
+        <!-- ORCHESTRATION -->
+        <h2>Orchestration</h2>
+
+        <div class="pattern-grid">
+
+          <div class="pattern-card">
+            <div class="core-label">Orchestration</div>
+            <h4><a href="/posts/blog-multiagent-yaml-orchestration.html">Configurable Multi-Agent Workflows: A YAML-Driven Orchestration</a></h4>
+            <p>Workflow behavior is fully config-driven. Gate check rules, routing conditions, and agent parameters are declared in configuration — not hardcoded in agent logic. Changing a compliance rule or onboarding gate requires no code deployment, only a config update.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Orchestration</div>
+            <h4><a href="/posts/blog-agentic-playbook.html">Beyond the Bot: The Agentic Playbook</a></h4>
+            <p>The merchant workflow graph is the playbook in code: conversational intake → structured field extraction with extended thinking → parallel gate checks → LLM risk scoring (0–1 with reasoning) → human-in-the-loop interrupt → persistence. Every step is a named node in the state machine, checkpointed to DynamoDB.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Orchestration</div>
+            <h4><a href="/posts/blog-multi-agent-systems-architecture.html">Multi-Agent Systems: The Architecture of Partnership</a></h4>
+            <p>Four agent frameworks coexist in the same system: LangGraph for stateful process flows, AutoGen for multi-model deliberation, CrewAI for role-based safety gates, and AWS Strands for event-driven tasks. A single bridge module is the only import point — swapping or adding a framework touches one file.</p>
+          </div>
+
+        </div>
+
+        <!-- DATA & DATA ARCHITECTURE -->
+        <h2>Data &amp; Data Architecture</h2>
+
+        <div class="pattern-grid">
+
+          <div class="pattern-card">
+            <div class="core-label">Data</div>
+            <h4><a href="/posts/blog-agentic-ai-workflows.html">Agentic AI: Revolutionizing Data Workflows</a></h4>
+            <p>The entire merchant lifecycle is an agentic data workflow — no manual hand-offs. A LangGraph state machine takes a merchant from natural-language conversation through structured extraction, compliance gate checks, risk scoring, and DB persistence, with full state recovery if any step fails mid-run.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Data Architecture</div>
+            <h4><a href="/posts/blog-ai-first-data-strategy.html">AI First Series: Building the Data Framework</a></h4>
+            <p>The data layer is designed for agents to query, not just humans. Domain models backed by FIBO financial ontology, repository and service layers abstracted across Postgres (workflow state), DynamoDB (checkpoints and metadata), and Neo4j (merchant knowledge graph) — each chosen for what it does best.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Data</div>
+            <h4><a href="/posts/blog-graphrag-knowledge-graph.html">mytake: How GraphRAG Grounds AI in Knowledge Graph</a></h4>
+            <p>A sync worker mirrors merchant data from Postgres into Neo4j continuously. A graph service layer exposes traversal and similarity queries. GraphRAG tools surface those queries as MCP tools agents can call — so when the risk scorer evaluates a new merchant, it retrieves the five most structurally similar historical cases as grounded context.</p>
+          </div>
+
+        </div>
+
+        <!-- OPERATIONS -->
+        <h2>Operations</h2>
+
+        <div class="pattern-grid">
+
+          <div class="pattern-card">
+            <div class="core-label">Operations</div>
+            <h4><a href="/posts/blog-operationalizing-enterprise-ai-agents.html">From Prototype to Production: Operationalizing AI Agents</a></h4>
+            <p>The system runs containerised on AWS EC2: Docker + docker-compose, a production startup script with timestamped log rotation, health checks for every service, auto-recovery for stateless services (MCP server restarts safely; Postgres and Neo4j are flagged for human review). A lightweight response evaluator scores agent output quality in real time — not post-hoc.</p>
+          </div>
+
+        </div>
+
+        <!-- GOVERNANCE & SECURITY -->
+        <h2>Governance &amp; Security</h2>
+
+        <div class="pattern-grid">
+
+          <div class="pattern-card">
+            <div class="core-label">Governance</div>
+            <h4><a href="/posts/blog-data-governance-negotiator.html">The Negotiator: Why Data Governance Must Stop Saying "No"</a></h4>
+            <p>Gate checks are configurable rules that <em>approve, escalate, or flag</em> — not hard blocks. The workflow routes around gate failures gracefully, escalating to human review rather than rejecting outright. Governance is a participant in the workflow, not a wall in front of it.</p>
+          </div>
+
+          <div class="pattern-card">
+            <div class="core-label">Security</div>
+            <h4><a href="/posts/blog-ai-trism-enterprise-security.html">Beyond the Hype: Why AI TRiSM is the Secret to Scaling Enterprise AI</a></h4>
+            <p>The Guardian agent is the TRiSM layer — a runtime integrity controller that intercepts every write operation before it reaches the database. It validates enterprise identifiers, checks intent against allowed patterns, and blocks mutations that fail the safety check. Enabled by default; bypassing it requires an explicit override, not an omission.</p>
+          </div>
+
+        </div>
+
+        <div class="phase-card" style="margin:2rem 0;">
+          <div class="phase-label">The throughline</div>
+          <p style="margin:0;">None of these patterns exist in isolation. The blogs document how they fit together — and paytek is the proof that they do. Start with the <a href="/posts/blog-unified-agentic-architecture.html">unified stack overview</a>, then follow any thread that interests you back to a running implementation.</p>
+        </div>
+
+        <div class="related-articles">
+          <h3>Try it live</h3>
+          <ul>
+            <li><a href="/posts/ec2-live-demo.html">Agentic AI Workflow Demo for Payments Use Case</a> — Interact with the running paytek system directly.</li>
+            <li><a href="/posts/agentic-mesh-demo.html">Agentic Mesh Demo</a> — See the framework-agnostic multi-agent architecture in action.</li>
+            <li><a href="/src/html/blogs.html">All Blogs</a> — The full writing behind the system.</li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="copyright">© <span class="site-year"></span> Kishore Namburi • mytake:agentic and authentic &gt; Insights are personal. Code is MIT.</p>
+    </div>
+  </footer>
+
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

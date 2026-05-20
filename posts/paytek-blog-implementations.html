@@ -8,15 +8,20 @@
   <meta name="description" content="A production-grade guide to agentic enterprise systems — every design decision made, every edge case handled. paytek maps each pattern to working code." />
   <meta property="og:title" content="paytek: Where Agentic AI Meets Enterprise Reality" />
   <meta property="og:description" content="A production-grade guide to agentic enterprise systems — every design decision made, every edge case handled. paytek maps each pattern to working code." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/posts/paytek-blog-implementations.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://namburi.me/posts/paytek-blog-implementations.html" />
   <meta property="og:site_name" content="Kishore Namburi" />
+  <meta name="image" property="og:image" content="https://namburi.me/assets/images/unified_agentic_architecture.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="paytek: Where Agentic AI Meets Enterprise Reality" />
-  <meta name="twitter:description" content="How every blog on this site maps to a working implementation in paytek — the agentic payments platform built on LangGraph, MCP, Neo4j, and multi-framework agents." />
+  <meta name="twitter:description" content="How every blog on this site maps to a working implementation in paytek — the agentic payments platform that shares the same design philosophy." />
+  <meta name="twitter:image" content="https://namburi.me/assets/images/unified_agentic_architecture.png" />
+  <meta property="article:published_time" content="2026-05-19" />
+  <meta property="article:modified_time" content="2026-05-19" />
+  <meta property="article:author" content="https://namburi.me" />
   <meta name="theme-color" content="#0a0e1a" />
   <meta name="author" content="Kishore Namburi" />
-  <link rel="canonical" href="/posts/paytek-blog-implementations.html" />
+  <link rel="canonical" href="https://namburi.me/posts/paytek-blog-implementations.html" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234f9cf9'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white'>M</text></svg>" />
   <link rel="stylesheet" href="/assets/style.css" />
   <link rel="stylesheet" href="/assets/typography.css">
@@ -34,37 +39,15 @@
   <noscript><link rel="stylesheet" href="/assets/blog.css"></noscript>
   <link rel="preload" href="/assets/overrides.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
-  <style>
-    .impl-section { margin: 0.5rem 0 2rem; }
-    .impl-row {
-      display: grid;
-      grid-template-columns: 1fr 1.7fr;
-      gap: 2.5rem;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border, #e5e7eb);
-      align-items: start;
-    }
-    .impl-row:first-child { border-top: 1px solid var(--border, #e5e7eb); }
-    .impl-left { display: flex; flex-direction: column; gap: 0.4rem; }
-    .impl-left h4 { margin: 0; font-size: 0.95rem; line-height: 1.45; font-weight: 600; }
-    .impl-left h4 a { color: inherit; text-decoration: none; }
-    .impl-left h4 a:hover { text-decoration: underline; color: var(--clr-accent, #4f9cf9); }
-    .impl-right p { margin: 0; font-size: 0.875rem; line-height: 1.7; }
-    .impl-right code { font-size: 0.8rem; }
-    .read-pattern { display: inline-block; margin-top: 0.6rem; font-size: 0.8rem; font-weight: 500; color: var(--clr-accent, #4f9cf9); text-decoration: none; }
-    .read-pattern:hover { text-decoration: underline; }
-    @media (max-width: 640px) {
-      .impl-row { grid-template-columns: 1fr; gap: 0.6rem; }
-    }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": "/posts/paytek-blog-implementations.html",
+    "@id": "https://namburi.me/posts/paytek-blog-implementations.html",
     "name": "paytek: Where Agentic AI Meets Enterprise Reality",
-    "description": "How every blog on this site maps to a working implementation in paytek — the agentic payments platform built on LangGraph, MCP, Neo4j, and multi-framework agents.",
+    "description": "How every blog on this site maps to a working implementation in paytek — the agentic payments platform that shares the same design philosophy.",
     "datePublished": "2026-05-19",
+    "dateModified": "2026-05-19",
     "author": {
       "@type": "Person",
       "@id": "https://namburi.me/#person",
@@ -76,13 +59,17 @@
       ]
     },
     "publisher": {
-      "@type": "Person",
-      "@id": "https://namburi.me/#person",
+      "@type": "Organization",
+      "@id": "https://namburi.me/#organization",
       "name": "Kishore Namburi",
-      "url": "https://namburi.me"
+      "url": "https://namburi.me",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://namburi.me/assets/images/unified_agentic_architecture.png"
+      }
     },
-    "url": "/posts/paytek-blog-implementations.html",
-    "keywords": ["paytek", "agentic AI", "LangGraph", "MCP", "Neo4j", "GraphRAG", "multi-agent", "payments", "AI TRiSM", "semantic sidecar"]
+    "url": "https://namburi.me/posts/paytek-blog-implementations.html",
+    "keywords": ["paytek", "agentic AI", "multi-agent", "payments", "enterprise AI", "architecture", "design patterns"]
   }
   </script>
 </head>
@@ -106,7 +93,7 @@
   <main id="content" class="blog-container" tabindex="-1">
     <article>
       <header class="blog-header">
-        <div class="card-tags" style="margin-bottom:0.75rem;">
+        <div class="card-tags">
           <span class="card-tag card-tag--demo">Demo</span>
           <span class="card-tag card-tag--payments">Payments</span>
           <span class="card-tag card-tag--agentic">Agentic AI</span>
@@ -115,22 +102,42 @@
         <h1>paytek: Where Agentic AI Meets Enterprise Reality</h1>
         <div class="blog-meta">
           <time datetime="2026-05-19">May 2026</time>
-          <span>Reference guide</span>
+          <span>5 min read</span>
           <span>By Kishore Namburi</span>
         </div>
       </header>
 
       <div class="blog-content">
 
-        <p class="blog-intro"><strong>paytek</strong> is an agentic platform for enterprise merchant onboarding — built under the constraints, trade-offs, and failure modes that surface in realtime, not in theory. Each capability earned its place independently before the platform took shape. This page maps every pattern from this site to the a working engine that powers it, one click away.</p>
+        <p class="blog-intro"><strong>paytek</strong> is an agentic platform for merchant lifecycle management — built under real constraints, real trade-offs, and the failure modes that only surface in production. Each capability — workflow orchestration, knowledge grounding, model routing, runtime security — was validated independently before the platform brought them together. This page maps every design pattern from this site to its working implementation in paytek, so you can see exactly where each decision lives in code.</p>
 
-        <div class="phase-card accent" style="margin:1.5rem 0;">
+        <nav class="toc" aria-label="Sections">
+          <strong>Jump to:</strong>
+          <a href="#architecture">Architecture</a>
+          <a href="#orchestration">Orchestration</a>
+          <a href="#data">Data</a>
+          <a href="#operations">Operations</a>
+          <a href="#governance">Governance &amp; Security</a>
+        </nav>
+
+        <div class="phase-card accent">
           <div class="phase-label">The platform</div>
-          <p style="margin:0;">A merchant chats — an Autonomous agent extracts business details, validates them in real time, and routes through a multi-agent workflow that handles approvals, flags risk, and tracks state across Stripe, PayPal, and Adyen. The architecture makes explicit choices: LangGraph for stateful workflow, MCP for tool grounding, Neo4j for relational context, Postgres and DynamoDB for persistence, a framework-agnostic agent mesh for orchestration, and AI from Google, Ollama, and OpenRouter. Every choice is documented — so when you face the same decision, you know why this one was made.</p>
+          <p>A merchant chats — an autonomous agent extracts business details, validates them in real time, and routes through a multi-agent workflow that handles approvals, flags risk, and tracks state across payment systems. The architecture makes explicit choices around workflow, grounding, context, persistence, and orchestration. Every choice is documented — so when you face the same decision, you know why this one was made.</p>
+          <p><strong>New to agentic systems?</strong> Start with <a href="/posts/blog-unified-agentic-architecture.html">the unified stack overview</a> — it lays the foundation everything else builds on. Or use the section links to jump straight to the area with the most open questions in your architecture.</p>
+        </div>
+
+        <div class="phase-card accent">
+          <div class="phase-label">Design Principles</div>
+          <p>Rules live in configuration, not in the engine. Policies, routing maps, and workflow definitions are swappable without a code deploy — and that boundary is enforced, not aspirational.</p>
+          <ul>
+            <li><strong>Blueprint-first design</strong> — swap a compliance rule or routing condition without touching the codebase.</li>
+            <li><strong>Resilient workflow</strong> — pause, recover, and resume across failure points; the merchant journey never silently drops.</li>
+            <li><strong>Safe integration</strong> — every write is intercepted and validated by the Guardian agent before it reaches the database.</li>
+          </ul>
         </div>
 
         <!-- ARCHITECTURE -->
-        <h2>Architecture</h2>
+        <h2 id="architecture">Architecture</h2>
 
         <div class="impl-section">
 
@@ -140,7 +147,7 @@
               <h4>Full-stack agentic system</h4>
             </div>
             <div class="impl-right">
-              <p>paytek delivers every layer of the unified stack in a single running system — no gaps, no stub implementations. MCP for tool grounding, LangGraph for stateful workflow, a multi-framework agent mesh, triple datastore (Postgres + DynamoDB + Neo4j), FastAPI routes, and a Streamlit conversational UI — all production-deployed on AWS. Can be forked as a foundation.</p>
+              <p>paytek delivers every layer of the unified stack in a container — no gaps, no stub implementations. It is designed around explicit principles for workflow, decision grounding, context, persistence, and orchestration. Can be forked as a foundation.</p>
               <a href="/posts/blog-unified-agentic-architecture.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -151,7 +158,7 @@
               <h4>Knowledge-grounded decisions</h4>
             </div>
             <div class="impl-right">
-              <p>paytek grounds agent decisions in structured knowledge, not probabilistic text retrieval. The FIBO financial ontology schemas the Neo4j layer, and <code>GraphHandlers</code> exposes it as MCP tools — giving every agent multi-hop reasoning over verified merchant relationships. Decisions backed by facts, not best-guess embeddings.</p>
+              <p>paytek grounds agent decisions in structured domain knowledge, not probabilistic text retrieval. A dedicated knowledge layer keeps merchant relationships explicit and enables agents to reason from verified business context. Decisions are backed by facts, not best-guess embeddings.</p>
               <a href="/posts/blog-graphrag-context-infrastructure.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -162,7 +169,7 @@
               <h4>Model-agnostic runtime</h4>
             </div>
             <div class="impl-right">
-              <p>paytek makes model selection a config change, not a code change. OpenRouter provides pluggable backends and the <code>ChatOllama</code> bridge makes any local SLM a drop-in runtime — run cost-efficient specialist models at the edge without touching agent logic. Swap, benchmark, or specialise models independently of the rest of the system.</p>
+              <p>paytek makes model selection a config change, not a code change. The runtime is designed so models can be swapped, benchmarked, or specialized per agent role — independently of the rest of the system.</p>
               <a href="/posts/blog-slm-agent-runtime.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -173,7 +180,7 @@
               <h4>Decoupled knowledge layer</h4>
             </div>
             <div class="impl-right">
-              <p>paytek's MCP server gives agents a clean protocol boundary to the data layer — any framework connects without coupling to storage. The separation of semantic context from core data means the knowledge layer evolves independently of agent logic. Agents always have a well-defined contract for what they can <em>know</em> and what they can <em>do</em>, with no leakage between the two.</p>
+              <p>A clean protocol boundary gives agents a well-defined contract to the data layer — any framework connects without coupling to storage. The separation of semantic context from core data means the knowledge layer evolves independently of agent logic, with no leakage between what an agent can <em>know</em> and what it can <em>do</em>.</p>
               <a href="/posts/blog-semantic-sidecar-pattern.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -181,7 +188,7 @@
         </div>
 
         <!-- ORCHESTRATION -->
-        <h2>Orchestration</h2>
+        <h2 id="orchestration">Orchestration</h2>
 
         <div class="impl-section">
 
@@ -191,7 +198,7 @@
               <h4>Config-driven workflow logic</h4>
             </div>
             <div class="impl-right">
-              <p>paytek separates workflow logic from code entirely — gate rules, routing conditions, and agent parameters live in configuration, not in the agent. Update a compliance rule or gate without touching the codebase. Teams managing policy and teams managing code work independently of each other.</p>
+              <p>paytek separates workflow logic from code entirely — gate rules, routing conditions, and agent parameters live in configuration, not in the agent. A risk threshold, escalation path, or agent prompt can be updated mid-deployment without a release. Teams managing policy and teams managing code work on independent cycles.</p>
               <a href="/posts/blog-multiagent-yaml-orchestration.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -202,7 +209,7 @@
               <h4>Stateful, recoverable workflow</h4>
             </div>
             <div class="impl-right">
-              <p>paytek turns the entire merchant journey into a stateful, recoverable workflow — conversational intake → structured extraction with extended thinking → parallel gate checks → LLM risk scoring (0–1 with reasoning) → human-in-the-loop interrupt → persistence. Every step is named, observable, and checkpointed to DynamoDB. No silent failures, no lost state.</p>
+              <p>paytek turns the merchant journey into a stateful, recoverable workflow with checkpoints, risk evaluation, and human-in-the-loop controls. Every step is named, observable, and recoverable so the system never drops state silently.</p>
               <a href="/posts/blog-agentic-playbook.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -213,36 +220,36 @@
               <h4>Framework-agnostic agent mesh</h4>
             </div>
             <div class="impl-right">
-              <p>paytek runs four agent frameworks in the same system — LangGraph, AutoGen, CrewAI, and AWS Strands — without locking into any one of them. A single bridge module is the only import point, so swapping or extending the agent layer touches one file. The system gets stronger with each framework added, not harder to maintain.</p>
+              <p>paytek runs agents built across different frameworks — LangGraph, AutoGen, or bespoke — in the same orchestrated workflow without forcing a shared runtime. Each agent exposes a standard interface; the orchestrator routes to it. Adding a new framework is an integration task, not an architectural decision.</p>
               <a href="/posts/blog-multi-agent-systems-architecture.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
 
         </div>
 
-        <!-- DATA & DATA ARCHITECTURE -->
-        <h2>Data &amp; Data Architecture</h2>
+        <!-- DATA -->
+        <h2 id="data">Data</h2>
 
         <div class="impl-section">
 
           <div class="impl-row">
             <div class="impl-left">
               <span class="core-label">Data</span>
-              <h4>Zero hand-off merchant lifecycle</h4>
+              <h4>End-to-end merchant lifecycle</h4>
             </div>
             <div class="impl-right">
-              <p>paytek eliminates manual hand-offs from the merchant lifecycle entirely. A LangGraph state machine carries every merchant from natural-language conversation through extraction, compliance checks, risk scoring, and persistence — with full state recovery if any step fails mid-run. The workflow either completes or recovers; it never silently drops.</p>
+              <p>paytek eliminates manual hand-offs from the merchant lifecycle entirely. It carries every merchant from conversation through extraction, compliance checks, risk evaluation, and persistence in a recoverable workflow. The workflow either completes or recovers; it never silently drops.</p>
               <a href="/posts/blog-agentic-ai-workflows.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
 
           <div class="impl-row">
             <div class="impl-left">
-              <span class="core-label">Data Architecture</span>
+              <span class="core-label">Data</span>
               <h4>Agent-first data layer</h4>
             </div>
             <div class="impl-right">
-              <p>paytek's data layer is built for agents to query, not just humans. FIBO-backed domain models give agents a shared semantic vocabulary, and the storage layer assigns each concern to the database best suited to it — Postgres for workflow state, DynamoDB for checkpoints, Neo4j for the merchant knowledge graph. No single datastore asked to do everything.</p>
+              <p>paytek's data layer is built for agents to query, not just humans. Shared domain models give agents a common vocabulary, and specialized storage keeps each concern in the right place. No single datastore is asked to do everything.</p>
               <a href="/posts/blog-ai-first-data-strategy.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -253,7 +260,7 @@
               <h4>Context-aware risk scoring</h4>
             </div>
             <div class="impl-right">
-              <p>paytek gives every risk decision real context, not just the current merchant's data. A continuous sync worker keeps Neo4j current with Postgres, and GraphRAG tools surface traversal and similarity queries as MCP calls — so every risk evaluation is informed by the five most structurally similar historical cases. Decisions improve with every merchant processed.</p>
+              <p>paytek gives every risk decision real context by linking current merchant data with historical patterns and graph relationships — so the evaluation reasons from evidence, not heuristics, and can be audited after the fact.</p>
               <a href="/posts/blog-graphrag-knowledge-graph.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -261,7 +268,7 @@
         </div>
 
         <!-- OPERATIONS -->
-        <h2>Operations</h2>
+        <h2 id="operations">Operations</h2>
 
         <div class="impl-section">
 
@@ -271,7 +278,7 @@
               <h4>Production-grade deployment</h4>
             </div>
             <div class="impl-right">
-              <p>paytek ships production-ready — Docker + docker-compose on AWS, timestamped log rotation, per-service health checks, and auto-recovery built in from the start. Stateless services restart automatically; stateful ones surface for human review rather than failing silently. A lightweight response evaluator scores agent output quality in real time, so issues surface during the run — not in the post-mortem.</p>
+              <p>paytek ships production-ready with built-in deployment, monitoring, and recovery. Stateful services surface for human review rather than failing silently, and response quality is evaluated in real time so issues surface during the run — not in the post-mortem.</p>
               <a href="/posts/blog-operationalizing-enterprise-ai-agents.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
@@ -279,7 +286,7 @@
         </div>
 
         <!-- GOVERNANCE & SECURITY -->
-        <h2>Governance &amp; Security</h2>
+        <h2 id="governance">Governance &amp; Security</h2>
 
         <div class="impl-section">
 
@@ -300,16 +307,16 @@
               <h4>Runtime security enforcement</h4>
             </div>
             <div class="impl-right">
-              <p>paytek enforces security at runtime, not at the perimeter. The Guardian agent intercepts every write before it reaches the database — validating enterprise identifiers, checking intent against allowed patterns, and blocking non-compliant mutations on the spot. Enabled by default; a bypass requires an explicit override, never an omission.</p>
+              <p>paytek enforces security at runtime, not at the perimeter. The Guardian agent intercepts every write before it reaches the database — validating identifiers, checking intent against allowed patterns, and blocking non-compliant mutations on the spot. Enabled by default; a bypass requires an explicit override, never an omission.</p>
               <a href="/posts/blog-ai-trism-enterprise-security.html" class="read-pattern">Read the pattern →</a>
             </div>
           </div>
 
         </div>
 
-        <div class="phase-card" style="margin:2rem 0;">
+        <div class="phase-card">
           <div class="phase-label">The throughline</div>
-          <p style="margin:0;">paytek is the system where all of them run together. Start with the <a href="/posts/blog-unified-agentic-architecture.html">unified stack overview</a> if you're building from scratch, or jump to the section where your architecture has the most open questions.</p>
+          <p>paytek is the system where discrete agentic capabilities run together under one roof — not as a monolith, but as a set of well-bounded components that share state, contracts, and failure handling. Each pattern above is live in the platform.</p>
         </div>
 
         <div class="related-articles">

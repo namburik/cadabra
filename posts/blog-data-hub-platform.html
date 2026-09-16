@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <title>The Data Hub Blueprint: Mapping Databricks, Snowflake, Fabric, AWS & GCP | Kishore Namburi</title>
+  <meta name="description" content="A capability-by-capability map across Databricks, Snowflake, Microsoft Fabric, AWS, and Google Cloud — catalog, SQL/BI, ingestion, AI/ML, sharing, and admin — with a maturity read on who leads where." />
+  <meta property="og:title" content="The Data Hub Blueprint: Mapping Databricks, Snowflake, Fabric, AWS & GCP" />
+  <meta property="og:description" content="A capability-by-capability map across Databricks, Snowflake, Microsoft Fabric, AWS, and Google Cloud, with a maturity read on who leads where as of September 2026." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="/posts/blog-data-hub-platform.html" />
+  <meta name="image" property="og:image" content="/assets/images/blog-platform-rosetta-hero.svg" />
+  <meta property="og:site_name" content="Kishore Namburi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Data Hub Blueprint: Mapping Databricks, Snowflake, Fabric, AWS & GCP" />
+  <meta name="twitter:description" content="A capability-by-capability map across Databricks, Snowflake, Microsoft Fabric, AWS, and Google Cloud, with a maturity read on who leads where as of September 2026." />
+  <meta name="twitter:image" content="/assets/images/blog-platform-rosetta-hero.svg" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <meta name="author" content="Kishore Namburi" />
+  <link rel="canonical" href="https://namburi.me/posts/blog-data-hub-platform.html" />
+  <link rel="alternate" type="application/rss+xml" title="Kishore Namburi — AI Blogs" href="https://namburi.me/rss.xml" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%234f9cf9'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white'>M</text></svg>" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/typography.css">
+  <script src="/assets/scripts.js?v=3" defer></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/analytics/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/blog.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/blog.css"></noscript>
+  <link rel="preload" href="/assets/overrides.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/overrides.css"></noscript>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "/posts/blog-data-hub-platform.html",
+    "headline": "The Data Hub Blueprint: Mapping Databricks, Snowflake, Fabric, AWS & GCP",
+    "description": "A capability-by-capability map across Databricks, Snowflake, Microsoft Fabric, AWS, and Google Cloud, with a maturity read on who leads where as of September 2026.",
+    "datePublished": "2026-09-15",
+    "dateModified": "2026-09-15",
+    "author": {
+      "@type": "Person",
+      "@id": "https://namburi.me/#person",
+      "name": "Kishore Namburi",
+      "url": "https://namburi.me",
+      "sameAs": [
+        "https://github.com/knamburi",
+        "https://www.linkedin.com/in/tonamburi/"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://namburi.me/#person",
+      "name": "Kishore Namburi",
+      "url": "https://namburi.me",
+      "sameAs": [
+        "https://github.com/knamburi",
+        "https://www.linkedin.com/in/tonamburi/"
+      ]
+    },
+    "image": "/assets/images/blog-platform-rosetta-hero.svg",
+    "url": "/posts/blog-data-hub-platform.html",
+    "mainEntityOfPage": "/posts/blog-data-hub-platform.html",
+    "keywords": ["Databricks", "Snowflake", "Microsoft Fabric", "AWS", "Google Cloud", "BigQuery", "Vertex AI", "data platform comparison", "Unity Catalog", "data architecture"]
+  }
+  </script>
+</head>
+<body class="antialiased font-sans text-gray-900 bg-white">
+  <header class="fixed inset-x-0 top-0 z-[100] border-b border-white/10 bg-[#0a0e1a]/90 backdrop-blur-xl">
+    <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[110] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#0a0e1a]">Skip to content</a>
+    <div class="container flex h-[68px] items-center gap-8">
+      <a href="/" class="logo">mytake: agentic and authentic</a>
+      <nav class="nav">
+        <a href="/src/html/about.html">About</a>
+        <a href="/src/html/blogs.html">Blogs</a>
+        <a href="/src/html/demos.html">Demos</a>
+        <a href="/src/html/contact.html">Contact</a>
+        <a href="https://calendly.com/kishore-namburi" target="_blank" rel="noopener noreferrer">Schedule</a>
+      </nav>
+      <div class="nav-controls ml-auto">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="blog-container" tabindex="-1">
+
+    <article>
+      <header class="blog-header">
+        <div class="card-tags"><span class="card-tag card-tag--blog">Blog</span><span class="card-tag card-tag--data-architecture">Data Architecture</span></div>
+        <h1>The Data Hub Blueprint: A Field Guide to Databricks, Snowflake, Fabric, AWS, and Google Cloud</h1>
+        <div class="blog-meta">
+          <time datetime="2026-09-15">September 2026</time>
+          <span>8 min read</span>
+          <span>By Kishore Namburi</span>
+        </div>
+      </header>
+
+      <div class="blog-content">
+
+        <p class="blog-intro">"Catalog" on Databricks is "Catalog" on Snowflake is "OneLake catalog" on Fabric is "Glue Data Catalog" on AWS is "Dataplex Universal Catalog" on Google Cloud — same job, five menu labels. I built a working map so I stop re-deriving that translation every time a client, a candidate, or my own memory needs it. Here's the map, how it's built, and where the maturity gap matters more than the naming gap.</p>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <h2>1. Why a translation layer, not a scorecard</h2>
+
+        <p>Multi-platform data estates are the default now — a Databricks lakehouse next to a Snowflake warehouse next to an Azure tenant running Fabric, a BigQuery project somewhere in the mix, all on top of AWS infrastructure. Nobody designed it that way; it accreted through acquisitions and cloud commitments made years apart.</p>
+
+        <p>The cost is constant small friction, not one big failure: a new hire spends their first week hunting for "the Databricks version of Worksheets" instead of doing the work; an architecture review compares two features with different names and calls it a gap; an RFP asks for "a marketplace" when what it actually needs is <em>Delta Sharing</em>-style live sharing, not a storefront. None of that is fixed by picking a favorite platform — it's fixed by a shared index: point at a job, know its name in all four dialects, get an honest read on who's ahead at it.</p>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <h2>2. How the map is built</h2>
+
+        <p>Everything sits in six domains, each carrying a maturity tier (defined below). Two candidates didn't make the final cut: Navigation &amp; Workspace, which measures whether a vendor has one consolidated front door rather than an actual capability; and Notebooks &amp; Apps, folded into AI/ML since a notebook is mostly where AI/ML work actually happens.</p>
+
+        <p><strong>Three limits worth flagging up front</strong> — the parts most likely to be wrong or age badly:</p>
+
+        <ul>
+          <li><strong>Tiers are a snapshot, not a benchmark</strong> — an opinion as of September 2026, not a formal ranking; a vendor is routinely a Leader in one domain and Developing in the next.</li>
+          <li><strong>AI/ML reorders fastest.</strong> Snowflake's Cortex AI is closing ground quickly enough that a fair call in September could read dated by December.</li>
+          <li><strong>Fabric, AWS, and GCP being inferred is architectural, not just a documentation gap.</strong> AWS is a set of independently mature, modular services (IAM, Glue, Athena, S3) that were never meant to share one nav; Fabric is an integrated SaaS layer on OneLake; Google Cloud sits in between — one console, but BigQuery, Vertex AI, and Dataplex still read as separate products stitched under it. Forcing all three into the same table as Databricks/Snowflake's native navigation is a real compromise.</li>
+        </ul>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <h2>3. The six domains, at a glance</h2>
+
+        <p>Reading down any column tells you where a given vendor's weight sits. Reading across any row tells you the translation. A few patterns jump out immediately:</p>
+
+        <div class="tier-grid" id="tier-legend">
+          <div class="tier-card"><span class="tier-tag tier-tag--leader">Leader</span><p>Furthest along; the reference implementation other vendors get compared against for this job.</p></div>
+          <div class="tier-card"><span class="tier-tag tier-tag--mature">Mature</span><p>Solid and production-proven, but not the category-setter.</p></div>
+          <div class="tier-card"><span class="tier-tag tier-tag--developing">Developing</span><p>Real and shipping, but visibly newer or still consolidating.</p></div>
+        </div>
+
+        <div class="blog-table-wrap">
+          <table class="blog-table">
+            <thead>
+              <tr><th>Domain</th><th>Databricks</th><th>AWS</th><th>Snowflake</th><th>Google Cloud</th><th>Microsoft Fabric</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Ingestion &amp; Engineering</td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td></tr>
+              <tr><td>Compute</td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--developing">Developing</span></td></tr>
+              <tr><td>Catalog &amp; Governance</td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--developing">Developing</span></td></tr>
+              <tr><td>SQL &amp; BI</td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td></tr>
+              <tr><td>AI / ML</td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--developing">Developing</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td></tr>
+              <tr><td>Marketplace &amp; Sharing</td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--leader">Leader</span></td><td><span class="tier-tag tier-tag--mature">Mature</span></td><td><span class="tier-tag tier-tag--developing">Developing</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>No vendor sweeps the board. Databricks leads catalog and AI/ML because Unity Catalog and MLflow set the reference pattern. Snowflake, Fabric, and GCP split SQL &amp; BI leadership three ways for three different reasons — Snowflake on warehouse pedigree, Fabric on Power BI's install base, GCP on BigQuery's serverless architecture plus Looker's semantic layer. AWS leads raw ingestion and compute breadth on the strength of Glue, DMS, and EMR's long track record.</p>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <h2>4. The full capability map</h2>
+        <p>The summary above is the maturity read. This is the actual row-by-row translation — every capability, in each platform's own words.</p>
+
+        <div class="blog-table-wrap">
+          <table class="blog-table cap-map-table">
+            <thead><tr><th>Capability</th><th>Databricks</th><th>AWS</th><th>Snowflake</th><th>Google Cloud</th><th>Microsoft Fabric</th></tr></thead>
+            <tbody>
+              <tr><th colspan="6">Ingestion &amp; Engineering</th></tr>
+              <tr><td>Data ingestion</td><td>Data Ingestion</td><td>Glue / DMS / AppFlow</td><td>Snowpipe / Openflow</td><td>Dataflow / Datastream</td><td>Data Factory</td></tr>
+              <tr><td>Pipeline orchestration</td><td>Jobs &amp; Pipelines</td><td>Step Functions / MWAA</td><td>Tasks / Dynamic Tables</td><td>Cloud Composer</td><td>Data Factory pipelines</td></tr>
+              <tr><td>Visual data prep</td><td>Visual Data Prep</td><td>Glue DataBrew</td><td>Snowpark (code-first)</td><td>Cloud Data Fusion</td><td>Dataflows Gen2</td></tr>
+              <tr><td>Run monitoring</td><td>Runs</td><td>CloudWatch</td><td>Task history</td><td>Cloud Logging</td><td>Monitoring Hub</td></tr>
+
+              <tr><th colspan="6">Compute</th></tr>
+              <tr><td>Account administration</td><td>Account console</td><td>Organizations + Billing</td><td>Admin</td><td>Cloud Console (IAM)</td><td>Admin Portal</td></tr>
+              <tr><td>General compute</td><td>Compute</td><td>EMR / Glue</td><td>Compute</td><td>Dataproc / serverless</td><td>Spark capacities</td></tr>
+
+              <tr><th colspan="6">Catalog &amp; Governance</th></tr>
+              <tr><td>Data catalog</td><td>Unity Catalog</td><td>Glue Data Catalog</td><td>Catalog</td><td>Dataplex Catalog</td><td>OneLake / Purview</td></tr>
+              <tr><td>Governance &amp; security</td><td>UC governance</td><td>Lake Formation + IAM</td><td>Governance &amp; Security</td><td>Dataplex + IAM</td><td>Purview</td></tr>
+
+              <tr><th colspan="6">SQL &amp; BI</th></tr>
+              <tr><td>SQL editor</td><td>SQL Editor</td><td>Athena / Redshift QE v2</td><td>Worksheets</td><td>BigQuery Studio</td><td>Warehouse SQL editor</td></tr>
+              <tr><td>Saved queries</td><td>Queries</td><td>Athena saved queries</td><td>Saved worksheets</td><td>BigQuery saved queries</td><td>Saved queries</td></tr>
+              <tr><td>BI dashboards</td><td>Dashboards (AI/BI)</td><td>QuickSight</td><td>Dashboards</td><td>Looker / Looker Studio</td><td>Power BI</td></tr>
+              <tr><td>Natural-language Q&amp;A</td><td>Genie</td><td>Amazon Q</td><td>Cortex Analyst</td><td>Gemini in BigQuery</td><td>Copilot in Fabric</td></tr>
+              <tr><td>Alerting</td><td>Alerts</td><td>CloudWatch Alarms</td><td>Alerts</td><td>Scheduled queries</td><td>Data Activator</td></tr>
+              <tr><td>Query history / audit</td><td>Query History</td><td>CloudTrail</td><td>Query History</td><td>Job History</td><td>Monitoring Hub</td></tr>
+              <tr><td>Warehouse compute</td><td>SQL Warehouses</td><td>Redshift / Athena</td><td>Virtual warehouses</td><td>BigQuery slots</td><td>Capacity units</td></tr>
+
+              <tr><th colspan="6">AI/ML</th></tr>
+              <tr><td>Model playground</td><td>Playground</td><td>Bedrock Playground</td><td>Cortex AI Playground</td><td>Vertex AI Studio</td><td>AI Foundry Playground</td></tr>
+              <tr><td>Agent building</td><td>Agents</td><td>Bedrock Agents</td><td>Cortex Agents</td><td>Vertex AI Agent Builder</td><td>Copilot Studio</td></tr>
+              <tr><td>LLM gateway</td><td>AI Gateway</td><td>Bedrock + API Gateway</td><td>Cortex AI governance</td><td>Model Garden + Apigee</td><td>AI Foundry router</td></tr>
+              <tr><td>Experiment tracking</td><td>Experiments</td><td>SageMaker Experiments</td><td>Snowflake ML tracking</td><td>Vertex AI Experiments</td><td>Fabric Data Science</td></tr>
+              <tr><td>Feature store</td><td>Features</td><td>SageMaker Feature Store</td><td>Snowflake Feature Store</td><td>Vertex AI Feature Store</td><td>Azure ML Feature Store</td></tr>
+              <tr><td>Model registry</td><td>Models</td><td>SageMaker Registry</td><td>Snowflake Model Registry</td><td>Vertex AI Model Registry</td><td>Azure ML registry</td></tr>
+              <tr><td>Model/agent serving</td><td>Serving</td><td>SageMaker / Bedrock</td><td>Cortex serving</td><td>Vertex AI Endpoints</td><td>Azure ML endpoints</td></tr>
+              <tr><td>Notebooks &amp; apps</td><td>Notebooks + Apps</td><td>SageMaker Studio</td><td>Notebooks + Streamlit</td><td>BigQuery Studio / Vertex Workbench</td><td>Fabric Notebooks</td></tr>
+
+              <tr><th colspan="6">Marketplace &amp; Sharing</th></tr>
+              <tr><td>Data marketplace</td><td>Marketplace</td><td>AWS Data Exchange</td><td>Marketplace</td><td>Analytics Hub</td><td>Azure Marketplace</td></tr>
+              <tr><td>Secure data sharing</td><td>Delta Sharing</td><td>Redshift Data Sharing</td><td>Data Sharing</td><td>Analytics Hub</td><td>OneLake shortcuts</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <h2>5. Three spotlights worth the extra detail</h2>
+
+        <h3>Catalog &amp; Governance: "open" is a narrowing gap, not a moat</h3>
+        <p>Unity Catalog's lead isn't feature count — Horizon, Glue Catalog + Lake Formation, and Dataplex Universal Catalog all cover tags, lineage, and access policy. The original case was that Unity Catalog went open and cross-cloud from day one while Snowflake's catalog sat inside a tighter boundary. That's dating fast: Snowflake co-drove Apache Polaris to a top-level Apache project and matured Horizon's Iceberg REST catalog support, including bidirectional external writes; Google's BigLake Metastore now speaks Iceberg REST too. The openness gap is narrower than it was a year ago, across the board. What Databricks still holds is being first to a <em>unified</em> data-and-AI governance model, tables and models under one catalog — a harder lead to close than "open" alone.</p>
+
+        <h3>AI/ML: three leaders, three different bets</h3>
+        <p>Databricks (MLflow's home turf), AWS (SageMaker plus Bedrock), and GCP (Vertex AI, BigQuery ML, Gemini) all read as Leaders here, for different reasons — one set the open tracking standard, one has the longest end-to-end track record, and GCP has the deepest native data-to-AI integration plus a real cost edge on inference. Cortex AI is shipping real capability fast, but it's a recent entrant next to a decade of MLflow/SageMaker/Vertex maturity — which is why it's Developing, not Mature, and the domain most likely to reorder first.</p>
+
+        <h3>Natural-language Q&amp;A: one row in the map, five different bets</h3>
+        <p>The capability map above lists five products for one job, and each picked a different entry point: Genie starts from the dataset, Cortex Analyst from a governed semantic model, Gemini in BigQuery from the warehouse's own query surface, Copilot in Fabric from the report, Amazon Q from the dashboard. That entry point tells you more about onboarding a team than the maturity tier does.</p>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <h2>6. How I actually use this</h2>
+        <ul>
+          <li><strong>Onboarding across platforms:</strong> point a Snowflake-native engineer at the Databricks column for what they'll look for first — SQL Editor, Catalog, Jobs, Workspace, Query History.</li>
+          <li><strong>Vendor comparisons that don't strawman:</strong> when a comparison claims "Platform X doesn't have Y," check whether Y just lives under a different name, not a missing capability.</li>
+          <li><strong>Architecture reviews:</strong> Developing is where a specialized third-party tool still earns its keep over the platform's native option.</li>
+          <li><strong>RFP language:</strong> write requirements in domain terms ("governed cross-account data sharing without copying"), not vendor terms ("a Marketplace"), so they survive a platform switch.</li>
+        </ul>
+
+        <p class="blog-note">This is a running reference — I expect to revise it as AI/ML keeps moving fastest.</p>
+      </div><!-- /.blog-content -->
+    </article>
+
+    <style>
+      #tier-legend { grid-template-columns: repeat(3, 1fr); }
+      #tier-legend .tier-tag { margin-bottom: 0.6rem; }
+      #tier-legend p { margin: 0; color: var(--clr-muted); font-size: 0.9rem; line-height: 1.6; }
+      @media (max-width: 640px) {
+        #tier-legend { grid-template-columns: repeat(3, minmax(140px, 1fr)); overflow-x: auto; }
+      }
+      .tier-tag--leader { background: var(--clr-accent); color: #fff; }
+      .tier-tag--mature { background: rgba(79,156,249,0.14); color: var(--clr-accent); }
+      .tier-tag--developing { background: rgba(230,165,58,0.16); color: #a97417; }
+      body.dark .tier-tag--developing { color: #e0c477; }
+      .blog-table td .tier-tag { margin: 0; }
+      .cap-map-table td:first-child { background: rgba(79,156,249,0.07); }
+      body.dark .cap-map-table td:first-child { background: rgba(79,156,249,0.10); }
+    </style>
+</main>
+
+
+
+  <footer class="footer">
+    <div class="container footer-inner">
+
+      <p class="copyright">© <span class="site-year"></span> Kishore Namburi • mytake:agentic and authentic &gt; Insights are personal. Code is MIT.</p>
+
+    </div>
+  </footer>
+
+
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

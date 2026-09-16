@@ -9,6 +9,14 @@
     <atom:link href="https://namburi.me/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The Data Hub Blueprint: A Field Guide to Databricks, Snowflake, Fabric, AWS, and Google Cloud</title>
+      <link>https://namburi.me/posts/blog-data-hub-platform.html</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Kishore Namburi</dc:creator>
+      <description>A capability-by-capability map across Databricks, Snowflake, Microsoft Fabric, AWS, and Google Cloud, with a maturity read on who leads where as of September 2026.</description>
+    </item>
+
+    <item>
       <title>The Semantic Sidecar Pattern: A Decoupled Approach to Grounding AI Agents</title>
       <link>https://namburi.me/posts/blog-semantic-sidecar-pattern.html</link>
       <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
